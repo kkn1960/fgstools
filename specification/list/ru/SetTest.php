@@ -1,0 +1,2 @@
+<?php
+$list['SetTest']=array('options'=>array('in'=>'член множества','not_in'=>'не член множества','include_all'=>'включает все','include_one'=>'включает хотя бы одно','not_include_all'=>'не содержит ни одного'));

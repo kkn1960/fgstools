@@ -1,0 +1,159 @@
+#info {background:#f8f8f8; border:0;}
+
+/* ================================================================
+This copyright notice must be untouched at all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssplay.co.uk/menus/final_drop.html
+Copyright (c) 2005-2008 Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any
+way to fit your requirements.
+=================================================================== */
+
+.ddm {
+    width:100%;
+    height:32px;
+    position:relative;
+    z-index:100;
+    background-image: url(image/ddm_bg.gif);
+    background-repeat: repeat-x;
+    background-position: top;
+}
+.ddm ul li {
+    background-color: #e7e4d3;
+    border-color: #FFFFFF #FFFFFF #FFFFFF #FFFFFF;
+    border-style: solid;
+    border-width: 0px 1px 0px 0px;
+    color: #444444;
+    height:30px;
+}
+.ddm ul li ul li {
+    background-color: #e7e4d3;
+    border-color: #FFFFFF #FFFFFF #FFFFFF #FFFFFF;
+    border-style: solid;
+    border-width: 1px 0px 1px 0px;
+    color: #444444;
+    height:20px;
+}
+    
+/* hack to correct IE5.5 faulty box model */
+* html .ddm {width:100%; w\idth:100%;}
+/* remove all the bullets, borders and padding from the default list styling */
+.ddm ul {padding:0;margin:0;list-style-type:none;}
+.ddm ul ul {width:149px;}
+/* float the list to make it horizontal and a relative positon so that you can control the dropdown menu positon */
+.ddm li {
+    float:left;
+    width:149px;
+    position:relative;
+   }
+/* style the links for the top level */
+.ddm a, .ddm a:visited {
+    background-image: url(image/ddm_bg.gif);
+    display:block;
+    font-size:12px;
+    text-decoration:none;
+    color:#444444;
+    width:138px;
+    height:30px;
+    padding-left:10px;
+    line-height:29px;
+    font-weight:bold;
+    border-right-width: 1px;
+    border-right-color: #FFFFFF;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-color: #FFFFFF;
+    border-bottom-color: #FFFFFF;
+}
+.ddm ul ul a, .ddm ul ul a:visited {
+    display:block;
+    font-size:12px;
+    text-decoration:none;
+    width:138px;
+    height:20px;
+    padding-left:10px;
+    line-height:20px;
+    font-weight:bold;
+    border: 1px solid #FFFFFF;
+    background-color: #F1EFE2;
+
+}
+
+.ddm ul li ul li a, .ddm ul li ul li a:visited {
+    font-size:12px;
+    font-weight:normal;
+}
+
+/* a hack so that IE5.5 faulty box model is corrected */
+* html .ddm a, * html .ddm a:visited {width:149px; w\idth:138px;}
+.ddm a.top_parent, ddm a.top_parent:hover  /* attaches down-arrow to all top-parents */
+        {
+        background-image: url(image/navdown_white.gif);
+        background-position: right center;
+        background-repeat: no-repeat;
+        }
+.ddm  a.parent, .ddm  a.parent:hover         /* attaches side-arrow to all parents */
+        {
+        background-image: url(image/nav_blue.gif);
+        background-position: right center;
+        background-repeat: no-repeat;
+        }
+/* style the second level background */
+.ddm ul ul a.drop, .ddm ul ul a.drop:visited {background:#f1efe2 url(image/grey-arrow.gif) no-repeat 130px center;}
+/* style the second level hover */
+.ddm ul ul a.drop:hover{background:#e4f1bc url(image/blue-arrow.gif) no-repeat 130px center;}
+.ddm ul ul :hover > a.drop {background:#e4f1bc  url(image/blue-arrow.gif) no-repeat 130px center;}
+/* style the third level background */
+.ddm ul ul ul a, .ddm ul ul ul a:visited {background:#f1efe2;}
+/* style the third level hover */
+.ddm ul ul ul a:hover {background:#e4f1bc;}
+
+
+/* hide the sub levels and give them a positon absolute so that they take up no room */
+.ddm ul ul {visibility:hidden;position:absolute;height:0;top:31px;left:-1px; width:149px;border-top:1px solid #FFFFFF;}
+/* another hack for IE5.5 */
+* html .ddm ul ul {top:30px;t\op:31px;}
+
+/* position the third level flyout menu */
+.ddm ul ul ul{left:149px; top:-1px; width:149px;}
+
+/* position the third level flyout menu for a left flyout */
+.ddm ul ul ul.left {left:-149px;}
+
+/* style the table so that it takes no ppart in the layout - required for IE to work */
+.ddm table {position:absolute; top:0; left:0; border-collapse:collapse;;}
+
+/* style the second level links */
+.ddm ul ul a, .ddm ul ul a:visited {background:#F1EFE2; color:#444444 height:auto; line-height:20px; padding:1px 10px; width:128px;border-width:0 1px 1px 1px;}
+/* yet another hack for IE5.5 */
+* html .ddm ul ul a, * html .ddm ul ul a:visited {width:150px;w\idth:128px;}
+
+/* style the top level hover */
+.ddm a:hover, .ddm ul ul a:hover{color:#444444; background:#f1efe2;}
+.ddm :hover > a, .ddm ul ul :hover > a {color:#444444; background:#e4f1bc;}
+
+/* make the second level visible when hover on first level list OR link */
+.ddm ul li:hover ul,
+.ddm ul a:hover ul{visibility:visible; }
+/* keep the third level hidden when you hover on first level list OR link */
+.ddm ul :hover ul ul{visibility:hidden;}
+/* keep the fourth level hidden when you hover on second level list OR link */
+.ddm ul :hover ul :hover ul ul{visibility:hidden;}
+/* keep the fifth level hidden when you hover on third level list OR link */
+.ddm ul :hover ul :hover ul :hover ul ul{visibility:hidden;}
+/* keep the sixth level hidden when you hover on third level list OR link */
+.ddm ul :hover ul :hover ul :hover ul :hover ul ul{visibility:hidden;}
+/* keep the seventh level hidden when you hover on third level list OR link */
+.ddm ul :hover ul :hover ul :hover ul :hover ul ul{visibility:hidden;}
+
+/* make the third level visible when you hover over second level list OR link */
+.ddm ul :hover ul :hover ul{ visibility:visible;}
+/* make the fourth level visible when you hover over third level list OR link */
+.ddm ul :hover ul :hover ul :hover ul {visibility:visible;}
+/* make the fifth level visible when you hover over fourth level list OR link */
+.ddm ul :hover ul :hover ul :hover ul :hover ul {visibility:visible;}
+/* make the sixth level visible when you hover over fourth level list OR link */
+.ddm ul :hover ul :hover ul :hover ul :hover ul :hover ul{visibility:visible;}
+/* make the seventh level visible when you hover over fourth level list OR link */
+.ddm ul :hover ul :hover ul :hover ul :hover ul :hover ul{visibility:visible;}

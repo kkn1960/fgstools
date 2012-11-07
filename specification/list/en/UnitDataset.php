@@ -1,0 +1,2 @@
+<?php
+$list['UnitDataset']=array('sid'=>'UnitDataset','table'=>'fgs_dataset','from'=>'fgs_dataset','primary_key'=>'dataset_sid','select'=>'dataset_sid id,dataset_sid as name','order'=>'dataset_sid ASC','display_field'=>'dataset_sid','predicates'=>array(array('field'=>'dataset_system','type'=>'tinyint','table'=>'fgs_dataset','fieldset'=>'t','required'=>'1','argument'=>"&rgv system",'operator'=>'equal','connector'=>'and')));

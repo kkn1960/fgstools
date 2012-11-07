@@ -1,0 +1,2 @@
+<?php
+$list['ButtonAction']=array('options'=>array('insert'=>'Insert','update'=>'Update','remove'=>'Remove','read'=>'Read','seek'=>'Seek','update_partial'=>'Partial update','action'=>'Action','cancel'=>'Cancel','reset'=>'Reset','set_filter'=>'Set filter','drop_filter'=>'Drop filter','set_params'=>'Set params','fire_event'=>'Fire event'));

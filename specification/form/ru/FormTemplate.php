@@ -1,0 +1,21 @@
+<?php
+$form['FormTemplate']=array();
+$form['FormTemplate']['initial']=array();
+$form['FormTemplate']['initial']=array('mode'=>'insert');
+$form['FormTemplate']['session']['insert']=array('mode','hide','display');
+$form['FormTemplate']['session']['copy']=array('mode','hide','display','apk','irow');
+$form['FormTemplate']['session']['read']=array('mode','hide','display','apk','irow');
+$form['FormTemplate']['session']['update']=array('mode','hide','display','apk','irow');
+$form['FormTemplate']['session']['remove']=array('mode','hide','display','apk','irow');
+$form['FormTemplate']['session']['multi_update']=array('mode','hide','display','apk','irow');
+$form['FormTemplate']['session']['multi_remove']=array('mode','hide','display','apk','irow');
+$form['FormTemplate']['session']['multi_read']=array('mode','hide','display','apk','irow');
+$button['FormTemplate']=array();
+$button['FormTemplate'][]=array('value'=>'Вставить','name'=>'insert','renderer'=>'button','type'=>'submit','action'=>'insert','modes'=>array('insert','copy'),'attributes'=>'tabindex=\'0\'');
+$button['FormTemplate'][]=array('value'=>'Обновить','name'=>'update','renderer'=>'button','type'=>'submit','action'=>'update','modes'=>array('update','multi_update'),'attributes'=>'tabindex=\'0\'');
+$button['FormTemplate'][]=array('value'=>'Удалить','name'=>'remove','renderer'=>'button','type'=>'submit','action'=>'remove','modes'=>array('remove','multi_remove'),'attributes'=>'tabindex=\'0\'');
+$button['FormTemplate'][]=array('value'=>'Read','name'=>'read','renderer'=>'button','type'=>'submit','action'=>'read','modes'=>array('multi_read'),'attributes'=>'tabindex=\'0\'');
+$button['FormTemplate'][]=array('value'=>'Отменить','name'=>'cancel','renderer'=>'button','type'=>'submit','action'=>'cancel','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'attributes'=>'tabindex=\'0\'');
+$button['FormTemplate'][]=array('value'=>'Отменить изменения','name'=>'reset','renderer'=>'button','type'=>'reset','action'=>'reset','modes'=>array('insert','update','copy','multi_update'),'attributes'=>'tabindex=\'0\'');
+$form['FormTemplate']['properties']=array('primary_key'=>array('form_sid'),'table'=>'fgs_form','method'=>'post','system'=>1,'redirect_after_insert'=>0,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'system'=>1,'dependent'=>array('fgs_unit_unit_form'=>array('fk'=>'unit_form','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_unit','pk'=>'form_sid'),'fgs_unit_unit_search'=>array('fk'=>'unit_search','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_unit','pk'=>'form_sid')),'descendant'=>array('fgs_element_element_form'=>array('fk'=>'element_form','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_element','table_pk'=>'element_rowid','pk'=>'form_sid'),'fgs_filter_filter_form'=>array('fk'=>'filter_form','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_filter','table_pk'=>'filter_rowid','pk'=>'form_sid'),'fgs_validator_validator_form'=>array('fk'=>'validator_form','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_validator','table_pk'=>'validator_rowid','pk'=>'form_sid')),'reference'=>array('fgs_element_element_form'=>array('fk'=>'element_form','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_element','pk'=>'form_sid'),'fgs_unit_unit_form'=>array('fk'=>'unit_form','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_unit','pk'=>'form_sid'),'fgs_unit_unit_search'=>array('fk'=>'unit_search','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_unit','pk'=>'form_sid'),'fgs_filter_filter_form'=>array('fk'=>'filter_form','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_filter','pk'=>'form_sid'),'fgs_validator_validator_form'=>array('fk'=>'validator_form','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_validator','pk'=>'form_sid')),'title'=>'FormTemplate','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'attributes'=>'','htmlevents'=>'','enctype'=>'application/x-www-form-urlencoded','events'=>array('insert'=>'done','update'=>'done','remove'=>'done'),'joins'=>array());
+$e['FormTemplate']=array();

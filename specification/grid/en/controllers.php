@@ -1,0 +1,23 @@
+<?php
+$grid['controllers']=array();
+$selector['controllers']=array('field'=>'selectrow','renderer'=>'selector','view'=>"<input onclick=\"toggleRow(%1\$d)\" type=checkbox name=\"selectrow[%1\$d]\" id=\"id_selectrow_%1\$d\" value=\"%2\$s\">");
+$grid['controllers']['properties']=array('table'=>'fgs_controller','system'=>1,'primary_key'=>array('controller_sid'),'modal'=>0,'user_order'=>1,'user_pagesize'=>1,'user_offset'=>1,'inline_edit'=>0,'title'=>'controllers','joins'=>array(),'save'=>array('controller_type','controller_system'),'sort'=>array('controller_sid'=>'controller_sid','controller_title'=>'controller_title','controller_type'=>'controller_type','controller_class'=>'controller_class','controller_script'=>'controller_script','controller_template'=>'controller_template','controller_system'=>'controller_system'),'sort_prefix'=>array(),'sort_suffix'=>array(),'register'=>array('controller_type'=>'controller_type','controller_system'=>'system'),'select'=>'t.controller_sid,t.controller_title,t.controller_type,t.controller_class,t.controller_script,t.controller_template,t.controller_system','from'=>'fgs_controller t ');
+$grid['controllers']['initial']=array('pagesize'=>30,'direction'=>'ASC','order'=>'controller_sid','offset'=>0);
+$grid['controllers']['session']=array('pagesize','direction','order','offset','total','multimode_hide','display','hide','apk','adk');
+$ra['controllers']=array();
+$ra['controllers'][]=array('load'=>false,'action'=>'update','renderer'=>'RowAction','immediate'=>0,'view'=>'<a href="%3$s&amp;update=%1$d&amp;key=%2$s" class="icon_edit" title="Edit" ></a>');
+$ra['controllers'][]=array('load'=>false,'action'=>'remove','renderer'=>'RowAction','immediate'=>0,'view'=>'<a href="%3$s&amp;remove=%1$d&amp;key=%2$s" class="icon_delete" title="Remove" ></a>');
+$ra['controllers'][]=array('load'=>false,'action'=>'copy','renderer'=>'RowAction','immediate'=>0,'view'=>'<a href="%3$s&amp;copy=%1$d&amp;key=%2$s" class="icon_copy" title="Copy" ></a>');
+$ra['controllers'][]=array('load'=>false,'action'=>'detail','renderer'=>'RowAction','immediate'=>0,'view'=>'<a href="%3$s&amp;detail=%1$d&amp;key=%2$s" class="icon_details" title="Detail" ></a>');
+$rsa['controllers']=array();
+$rsa['controllers'][]=array('action'=>'multi_update','renderer'=>'RowSetAction','immediate'=>0,'view'=>'<button type="submit" name="multi_update"  title="Multi_update" ><span style="margin:0 -5px -3px -0px;" class="icon_edit"></span></button>');
+$rsa['controllers'][]=array('action'=>'multi_remove','renderer'=>'RowSetAction','immediate'=>0,'view'=>'<button type="submit" name="multi_remove"  title="Multi_remove" ><span style="margin:0 -5px -3px -0px;" class="icon_delete"></span></button>');
+$column['controllers']=array();
+$column['controllers'][0]=array('rowid'=>5531,'component'=>'ColumnLink','header'=>'Sid','sid'=>'controller_sid','hidden'=>'0','calculate'=>'0','renderer'=>'ControllerLink','field'=>'controller_sid','type'=>'varchar');
+$column['controllers'][1]=array('rowid'=>5532,'component'=>'ColumnText','header'=>'Title','sid'=>'controller_title','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'controller_title','hidden'=>'0','calculate'=>'0');
+$column['controllers'][2]=array('rowid'=>5533,'save'=>'1','register'=>'controller_type','component'=>'ColumnText','header'=>'Type','sid'=>'controller_type','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'controller_type','hidden'=>'0','calculate'=>'0');
+$column['controllers'][3]=array('rowid'=>5534,'component'=>'ColumnText','header'=>'Class','sid'=>'controller_class','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'controller_class','hidden'=>'0','calculate'=>'0');
+$column['controllers'][4]=array('rowid'=>5535,'component'=>'ColumnText','header'=>'Script','sid'=>'controller_script','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'controller_script','hidden'=>'0','calculate'=>'0');
+$column['controllers'][5]=array('rowid'=>5536,'component'=>'ColumnText','header'=>'Template','sid'=>'controller_template','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'controller_template','hidden'=>'0','calculate'=>'0');
+$column['controllers'][6]=array('rowid'=>5654,'save'=>'1','register'=>'system','component'=>'ColumnLookup','header'=>'System ?','sid'=>'controller_system','hidden'=>'0','join_lookup'=>0,'relation'=>'0','list'=>array('options'=>array('0'=>'no','1'=>'yes')),'field'=>'controller_system','hidden'=>'0','type'=>'tinyint','list_sid'=>'YesNo','renderer'=>'option');
+$button['controllers']=array();

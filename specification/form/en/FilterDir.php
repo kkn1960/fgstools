@@ -1,0 +1,23 @@
+<?php
+$form['FilterDir']=array();
+$form['FilterDir']['initial']=array();
+$form['FilterDir']['initial']=array('mode'=>'update');
+$form['FilterDir']['session']['insert']=array('mode','hide','display','amf','foreign_key');
+$form['FilterDir']['session']['copy']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['FilterDir']['session']['read']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['FilterDir']['session']['update']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['FilterDir']['session']['remove']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['FilterDir']['session']['multi_update']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['FilterDir']['session']['multi_remove']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['FilterDir']['session']['multi_read']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$button['FilterDir']=array();
+$button['FilterDir'][]=array('value'=>'Insert','name'=>'insert','renderer'=>'button','type'=>'submit','action'=>'insert','modes'=>array('copy','insert'),'attributes'=>"tabindex='0'");
+$button['FilterDir'][]=array('value'=>'Update','name'=>'update','renderer'=>'button','type'=>'submit','action'=>'update','modes'=>array('update','multi_update'),'attributes'=>"tabindex='0'");
+$button['FilterDir'][]=array('value'=>'Remove','name'=>'remove','renderer'=>'button','type'=>'submit','action'=>'remove','modes'=>array('remove','multi_remove'),'attributes'=>"tabindex='0'");
+$button['FilterDir'][]=array('value'=>'Read','name'=>'read','renderer'=>'button','type'=>'submit','action'=>'read','modes'=>array('multi_read'),'attributes'=>"tabindex='0'");
+$button['FilterDir'][]=array('value'=>'Cancel','name'=>'cancel','renderer'=>'button','type'=>'submit','action'=>'cancel','modes'=>array('copy','remove','update','multi_remove','multi_update','multi_read','insert','read'),'attributes'=>"tabindex='0'");
+$button['FilterDir'][]=array('value'=>'Reset','name'=>'reset','renderer'=>'button','type'=>'reset','action'=>'reset','modes'=>array('copy','update','multi_update','insert'),'attributes'=>"tabindex='0'");
+$form['FilterDir']['properties']=array('primary_key'=>array('filter_rowid'),'table'=>'fgs_filter','method'=>'post','system'=>1,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'system'=>1,'title'=>'filter_specification','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'attributes'=>"",'htmlevents'=>"",'enctype'=>'application/x-www-form-urlencoded','events'=>array('insert'=>'done','update'=>'done','remove'=>'done'),'joins'=>array());
+$e['FilterDir']=array();
+$e['FilterDir'][0]=array('table'=>'fgs_filter','rowid'=>'560','sid'=>'filter_field','fieldset'=>'','name'=>'filter_field','label'=>'Field','component'=>'InputText','type'=>'varchar','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'field'=>'filter_field','renderer'=>'text','cai'=>'1','attributes'=>"maxlength='64' readonly='1' size='60' tabindex='0'");
+$e['FilterDir'][1]=array('table'=>'fgs_filter','rowid'=>'561','sid'=>'filter_converter','fieldset'=>'','name'=>'filter_converter','label'=>'Filter','component'=>'SelectOneMenu','renderer'=>'OneMenu','list_sid'=>'Filters','null_option'=>array(''=>'&nbsp;&nbsp;&nbsp;&nbsp;'),'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'type'=>'varchar','field'=>'filter_converter','cai'=>1,'attributes'=>"readonly='1' tabindex='0'");

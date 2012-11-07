@@ -1,0 +1,24 @@
+<?php
+$form['menu']=array();
+$form['menu']['initial']=array();
+$form['menu']['initial']=array('mode'=>'insert');
+$form['menu']['session']['insert']=array('mode','hide','display');
+$form['menu']['session']['copy']=array('mode','hide','display','apk','irow');
+$form['menu']['session']['read']=array('mode','hide','display','apk','irow');
+$form['menu']['session']['update']=array('mode','hide','display','apk','irow');
+$form['menu']['session']['remove']=array('mode','hide','display','apk','irow');
+$form['menu']['session']['multi_update']=array('mode','hide','display','apk','irow');
+$form['menu']['session']['multi_remove']=array('mode','hide','display','apk','irow');
+$form['menu']['session']['multi_read']=array('mode','hide','display','apk','irow');
+$button['menu']=array();
+$button['menu'][]=array('event'=>'detail','value'=>'Вставить','name'=>'insert','renderer'=>'button','type'=>'submit','action'=>'insert','modes'=>array('copy','insert'));
+$button['menu'][]=array('value'=>'Обновить','name'=>'update','renderer'=>'button','type'=>'submit','action'=>'update','modes'=>array('update','multi_update'));
+$button['menu'][]=array('value'=>'Удалить','name'=>'remove','renderer'=>'button','type'=>'submit','action'=>'remove','modes'=>array('remove','multi_remove'));
+$button['menu'][]=array('value'=>'Read','name'=>'read','renderer'=>'button','type'=>'submit','action'=>'read','modes'=>array('multi_read'));
+$button['menu'][]=array('value'=>'Отменить','name'=>'cancel','renderer'=>'button','type'=>'submit','action'=>'cancel','modes'=>array('copy','remove','update','multi_remove','multi_update','multi_read','insert','read'));
+$button['menu'][]=array('value'=>'Отменить изменения','name'=>'reset','renderer'=>'button','type'=>'reset','action'=>'reset','modes'=>array('copy','update','multi_update','insert'));
+$form['menu']['properties']=array('primary_key'=>array('menu_id'),'table'=>'fgs_menu','method'=>'post','system'=>1,'redirect_after_insert'=>0,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'system'=>1,'descendant'=>array('fgs_item_item_menu'=>array('fk'=>'item_menu','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_item','table_pk'=>'item_id','pk'=>'menu_id')),'reference'=>array('fgs_item_item_menu'=>array('fk'=>'item_menu','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_item','pk'=>'menu_id')),'title'=>'menu','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'attributes'=>'','htmlevents'=>'','enctype'=>'application/x-www-form-urlencoded','eventTrigger'=>array('insert'),'events'=>array('insert'=>'detail','update'=>'done','remove'=>'done'),'joins'=>array());
+$e['menu']=array();
+$e['menu'][0]=array('table'=>'fgs_menu','rowid'=>'459','sid'=>'menu_id','fieldset'=>'','name'=>'menu_id','label'=>'Sid','component'=>'InputText','type'=>'varchar','required'=>1,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'field'=>'menu_id','renderer'=>'text','cai'=>'1','attributes'=>'maxlength=\'64\' size=\'60\'');
+$e['menu'][1]=array('table'=>'fgs_menu','rowid'=>'460','sid'=>'menu_name','fieldset'=>'','name'=>'menu_name','label'=>'Имя','component'=>'InputText','type'=>'varchar','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'field'=>'menu_name','renderer'=>'text','cai'=>'1','attributes'=>'maxlength=\'64\' size=\'60\'');
+$e['menu'][2]=array('table'=>'fgs_menu','rowid'=>'463','sid'=>'menu_system','fieldset'=>'','name'=>'menu_system','label'=>'System ?','component'=>'SelectOneRadio','renderer'=>'radio','layout'=>'1','required'=>1,'default_value'=>'application','list_sid'=>'YesNo','list'=>array('options'=>array('0'=>'нет','1'=>'да')),'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'type'=>'varchar','field'=>'menu_system','cai'=>1);

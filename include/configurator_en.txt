@@ -1,0 +1,4983 @@
+<h1>FGS Configurator’s Guide</h1>
+
+<p>This document describes how to use the FGS Configurator to create and export specifications of components<b>.</b></p>
+
+<p><b>The Configurator</b> is a special web-based application for creating specifications of components.</p>
+
+<p><b>The Configurator</b> is created on the base of the FGS Factory framework and provides web user interfaces to its database tables. These tables are called as the system tables of the Confgurator. In this document the “system” means only relating to the <b>Configurator</b> only. It has its own menu, controller <b>Configurator</b> and the control script <b>configurator.php</b>. Along with standard components of the Framework, <b>the Configurator</b> uses also some special components, which can be used only in <b>the Configurator</b>. The instances of the components used in <b>the Configurator</b> are also crearted on the base of the specifications created in <b>the Configurator</b>. The specifications of these components have the «system» attribute set to "Yes”.</p>
+
+<p>It is strictly forbidden to remove or change these components’ specifications with the «system» attribute set in "Yes".</p>
+
+<p>The specifications used by <b>the Configurator</b> are stored in the system/specification directory. All files related to <b>the Configurator</b> are stored in the system/configurator directory.</p>
+
+<p><b>The Configurator’s</b> specifications can be also considered as examples of configuring required component features.</p>
+
+<p>Specifications of components are stored in the following system tables:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>Contents</p></td>
+<td valign="top" ><p>Notes</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_column</p></td>
+<td valign="top" ><p>Specifications of <b>Grid</b>’s elements</p></td>
+<td valign="top" ><p>Detail table for fgs_grid</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_component</p></td>
+<td valign="top" ><p>Table of exporting components</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_condition</p></td>
+<td valign="top" ><p>Specifications of conditions</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_controller</p></td>
+<td valign="top" ><p>Specifications of controllers </p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_converter</p></td>
+<td valign="top" ><p>Specifications of data converters </p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_dataset</p></td>
+<td valign="top" ><p>Specifications of datasets </p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_debug</p></td>
+<td valign="top" ><p>Debugging data</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_element</p></td>
+<td valign="top" ><p>Specifications of elements of input and search forms. </p></td>
+<td valign="top" ><p>Detail table for fgs_form</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_export</p></td>
+<td valign="top" ><p>Specifications of components’ export </p></td>
+<td valign="top" ><p>Detail table for fgs_component</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_field</p></td>
+<td valign="top" ><p>Specifications of tables’ fields</p></td>
+<td valign="top" ><p>Detail table for fgs_table</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_filter</p></td>
+<td valign="top" ><p>Specifications of input and search forms’ filters </p></td>
+<td valign="top" ><p>Detail table for fgs_form </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_form</p></td>
+<td valign="top" ><p>Specifications of input and search forms </p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_grid</p></td>
+<td valign="top" ><p>Specifications of Grids</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_item</p></td>
+<td valign="top" ><p>Specifications of menu options </p></td>
+<td valign="top" ><p>Detail table for fgs_menu</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_list</p></td>
+<td valign="top" ><p>Specifications of lists </p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_menu</p></td>
+<td valign="top" ><p>Specifications of menus </p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_message</p></td>
+<td valign="top" ><p>Language versions of messages</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_option</p></td>
+<td valign="top" ><p>Specifications of lists’ options </p></td>
+<td valign="top" ><p>Detail table for fgs_list</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_parameter</p></td>
+<td valign="top" ><p>Table of exporting parameters of components </p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_predicate</p></td>
+<td valign="top" ><p>Specifications of datasets’ predicates </p></td>
+<td valign="top" ><p>Detail table for fgs_dataset</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_role</p></td>
+<td valign="top" ><p>User’s roles. </p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_statement</p></td>
+<td valign="top" ><p>Specifications of statements </p></td>
+<td valign="top" ><p>Detail table for fgs_condition</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_table</p></td>
+<td valign="top" ><p>Specifications of tables </p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_unit</p></td>
+<td valign="top" ><p>Controllers’ Units specifications</p></td>
+<td valign="top" ><p>Detail table for fgs_controller</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_user</p></td>
+<td valign="top" ><p>Users’ data</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>fgs_validator</p></td>
+<td valign="top" ><p>Specifications of validators of input and search forms </p></td>
+<td valign="top" ><p>Detail table for fgs_form</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p><b>The Configurator</b> presents web user interfaces to these database tables and exports data of these tables into special files of specifications. The files of specifications contain mainly ordinary PHP arrays. For each language of interface (English, Russian etc), its own set of specifications is created, which is stored in an individual directory. The specifications for each type of components are stored in individual directories. The paths to these directories should be specified in the configuration file of the application.</p>
+
+<p>All specifications created by the developer should have the «system» attribute set in "No". </p>
+
+<p>For all the database tables, which are not system tables of <b>the Configurator</b>, the «system» attribute must be set in "No". All applied specifications are stored in the application/specification directory.</p>
+
+<p>In order to render <b>Form</b>, <b>Grid</b>, and <b>Search</b> components, <b>the Configurator</b> uses the standard <b>FgsFormView</b>, <b>FgsGridView</b> and <b>FgsSearchView</b> classes, which are part of the Framework. Under certain conditions, <b>the FgsFormView</b>, <b>FgsGridView</b> and<b> FgsSearchView</b> components allow to quickly jump to the configuring both <b>Form</b>, <b>Grid</b>, and <b>Search</b> components themselves, as well as individual elements of input, output, or search. This is achieved through the formation of specific hyperlinks, which are formed only for the user with the role of «developer» and when the configuration variable $FGSVersion is set to «development». Doing so, the Configurator opens a new tab with the window code «instant_edit», in which configuring of the selected component takes place.</p>
+
+<p>For example, when you double-click on name of a form or <b>Grid</b>, an additional tab opens to configure this form or <b>Grid</b>. When you double-click on label of an input element, a tab opens for editing the attributes of this input element. When clicking on a column header, tab is opened to edit attributes of this column.</p>
+
+<p>With <b>the Configurator</b> assistance, it is possible to create hierarchical menus for the application under development. Specifications of the menus are also exported.</p>
+
+<p><b>The Configurator</b> uses the menu with sysetm id equal to «configurator». The menu’s options are configured in such a way that input of specifications of each component is done in its own window. Owing to this, input of specification can always be resumed from the point it stopped.</p>
+
+<p>The convenience of such approach can be seen in the following example. For example, when entering of an input form element’s specification, it has turned out that there is no a required list. The developer selects the Configurator menu’s item “Specification-&gt;List” to enter the list’s specification.Then he selects the menu item “Specification-&gt;Input form” and can resume to enter the element’s specification from the place from which he switched over to entering specification of the list.</p>
+
+<p>It is strictly forbidden to remove or change specification of the menu with an ID equal to «configurator»!</p>
+
+<p>The Configurator has a two-level drop-down menu:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Menu of the 1<sup>st</sup> level</p></td>
+<td valign="top" ><p>Menu of the 2<sup>nd</sup> level</p></td>
+<td valign="top" ><p>Function</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Specification</p></td>
+<td valign="top" ><p>Input form</p></td>
+<td valign="top" ><p>To enter specifications of input forms </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p><b>Grid</b></p></td>
+<td valign="top" ><p>To enter specifications of Grids </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Search form</p></td>
+<td valign="top" ><p>To enter specifications of search forms </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Controller</p></td>
+<td valign="top" ><p>To enter specifications of controllers </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Dataset</p></td>
+<td valign="top" ><p>To enter specifications of datasets </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>List</p></td>
+<td valign="top" ><p>To enter specifications of lists </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>List’s Option</p></td>
+<td valign="top" ><p>To enter specifications of list options </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Condition</p></td>
+<td valign="top" ><p>To enter specifications of conditions </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Converter</p></td>
+<td valign="top" ><p>To enter specifications of converters </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Table’s field</p></td>
+<td valign="top" ><p>To enter specifications of table fields </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Menu</p></td>
+<td valign="top" ><p>To enter specifications of menu </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>DB scheme import</p></td>
+<td valign="top" ><p>To import database tables’ structure </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>System table</p></td>
+<td valign="top" ><p>Message</p></td>
+<td valign="top" ><p>To enter language versions of messages </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>To enter specifications of database tables and fields </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Parameter</p></td>
+<td valign="top" ><p>To enter export parameters</p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Export</p></td>
+<td valign="top" ><p>To enter specifications of export. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Export</p></td>
+<td valign="top" ><p>List</p></td>
+<td valign="top" ><p>Export of specifications of lists </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Input form</p></td>
+<td valign="top" ><p>Export of specifications of input forms </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Search form</p></td>
+<td valign="top" ><p>Export of specifications of search forms</p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p><b>Grid</b></p></td>
+<td valign="top" ><p>Export of specifications of Grids. </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Dataset</p></td>
+<td valign="top" ><p>Export of specifications of datasets </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Controller</p></td>
+<td valign="top" ><p>Export of specifications of controllers. </p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Menu</p></td>
+<td valign="top" ><p>Export of specifications of menus</p></td>
+</tr>
+
+<tr>
+<td valign="top" > </td>
+<td valign="top" ><p>Message</p></td>
+<td valign="top" ><p>Export of language versions of messages </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>The <b>ddm</b> class is used to form menu.</p>
+
+<p>In addition to the drop-down menu, <b>the Configurator</b> has an auxiliary panel to hide / display components, to set the desired interface language and to enable / disable displaying of debugging information.</p>
+
+<p><b>Process of creation a Web-based application</b></p>
+
+<p>Creation a Web-based application with the FGS Tools package consists in entering components’ specifications in <b>the Configurator</b> and development of extensions of standard components.</p>
+
+<p>The sequence of creation of components’ specifications:</p>
+
+<p>• Import of database tables structure</p>
+
+<p>• Configuring tables’ fields</p>
+
+<p>• Configuring tables</p>
+
+<p>• Configuring lists</p>
+
+<p>• Configuring datasets</p>
+
+<p>• Configuring conditions</p>
+
+<p>• Configuring converters</p>
+
+<p>• Configuring text messages</p>
+
+<p>• Configuring input forms</p>
+
+<p>• Configurable search forms</p>
+
+<p>• Configuring Grids</p>
+
+<p>• Configuring controllers</p>
+
+<p>• Configuring menus</p>
+
+<p>• Export of specifications</p>
+
+<p>Creating database tables is not included within the purview of this package, so that the developer should create database tables using other programs.</p>
+
+<h1>Import of tables’ structure</h1>
+
+<p>The first step is to import database tables’ structure into the Configurator’s system tables. To transfer the tables’ structure in the system tables, the menu item of the Configurator Specification-&gt; DB scheme import is provided.</p>
+
+<p>In process of importing, the tables’ data is stored in the “fgs_table” table and fields’ data is stored in the “fgs_field” table. If a table has been deleted from the database, then all specifications of the components based on this table are removed from the respective tables. When deleting fields from tables, all specifications of the components relating to these fields are removed.</p>
+
+<p>During importing process, on the basis of data about the type of the field, comparison conditions and components are selected to input, output and search the field. For example, if a field type is “date”, then the InputDate component is selected as an input component, the ColumnDate is selected as a Column component, the InputDate is selected as a component to input of argument for search and «test range" is selected as a condition of comparison. </p>
+
+<p>Every time you change the structure of tables, you need to import structure of tables and to export all specifications.</p>
+
+<h1>Configuring fields</h1>
+
+<p>To accelerate creation of specifications and minimize data to be entered, it is necessary to enter database fields’ attributes for input, output and search. To configure only the fields, you need to select the menu item Specification-&gt;Table’s field or you need to select the menu item System table-&gt;Table to configure both fields and tables unanimously. </p>
+
+<p>Fields of tables are stored in the table “fgs_field”.</p>
+
+<p>Configuring a field consists in selecting an input component, column component, comparison condition, default values, etc. Value of the «field_label" field is used as the input component’s label and the column component’s header. If a list is used for the input or column component, then it is necessary to enter the list. If a field is a foreign key, then it is necessary to enter the referencing table, the primary key of this table and type of the referencing table. Type of the referencing table has possible values “master table” and “reference table”.</p>
+
+<p>If a field is to be entered by using a input component of the type «select multple» (SelectManyCheckbox, SelectManyListbox or SelectManyMenu), then the type of the field should be set in the value «Set», and the field «Dbtype ?» is set in the value "No."</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Function</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>Table of a field </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_name</p></td>
+<td valign="top" ><p>Name</p></td>
+<td valign="top" ><p>Name of a field </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_type</p></td>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>Type of a field.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_dbtype</p></td>
+<td valign="top" ><p>Dbtype?</p></td>
+<td valign="top" ><p>An attribute showing that value of the field «field_type» is obtained during importing structure of tables. It is necessary to set value “No” for the fields which used input components of «select multple» type </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_default</p></td>
+<td valign="top" ><p>Default</p></td>
+<td valign="top" ><p>Default value of a field </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_element</p></td>
+<td valign="top" ><p>Input component</p></td>
+<td valign="top" ><p>A component used to input a field </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_label</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>label for input components or header for column components</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_list</p></td>
+<td valign="top" ><p>list</p></td>
+<td valign="top" ><p>A list used for input or column components </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_column</p></td>
+<td valign="top" ><p>Column component</p></td>
+<td valign="top" ><p>A column component used to display a field in a <b>Grid</b>. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_argument</p></td>
+<td valign="top" ><p>Component of argument</p></td>
+<td valign="top" ><p>A component used to input predicates’ argument in a search form</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_predicate</p></td>
+<td valign="top" ><p>Comparison conditions</p></td>
+<td valign="top" ><p>Condition of comparison used for predicates for the field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_lookup</p></td>
+<td valign="top" ><p>Referencing table</p></td>
+<td valign="top" ><p>the referencing table referenced by the field which is foreign key</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_primary_key</p></td>
+<td valign="top" ><p>Referencing table's primary key</p></td>
+<td valign="top" ><p>primary key of the referencing table referenced by the field, which is foreign key </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_relation</p></td>
+<td valign="top" ><p>Referencing table's type</p></td>
+<td valign="top" ><p>Referencing table can be of two types:</p>
+
+<ul>
+<li>Master table</li>
+<li>Reference table </li>
+</ul>
+
+</td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_align</p></td>
+<td valign="top" ><p>Align</p></td>
+<td valign="top" ><p>Alighning in a <b>Grid</b>’s column. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_size</p></td>
+<td valign="top" ><p>Size</p></td>
+<td valign="top" ><p>Attribute «Size» for InputText component. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_maxlength</p></td>
+<td valign="top" ><p>Maxlength</p></td>
+<td valign="top" ><p>Attribute «Maxlength» for InputText component. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_rows</p></td>
+<td valign="top" ><p>Rows</p></td>
+<td valign="top" ><p>Attribute «rows» for InputTextarea component. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>field_cols</p></td>
+<td valign="top" ><p>Columns</p></td>
+<td valign="top" ><p>Attribute «cols» for InputTextarea component. </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>In <b>inline editing</b> mode it is possible to edit input component, Column component, component of input of the argument of the predicate, the comparison condition during search, the label of an input element and a list of input or output. To do this, it is necessary to double click on the desired field of the desired row in the table of rows.</p>
+
+<h1>Configuring tables </h1>
+
+<p>To configure tables, it is necessary to select the menu item System table-&gt; Table</p>
+
+<p>Configuring the tables consists in setting the attribute «system» and setting a master table if necessary.</p>
+
+<p>For all the tables related to the application under development, the field «table_system» must be set to "No"</p>
+
+<p>For the tables that are tables of the type “detail”, it is necessary to input the corresponding master table.</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Function</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>table_system</p>
+
+</td>
+<td valign="top" ><p>System?</p></td>
+<td valign="top" ><p>An attribute showing belonging of a table to the Configurator</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>table_name</p>
+
+</td>
+<td valign="top" ><p>Name </p></td>
+<td valign="top" ><p>Name of a table </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>table_primary_key</p>
+
+</td>
+<td valign="top" ><p>Primary key</p></td>
+<td valign="top" ><p>A primary key of a table </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>table_unique_key</p>
+
+</td>
+<td valign="top" ><p>Unique key</p></td>
+<td valign="top" ><p>A unique key of a table </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>table_master</p>
+
+</td>
+<td valign="top" ><p>Master table</p></td>
+<td valign="top" > </td>
+</tr>
+
+</tbody>
+</table>
+
+<p>To configure fields of a table, it is necessary to click on the “Detail” icon of this table.</p>
+
+<h1> Confuguring lists</h1>
+
+<p>To create lists, it is necessary to select the menu item Specification-&gt;List</p>
+
+<p>Lists are used when configuring input forms, Grids and search forms.</p>
+
+<p>Lists’ specifications are stored in two tables «fgs_list» and «fgs_option» associated by «master-detail» relationship. </p>
+
+<p>Lists can be constant and variable. Options of constant lists are stored in the system table «fgs_option». Variable lists are created from rows of tables.</p>
+
+<p>Fields «list_table_alias» and «list_field_alias» should be entered and be different in the case of using variable lists based on one and the same table and in one and the same component, such as Form or <b>Grid</b>.</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Function</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_system</p>
+
+</td>
+<td valign="top" ><p>System?</p></td>
+<td valign="top" ><p>An attribute showing belonging of a list to the Configurator. It should be set in “No” for the lists of application which is under development. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_sid</p>
+
+</td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>System id of a list</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>Table of a list. Its value is equal to «fgs_option» for constant lists.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_table_alias</p></td>
+<td valign="top" ><p>Table alias</p></td>
+<td valign="top" ><p>Alias of a table. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_primary_key</p></td>
+<td valign="top" ><p>Field as key</p></td>
+<td valign="top" ><p>A field used as the “value” attribute of options. Its value is equal to «option_sid» for constant lists.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_numeric</p></td>
+<td valign="top" ><p>Numeric? (for fgs_option table only)</p></td>
+<td valign="top" ><p>It should be entered only for constant lists. The value depends on the type of the “value” attribute of options</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_display_field</p></td>
+<td valign="top" ><p>Display field</p></td>
+<td valign="top" ><p>A field used as a description of a list’s option. Its value is equal to «option_xxx» for constant lists. If the field is different for different languages, then a part of the field’s name corresponding to the code of a language has to be replaced with “xxx”. When exporting a list, the Configurator will replace “xxx” with the code of an appropriate language</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_field_alias</p></td>
+<td valign="top" ><p>Field alias</p></td>
+<td valign="top" ><p>Alias of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_null_option</p></td>
+<td valign="top" ><p>List's null option</p></td>
+<td valign="top" ><p>Description of the null option of a list. If it is not specified, 4 whitespaces will be used. Selecting “Null option” is equal “No option selected ”</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_order</p></td>
+<td valign="top" ><p>Clause order by in select query</p></td>
+<td valign="top" ><p>List sorting order. Its value is equal to «option_index ASC» for constant lists. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_where</p></td>
+<td valign="top" ><p>Clause where in select query</p></td>
+<td valign="top" ><p>Condition on loading rows from a table. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_export</p></td>
+<td valign="top" ><p>Export?</p></td>
+<td valign="top" ><p>An attribute of a list exporting. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_class</p></td>
+<td valign="top" ><p>Loader class</p></td>
+<td valign="top" ><p>Custom class of a list’s options loader</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>list_dataset</p></td>
+<td valign="top" ><p>Dataset</p></td>
+<td valign="top" ><p>a dataset used to limit a variable list’s options</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>To configure a constant list of options, it is necessary to choose the action «detail» for this list, and to enter options of this list.</p>
+
+<p><b>Configuring options of constant lists</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Function</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>option_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>System id of an option</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>option_en</p></td>
+<td valign="top" ><p>Option in English</p></td>
+<td valign="top" ><p>Description of an option in English</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>option_ru</p></td>
+<td valign="top" ><p>Option in russian</p></td>
+<td valign="top" ><p>Description of an option in Russian</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>option_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>Index of an option during rendering. </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>If you need access to options of all constant lists, then you need to select the menu item Specification-&gt; Lists’s option. Unlike the previous version, you will need to enter the system id of the list:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>option_list</p></td>
+<td valign="top" ><p>List</p></td>
+<td valign="top" ><p>System id of a list</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>option_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>System id of a list’s option</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>option_en</p></td>
+<td valign="top" ><p>Option in English</p></td>
+<td valign="top" ><p>Description of an option in English</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>option_ru</p></td>
+<td valign="top" ><p>Option in russian</p></td>
+<td valign="top" ><p>Description of an option in Russian</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>option_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>Index of an option during rendering. </p></td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<h1>Configuring datasets</h1>
+
+<p>To configure datasets, you need to select the menu item Specification-&gt;Dataset and enter its attributes and predicates.</p>
+
+<p>Datasets are used when configuring lists and controllers.</p>
+
+<p>Specifications of datasets are stored in two tables «fgs_dataset» and «fgs_predicate» associated by a «master-detail» relationship.</p>
+
+<p><b>Dataset’s attributes:</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>dataset_system</p></td>
+<td valign="top" ><p>System?</p></td>
+<td valign="top" ><p>An attribute showing relation of a dataset to the Configurator. It should be set in “No” for datasets of an application under development.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>dataset_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>System id of a dataset </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>dataset_table</p></td>
+<td valign="top" ><p>table</p></td>
+<td valign="top" ><p>Table of a dataset </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>To configure predicates, you need to choose an action «detail» for the desired dataset and to ener data of predicates. A predicate is a condition imposed on one or more fields of a table.</p>
+
+<p><b>Examples of predicates:</b></p>
+
+<p>• The field of a table is equal to selected value</p>
+
+<p>• The field of a table is not equal to null (argument is not needed in this case)</p>
+
+<p>• The sum of two fields of a table does not exceed a certain value (here, the condition is imposed on a number of fields of the table)</p>
+
+<p>• The length of a field value does not exceed a certain value (here we use the SQL function for the field in testing).</p>
+
+<p>The predicate usually consists of an argument, an operator and a connector. A connector is needed to connect the prediacte with the previous one. Predicates can be grouped. If a dataset consists of only one predicate, a connector is not used.</p>
+
+<p>During construction of SQL code for a predicate, the argument value is computed by the Evaluator component. Therefore, to enter the value of the argument, you need to know evaluation algorithm of the Evaluator, which is described in detail in the FGS Factory framework guide.</p>
+
+<p><b>Predicate’s attributes:</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>predicate_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>Table of a field on which a predicate is imposed. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>predicate_table_alias</p></td>
+<td valign="top" ><p>Table alias</p></td>
+<td valign="top" ><p>Alias of a table on which a predicate is imposed. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>predicate_field</p></td>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Field on which a predicate is imposed. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>predicate_field_alias</p></td>
+<td valign="top" ><p>Field alias</p></td>
+<td valign="top" ><p>Alias of a field on which a predicate is imposed. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>predicate_function</p></td>
+<td valign="top" ><p>Function</p></td>
+<td valign="top" ><p>SQL function used for fields of a predicate. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>predicate_argument</p></td>
+<td valign="top" ><p>Argument</p></td>
+<td valign="top" ><p>Value of argument of a predicate.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>predicate_argument_type</p></td>
+<td valign="top" ><p>Argument type</p></td>
+<td valign="top" ><p>Value of argument type of a predicate.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>predicate_operator</p></td>
+<td valign="top" ><p>Operator</p></td>
+<td valign="top" ><p>operator of a predicate</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>predicate_connector</p></td>
+<td valign="top" ><p>Connector</p></td>
+<td valign="top" ><p>Connector to connect a predicate to a previous one</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>predicate_fieldset</p></td>
+<td valign="top" ><p>Group</p></td>
+<td valign="top" ><p>A group to which a predicate is referred. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>predicate_custom</p></td>
+<td valign="top" ><p>Custom</p></td>
+<td valign="top" ><p>custom class that construct SQL code of a predicate</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>predicate_required</p></td>
+<td valign="top" ><p>Required?</p></td>
+<td valign="top" ><p>An attribute showing necessity of a predicate, if a value of an argument is not assigned or equal to null.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>predicate_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>Index of a predicate determining the order of constructing SQL code of predicate</p></td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<h1>Configuring conditions</h1>
+
+<p>To configure conditions, you need to select the menu item Specification-&gt;Condition and enter conditions’s and its statements’ attributes.</p>
+
+<p>Conditions are used when configuring validators and filters of input forms, search forms and validation of operations with rows displaying in <b>Grid</b> components. Conditions consist of one or more of the so-called statements.</p>
+
+<p>The specifications of conditions are stored in two tables «fgs_condition» and «fgs_statement» associated by the «master-detail» relationship.</p>
+
+<p>To specify a condition, it is necessary to enter:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>condition_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>System id of a condition</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>condition_type</p></td>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>Type of a condition</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>condition_error</p></td>
+<td valign="top" ><p>Error</p></td>
+<td valign="top" ><p>Abbreviation to be used to denote error of a condition</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>To configure statements, you need to select the action «detail» for the desired condition and to enter these statements. Statements are further development of the idea of predicates applied to the validation of forms and actions with <b>Grid</b>’s rows. As well as for the predicates, there are also comparison operators and connectors. Statements can also be united into groups.</p>
+
+<p>Examples of statements:</p>
+
+<p>• The session variable is equal to selected value</p>
+
+<p>• The value of entered field is within a certain range</p>
+
+<p>• The value of entered field is equal to the value of another field.</p>
+
+<p>• Editing a row is allowed only if the user is registered with a specific role</p>
+
+<p>When configuring statements, you need to know the algorithm of evaluation of the Evaluator component, particularities of exporting components using conditions and which parameters are offered to test conditions. </p>
+
+<p><b>Statement’s attributes</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_connector</p></td>
+<td valign="top" ><p>Connector</p></td>
+<td valign="top" ><p>Connector to connect a statement to the previous one</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_function</p></td>
+<td valign="top" ><p>Function</p></td>
+<td valign="top" ><p>PHP function used to calculate the value of the first operand</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_operand1</p></td>
+<td valign="top" ><p>Operand 1</p></td>
+<td valign="top" ><p>First operand</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_operator</p></td>
+<td valign="top" ><p>Operator</p></td>
+<td valign="top" ><p>Operand for comarioson of operands </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_operand2</p></td>
+<td valign="top" ><p>Operand 2</p></td>
+<td valign="top" ><p>Second operand</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_failure</p></td>
+<td valign="top" ><p>Failure</p></td>
+<td valign="top" ><p>An attribute of statement error. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_group</p></td>
+<td valign="top" ><p>Group</p></td>
+<td valign="top" ><p>A group to which a statement is related. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>Index of statement determining the order for testing statements </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Examples of statements’ configuration you can find in “Configuring validators of the Form component”.</p>
+
+<h1>Configuring converters </h1>
+
+<p>To configure converters, you need to select a menu item Specification-&gt;Converter and enter converters’ attributes.</p>
+
+<p>Converters are used when configuring filters of input and search forms and displaying data in Grids.</p>
+
+<p>The specifications of converters are stored in the tables «fgs_converter»</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>converter_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>System ID of a converter</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>converter_type</p></td>
+<td valign="top" ><p>Type </p></td>
+<td valign="top" ><p>Type of a converter</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>converter_static</p></td>
+<td valign="top" ><p>Static method?</p></td>
+<td valign="top" ><p>An attribute of static method of a converter</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>It should be noted that the system ID of a converter is also name of the converter’s class.</p>
+
+<h1>Configuring messages</h1>
+
+<p>To configure messages, you need to select the menu item Specification-&gt;Message.</p>
+
+<p>The specifications of messages are stored in the table «fgs_message»</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>msg_abbr</p></td>
+<td valign="top" ><p>Abbreviation</p></td>
+<td valign="top" ><p>Abbreviation to denote a message</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>msg_en</p></td>
+<td valign="top" ><p>Text in english</p></td>
+<td valign="top" ><p>Text of a message in English</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>msg_ru</p></td>
+<td valign="top" ><p>Text in russian</p></td>
+<td valign="top" ><p>Text of a message in Russian</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>msg_system</p></td>
+<td valign="top" ><p>System?</p></td>
+<td valign="top" ><p>An attribute of a message to the Configurator</p></td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<h1>Configuring menus</h1>
+
+<p>To configure menus, you need to select the menu item Specification-&gt;Menu and enter menus’ and its items’ attributes.</p>
+
+<p>The specifications of menus are stored in two tables, «fgs_menu» and «fgs_item» tables, associated by the «master-detail» relationship.</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>menu_id</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>System Id of a menu</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>menu_name</p></td>
+<td valign="top" ><p>Name </p></td>
+<td valign="top" ><p>Name of a menu</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>menu_system</p></td>
+<td valign="top" ><p>System?</p></td>
+<td valign="top" ><p>An attribute of relation of a menu to the Configurator</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>To configure the options of a menu, you need to select the action «detail» for the desired menu and to enter these options.</p>
+
+<p>For each menu, there should be allocated a specific range in which the ID of an option should be located. The ID of an option specifies the order for displaying the menu options</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>item_id</p>
+
+</td>
+<td valign="top" ><p>Id</p></td>
+<td valign="top" ><p>Identifier of an option </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>item_pid</p>
+
+</td>
+<td valign="top" ><p>Pid</p></td>
+<td valign="top" ><p>Identifier of a parent option</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>item_type</p>
+
+</td>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>Type of an option</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>item_name</p>
+
+</td>
+<td valign="top" ><p>Name</p></td>
+<td valign="top" ><p>Name of an option </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>item_action</p>
+
+</td>
+<td valign="top" ><p>Action</p></td>
+<td valign="top" ><p>A script activated when selecting an option </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>item_class</p>
+
+</td>
+<td valign="top" ><p>Class</p></td>
+<td valign="top" ><p>CSS class of an option </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>item_text</p>
+
+</td>
+<td valign="top" ><p>Text </p></td>
+<td valign="top" ><p>Text displayed by JavaScript in dialog box when selecting an option </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>item_condition</p>
+
+</td>
+<td valign="top" ><p>Condition</p></td>
+<td valign="top" ><p>Condition of visibility of an option </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>item_target</p>
+
+</td>
+<td valign="top" ><p>Target</p></td>
+<td valign="top" ><p>Code of a box in which the script will be activated </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>item_childs</p>
+
+</td>
+<td valign="top" ><p>Child options functoin</p></td>
+<td valign="top" ><p>Function to generate options for an option, type of a “menu”. </p></td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<h1>Configuring input forms (the Form component)</h1>
+
+<p>To configure <b>Forms </b>orinput forms, you need to select the menu item Specification-&gt;Input form.</p>
+
+<p>The specifications of input forms are stored in four tables, namely: «fgs_form», which is the master table for 3 tables «fgs_element», «fgs_validator» and «fgs_filter». The table «fgs_element» stores specifications of input elements, the table «fgs_validator» stores validators, and the table «fgs_filter» stores filters of the input data.</p>
+
+<p>Configuring the input form consists in entering the following data:</p>
+
+<p>• Common data of the input form itself</p>
+
+<p>• The attributes of elements and buttons of the input form. </p>
+
+<p>• The attributes of validators of input data</p>
+
+<p>• The attributes of filters of input data</p>
+
+<p><b>Common data of an input form:</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_system</p>
+
+</td>
+<td valign="top" ><p>System?</p></td>
+<td valign="top" ><p>An attibute showing relation of an input form to the Configurator. It should be set in “No” for the nput forms of an application under development. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_type</p>
+
+</td>
+<td valign="top" ><p>Type </p></td>
+<td valign="top" ><p>A type of a input form. It should be set in “application” for the forms of an application under development. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_table</p>
+
+</td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>Base table of an input form.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_sid</p>
+
+</td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>System Id of an input form</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_title</p>
+
+</td>
+<td valign="top" ><p>Title</p></td>
+<td valign="top" ><p>Name of an input a form</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_modes</p>
+
+</td>
+<td valign="top" ><p>Modes</p></td>
+<td valign="top" ><p>Input modes of an input form</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_startmode</p>
+
+</td>
+<td valign="top" ><p>Stating mode</p></td>
+<td valign="top" ><p>Start mode of an input form </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_action</p>
+
+</td>
+<td valign="top" ><p>Action </p></td>
+<td valign="top" ><p>Attribute «action» of an input form </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_method</p>
+
+</td>
+<td valign="top" ><p>Method</p>
+
+</td>
+<td valign="top" ><p>Attribute «method» of an input form</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_id</p>
+
+</td>
+<td valign="top" ><p>Id</p></td>
+<td valign="top" ><p>Attribute «id» of an input a form </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_rowid_after_insert</p></td>
+<td valign="top" ><p>Rowid after insert</p></td>
+<td valign="top" ><p>This attribute is necessary if a primary key is of auto increment type and we need it’s generated value for just added row. This attribute’s value has to equal to name of the primary key / </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_onreset</p>
+
+</td>
+<td valign="top" ><p>Onreset</p></td>
+<td valign="top" ><p>JavaScript function called when the «onreset» event occurs. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_onsubmit</p>
+
+</td>
+<td valign="top" ><p>Onsubmit</p></td>
+<td valign="top" ><p>JavaScript function called when the «onsubmit» event occurs</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_initial</p></td>
+<td valign="top" ><p>Initial values of properties</p></td>
+<td valign="top" ><p>This parameter is used to set initial values of properties or to add custom propetties of the Form component</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_redirect_after_insert</p></td>
+<td valign="top" ><p>Redirect page after insert ?</p></td>
+<td valign="top" ><p>If this parameter is set to «Yes», then after inserting a new row will be made a page redirect to avoid inserting a row after the page refreshing</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>To create a new input form, you can copy the form with the “FormTemplate” system id, which is the input form of the type "template". This will give you a blank form with a set of preconfigured standard buttons. To add input fields, it is necessary to select the action «Add». After that there will be displayed the table with not yet added fields of the form’s base table. Having marked required fields, you need to click on the button "Add Fields". It should be remembered that the fields are added with the attributes set during configuration of these fields.</p>
+
+<p>To configure the elements and buttons of an input form, you need to select the action "element" for the required input form. After that an input form and table of elements and buttons are displaed. In the <b>inline editing</b> mode, you can change attributes: the input component, label, index and fieldset.</p>
+
+<p>To configure the input elements, there are provided two forms. The first form is required for pre-configuring.</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>A table of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_table_alias</p></td>
+<td valign="top" ><p>Table alias</p></td>
+<td valign="top" ><p>Alias of a table of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_field</p></td>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Input field. If this field is different for different languages, then it is possible to change for “xxx” the part of a name of the field corresponding to the code of a language. When exporting, the Configurator will replace “xxx” for the code of an appropriate language. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_alias</p></td>
+<td valign="top" ><p>Field alias</p></td>
+<td valign="top" ><p>Alias of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>System id of a field </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_name</p></td>
+<td valign="top" ><p>Attribute name</p></td>
+<td valign="top" ><p>Attribute “name”.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_type</p></td>
+<td valign="top" ><p>Type </p></td>
+<td valign="top" ><p>Type of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_component</p></td>
+<td valign="top" ><p>Component</p></td>
+<td valign="top" ><p>Input component </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_extension</p></td>
+<td valign="top" ><p>Component’s extension</p></td>
+<td valign="top" ><p>Input component’s extension</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>Index for processing and displaying a field.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_label</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>A label of the input component.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_modes</p></td>
+<td valign="top" ><p>Input Mode</p></td>
+<td valign="top" ><p>Possible input modes</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_hidden</p></td>
+<td valign="top" ><p>Hidden?</p></td>
+<td valign="top" ><p>“Hidden” attribute of a field. If it set then the fieldis is not rendered</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_fieldset</p></td>
+<td valign="top" ><p>Fieldset</p></td>
+<td valign="top" ><p>Fieldset of a field</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Final configuration of input elements depends on the selected input component and, therefore, you need to choose action «Attribute» for the desired input element. In doing so, there is displayed is a form with input fields united into 4 groups:</p>
+
+<p>• System attributes</p>
+
+<p>• Input attributes</p>
+
+<p>• Ajax Attributes </p>
+
+<p>• Events </p>
+
+<p>In this case, a set of input fields in these groups depends on the type of the selected input component.</p>
+
+<p><b>Configuring the system attributes</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_component</p></td>
+<td valign="top" ><p>Component</p></td>
+<td valign="top" ><p>A component which is used for input.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>A table of a field </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_table_alias</p></td>
+<td valign="top" ><p>Table alias</p></td>
+<td valign="top" ><p>Alias of a table of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_field</p></td>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Input field. If this field is different for different languages, then it is possible to change for “xxx” the part of a name of the field corresponding to the code of a language. When exporting, the Configurator will replace “xxx” for the code of an appropriate language</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_alias</p></td>
+<td valign="top" ><p>Alias</p></td>
+<td valign="top" ><p>Alias of a field </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>The system identifier of a field. It is required to recognize the fields of input of various tables having the same name. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>Number of displaying and processing of the field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_event</p></td>
+<td valign="top" ><p>Set value by event </p></td>
+<td valign="top" ><p>See Lesson 9</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p><b>Configuring input attributes</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_fieldset</p></td>
+<td valign="top" ><p>Fieldset</p></td>
+<td valign="top" ><p>Fieldset of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_name</p></td>
+<td valign="top" ><p>Attribute name</p></td>
+<td valign="top" ><p>The”name” attribute of an input field </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_label</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>A label of input</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_required</p></td>
+<td valign="top" ><p>Required?</p></td>
+<td valign="top" ><p>An attribute of necessity of input</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_list</p></td>
+<td valign="top" ><p>List</p></td>
+<td valign="top" ><p>A list of input</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_filter</p></td>
+<td valign="top" ><p>Filter</p></td>
+<td valign="top" ><p>A filter on a list of input</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_layout</p></td>
+<td valign="top" ><p>Layout</p></td>
+<td valign="top" ><p>Direction of the options output for SelecetOneRadio and SelectManyCheckbox components</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_null_option</p></td>
+<td valign="top" ><p>Null option</p></td>
+<td valign="top" ><p>A null option of a list</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_default</p></td>
+<td valign="top" ><p>Default</p></td>
+<td valign="top" ><p>Default value</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_register</p></td>
+<td valign="top" ><p>Global name</p></td>
+<td valign="top" ><p>Global name of an input element</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_cai</p></td>
+<td valign="top" ><p>Clear after insert?</p></td>
+<td valign="top" ><p>An attribute of clearing a value of input after inserting a new row</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_left_table</p></td>
+<td valign="top" ><p>Left table</p></td>
+<td valign="top" ><p>A left table in the clause “join” </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_left_alias</p></td>
+<td valign="top" ><p>Left table alias</p></td>
+<td valign="top" ><p>Alias of a left table in the clause “join” </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_left_foreign_key</p></td>
+<td valign="top" ><p>Left table foreign key</p></td>
+<td valign="top" ><p>A foreign key to the left table in the clause join</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_where</p></td>
+<td valign="top" ><p>Where</p></td>
+<td valign="top" ><p>A value Where in a clause join.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_cols</p></td>
+<td valign="top" ><p>Columns</p></td>
+<td valign="top" ><p>A value of the ‘cols’ attribute for textarea.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_rows</p></td>
+<td valign="top" ><p>Rows</p></td>
+<td valign="top" ><p>A value of the “rows” attribute for textarea.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_size</p></td>
+<td valign="top" ><p>Size</p></td>
+<td valign="top" ><p>A value of the “size” attribute to input type “text” and input components such as SelectOneListbox and SelectManyListbox </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_maxlength</p></td>
+<td valign="top" ><p>Maxlength</p></td>
+<td valign="top" ><p>A value of the “maxlength” attribute to input type “text”</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_renderer</p></td>
+<td valign="top" ><p>Renderer</p></td>
+<td valign="top" ><p>A renderer of an element</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_converter</p></td>
+<td valign="top" ><p>Converter</p></td>
+<td valign="top" ><p>A converter of an element</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_readonly</p></td>
+<td valign="top" ><p>Readonly</p></td>
+<td valign="top" ><p>the “readonly”attribute </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_id</p></td>
+<td valign="top" ><p>Id</p></td>
+<td valign="top" ><p>The “id” attribute of input element</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_value</p></td>
+<td valign="top" ><p>Value</p></td>
+<td valign="top" ><p>A value of an element</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_tabindex</p></td>
+<td valign="top" ><p>Tabindex</p></td>
+<td valign="top" ><p>The “tabindex”attribute </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_accesskey</p></td>
+<td valign="top" ><p>Accesskey</p></td>
+<td valign="top" ><p>The “accesskey”attribute </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_sequence</p></td>
+<td valign="top" ><p>sequence</p></td>
+<td valign="top" ><p>A sequence used to generate values of a field. Reserved for for the future to use DBMS Oracle</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_path</p></td>
+<td valign="top" ><p>Upload path</p></td>
+<td valign="top" ><p>A file loading directory</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_filesize</p></td>
+<td valign="top" ><p>Filesize</p></td>
+<td valign="top" ><p>A maximal size of an uploaded file</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_file_extension</p></td>
+<td valign="top" ><p>Extensions</p></td>
+<td valign="top" ><p>Possibel extensions of an uploaded file</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_filename</p></td>
+<td valign="top" ><p>Filename</p></td>
+<td valign="top" ><p>A method of creation of an uploaded file’s name</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_width</p></td>
+<td valign="top" ><p>Width</p></td>
+<td valign="top" ><p>A width of an uploaded image. Reserved for the future</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_height</p></td>
+<td valign="top" ><p>Height </p></td>
+<td valign="top" ><p>A height of an uploaded image. Reserved for the future</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_trim</p></td>
+<td valign="top" ><p>Strip whitespace?</p></td>
+<td valign="top" ><p>An attribute of removal of trailing spaces</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p><b> Configuring buttons</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_action</p></td>
+<td valign="top" ><p>Action</p></td>
+<td valign="top" ><p>An action initiated by a button </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_event</p></td>
+<td valign="top" ><p>Event</p></td>
+<td valign="top" ><p>An event generated after completion of an action </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_confirm</p></td>
+<td valign="top" ><p>Confirm?</p></td>
+<td valign="top" ><p>An attribute for confirmation of an action when pressing a button </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_file</p></td>
+<td valign="top" ><p>Image</p></td>
+<td valign="top" ><p>A name of an image for a button </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_component</p></td>
+<td valign="top" ><p>Component</p></td>
+<td valign="top" ><p>A component of a button. Must be set to “InputButton”</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>Index of button rendering</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_name</p></td>
+<td valign="top" ><p>Attribute name</p></td>
+<td valign="top" ><p>The ”name” attribute of an input button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_renderer</p></td>
+<td valign="top" ><p>Renderer</p></td>
+<td valign="top" ><p>A renderer of a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_id</p></td>
+<td valign="top" ><p>Id</p></td>
+<td valign="top" ><p>The ”id” attribute of a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_value</p></td>
+<td valign="top" ><p>Value</p></td>
+<td valign="top" ><p>The ” value” attribute of a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_tabindex</p></td>
+<td valign="top" ><p>Tabindex</p></td>
+<td valign="top" ><p>The “tabindex”attribute of a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_accesskey</p></td>
+<td valign="top" ><p>Accesskey</p></td>
+<td valign="top" ><p>The “accesskey”attribute of a button</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>The buttons of input forms should not have an attribute value "Action" equal to "Clear filter" or "Set filters» which are for search forms only.</p>
+
+<p><b>Configuring <b>ElementTableJoiner</b> pseudo-component</b></p>
+
+<p>This pseudo-component was introduced to solve the following problem.</p>
+
+<p>Let’s suppose we need to create an input form to a table of invoices per companies. In addition to invoices table, we also have tables of companies, countries and regions. Companies are tied to the countries and the countries to regions.</p>
+
+<p>A company for the invoice must be chosen from a list of companies. The table of companies contains a large number of entries. Therefore, input of a company from a large list of companies is not very convenient. In order to reduce the options of a list, it is convenient to do input of a company with a chain of dependent selects:</p>
+
+<p>Select the region</p>
+
+<p>Select the country from the region</p>
+
+<p>Select the company from the country</p>
+
+<p>However, the table of invoices does not include codes of regions and countries. The table of companies does not include the region code. Therefore, to obtain the necessary data, we need to connect the tables of companies, countries and regions to the table of invoices.</p>
+
+<p>This problem is solved by the <b>ElementTableJoiner</b> pseudo-component, defined by the following attributes:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>table to join</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_table_alias</p></td>
+<td valign="top" ><p>Table alias</p></td>
+<td valign="top" ><p>Alias of a table to join</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_field</p></td>
+<td valign="top" ><p>Primary key</p></td>
+<td valign="top" ><p>A primary key of a table to join </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_alias</p></td>
+<td valign="top" ><p>Alias</p></td>
+<td valign="top" ><p>Alias of a primary key </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_left_table</p></td>
+<td valign="top" ><p>Left table</p></td>
+<td valign="top" ><p>Left table</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_left_alias</p></td>
+<td valign="top" ><p>Left table alias</p></td>
+<td valign="top" ><p>Alias of a left table </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_left_foreign_key</p></td>
+<td valign="top" ><p>Left table foreign key</p></td>
+<td valign="top" ><p>A foreign key of a left table </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_where</p></td>
+<td valign="top" ><p>Where</p></td>
+<td valign="top" ><p>Reserved fo the future</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p><b>Configuring of Ajax attributes. </b></p>
+
+<p>Configure Ajax attributes is necessary for the following input elements:</p>
+
+<p>• A component of input element is InputAutocomplete or InputMultipleAutocomplete.</p>
+
+<p>• A value of input element should be passed in the Ajax request to another component of the input with InputAutocomplete element.</p>
+
+<p>• An input element participates in a chain of dependent selects either as a participant or as a parameter.</p>
+
+<p>In one form, there may be several elements of the input with InputAutocomplete or InputMultipleAutocomplete component. Therefore, you must indicate the number of autocomplete, which involves an element of the input as either a participant or as a parameter.</p>
+
+<p>Because in one form, there may also be several chains of dependent selects, you must indicate a number of a chain, which involves an element of the input.</p>
+
+<p>Numbering autocomplete and chains of dependent selects should be started from 0.One and the same element can participate in several autocomplete as a parameter. In this case, the numbers of relevant elements of autocomplete should be listed separated from each other by commas.</p>
+
+<p>Similarly, one and the same input element can participate in several chains of dependent selects and a numbers of the chains must also be listed separated from each other by commas</p>
+
+<p><b>Configuration Ajax attributes of the InputAutocomplete and InputMultipleAutocomplete components</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_method</p></td>
+<td valign="top" ><p>Method</p></td>
+<td valign="top" ><p>Method to send a request</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_autocomplete</p></td>
+<td valign="top" ><p>Autocomplete number</p></td>
+<td valign="top" ><p>A number of autocomplete, in which an input element participates </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_token</p></td>
+<td valign="top" ><p>token</p></td>
+<td valign="top" ><p>A token to delimit one value from another in the InputMultipleAutocomplete component</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_search_field</p></td>
+<td valign="top" ><p>Search field</p></td>
+<td valign="top" ><p>A field of a list’s table in which search of the input symbols is carried out. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_min_chars</p></td>
+<td valign="top" ><p>Min chars for request</p></td>
+<td valign="top" ><p>The minimal number of input symbols required to send a request </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_max_options</p></td>
+<td valign="top" ><p>Max of list options</p></td>
+<td valign="top" ><p>The maximum options of a list which should be returned from the server in a request. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_chain</p></td>
+<td valign="top" ><p>Select chain</p></td>
+<td valign="top" ><p>A number of a seect chain on which an input element participates. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_tier</p></td>
+<td valign="top" ><p>Tier in select chain</p></td>
+<td valign="top" ><p>A number of a level of a select chain on which an input element participates. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_before_request</p></td>
+<td valign="top" ><p>Function before request</p></td>
+<td valign="top" ><p>A function, which should be called before sending a request </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_after_request</p></td>
+<td valign="top" ><p>Function after request</p></td>
+<td valign="top" ><p>A function, which should be called after sending a request</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_url</p></td>
+<td valign="top" ><p>URL</p></td>
+<td valign="top" ><p>URL of a request. If it is not specified, then for autocomplete will be used autocomplete.php</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_callback</p></td>
+<td valign="top" ><p>Callback function</p></td>
+<td valign="top" ><p>Request’s “callback” function </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_timeout</p></td>
+<td valign="top" ><p>Timeout</p></td>
+<td valign="top" ><p>The waiting time after pressing a symbol after which a request is sent</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p><b>Configuring the Ajax attributes for a component of the type “select” either involved as a parameter of the InputAutocomplete or InputMultipleAutocomplete components, either involved in the chain of dependent selects (chained select), or as a participant or as a parameter</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_method</p></td>
+<td valign="top" ><p>Method</p></td>
+<td valign="top" ><p>A method of sending a request</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_autocomplete</p></td>
+<td valign="top" ><p>Autocomplete number</p></td>
+<td valign="top" ><p>A number of autocomplete, in which input element participates </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_chain</p></td>
+<td valign="top" ><p>Select chain</p></td>
+<td valign="top" ><p>A number of “select” chain select, in which input element participates </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_tier</p></td>
+<td valign="top" ><p>Tier in select chain</p></td>
+<td valign="top" ><p>A number of “select” chain’s level, in which input element participates </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_chain_role</p></td>
+<td valign="top" ><p>Role in select chain</p></td>
+<td valign="top" ><p>A role, which input element, plays in select chain. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_before_request</p></td>
+<td valign="top" ><p>Function before request</p></td>
+<td valign="top" ><p>A function, which should be called before sending a request </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_after_request</p></td>
+<td valign="top" ><p>Function after request</p></td>
+<td valign="top" ><p>A function, which should be called after sending a request</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_url</p></td>
+<td valign="top" ><p>URL</p></td>
+<td valign="top" ><p>URL of a request. If it is not specified, then for chained selects the list.php is used.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_callback</p></td>
+<td valign="top" ><p>Callback function</p></td>
+<td valign="top" ><p>Request’s “callback” function </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p><b>Configuring events</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onblur</p></td>
+<td valign="top" ><p>onblur</p></td>
+<td valign="top" ><p>An action done in case of “onblur” event</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onchange</p></td>
+<td valign="top" ><p>onchange</p></td>
+<td valign="top" ><p>An action done in case of “onchange” event</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onclick</p></td>
+<td valign="top" ><p>onclick</p></td>
+<td valign="top" ><p>An action done in case of “onclick” event</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_ondblclick</p></td>
+<td valign="top" ><p>ondblclick</p></td>
+<td valign="top" ><p>An action done in case of “ondblclick” event</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onfocus</p></td>
+<td valign="top" ><p>onfocus</p></td>
+<td valign="top" ><p>An action done in case of “onfocus” event</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onkeydown</p></td>
+<td valign="top" ><p>onkeydown</p></td>
+<td valign="top" ><p>An action done in case of “onkeydown” event</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onkeypress</p></td>
+<td valign="top" ><p>onkeypress</p></td>
+<td valign="top" ><p>An action done in case of “onkeypress” event</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onkeyup</p></td>
+<td valign="top" ><p>onkeyup</p></td>
+<td valign="top" ><p>An action done in case of “onkeyup” event</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onmousedown</p></td>
+<td valign="top" ><p>onmousedown</p></td>
+<td valign="top" ><p>An action done in case of “onmousedown” event</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onmousemove</p></td>
+<td valign="top" ><p>onmousemove</p></td>
+<td valign="top" ><p>An action done in case of “onmousemove” event</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onmouseout</p></td>
+<td valign="top" ><p>onmouseout</p></td>
+<td valign="top" ><p>An action done in case of “onmouseout” event</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onmouseover</p></td>
+<td valign="top" ><p>onmouseover</p></td>
+<td valign="top" ><p>An action done in case of “onmouseover” event</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onmouseup</p></td>
+<td valign="top" ><p>onmouseup</p></td>
+<td valign="top" ><p>An action done in case of “onmouseup”</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onselect</p></td>
+<td valign="top" ><p>onselect</p></td>
+<td valign="top" ><p>An action done in case of “onselect” event</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_onblur</p></td>
+<td valign="top" ><p>onblur</p></td>
+<td valign="top" ><p>An action done in case of “onblur” event</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p><b>Configuring validators of the Form component</b></p>
+
+<p>To configure validators of an input form, it is necessary to choose the action "validator" for the desired form</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_field</p></td>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>A form’s field to be checked. If the field is different for different languages, then it is possible to replace with “xxx” the part of a field relared to the code of a language. When doing export, a configurator will replace the “xxx” with the code of an appropriate languge. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_condition</p></td>
+<td valign="top" ><p>Condition</p></td>
+<td valign="top" ><p>A condition which should be matched by entered value of the field. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_parameter</p></td>
+<td valign="top" ><p>Parameter</p></td>
+<td valign="top" ><p>A parameter of a condition. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_parameter_type</p></td>
+<td valign="top" ><p>Parameter type</p></td>
+<td valign="top" ><p>A type of a parameter of a condition. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_error</p></td>
+<td valign="top" ><p>Error</p></td>
+<td valign="top" ><p>An abbreviation of a message, which describes the error of the input data.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_class</p></td>
+<td valign="top" ><p>Class</p></td>
+<td valign="top" ><p>A class of non-standard conditions</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_class_static</p></td>
+<td valign="top" ><p>Static method?</p></td>
+<td valign="top" ><p>A type of a method of a non-standard condition.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_break_onfailure</p></td>
+<td valign="top" ><p>Break on failure</p></td>
+<td valign="top" ><p>An attribute for breaking validation of a field in case of input failure. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>Index for checking a validator</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>When you export an input form’s’ specification, all the validators belonging to the same input field are exported to the specification of this field. Therefore, the fields «validator_index» and «validator_break_onfailure» will have meaninhg only if you have several validators for one and the same input field.</p>
+
+<p>To properly configure the validators, you need to know how a process of validation in the Form component and export of validators are carried out. This happens as follows:</p>
+
+<p>The Form component calls the “validate” method of its input element in a loop with the “formValue” associative array as an argument. The” formValue” is an array of the Form input components’ values as well as the form code in the array element with index «xxx_sid» and mode “form” in the element of array with index «xxx_mode». Input elements, in turn, will organize a cycle of checking all its validators. If a class of non-validator is specified, the static method «test» of the Validator component is called, or, otherwise, the static method «test” of the <b>ConditionTester</b> component is called. Whem doing so, the data of the validator and the “formValue” array are passed to the “test”method of the Validator component, while the array of statements and “formValue” array are passed to the <b>ConditionTester</b> component. </p>
+
+<p>Let’s consider how to configure a validator and how the validator is exported for several cases</p>
+
+<p><b>Case 1</b> - the value of one field “field1” must be equal to the value of another field “field2”.</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field </p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_field</p></td>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>field1</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_condition</p></td>
+<td valign="top" ><p>Condition</p></td>
+<td valign="top" ><p>Equal</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_parameter</p></td>
+<td valign="top" ><p>Parameter</p></td>
+<td valign="top" ><p>field2</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_parameter_type</p></td>
+<td valign="top" ><p>Parameter type</p></td>
+<td valign="top" ><p>Input element</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>“Equal” condition consists of a single statement, which is configured as follows:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_connector</p></td>
+<td valign="top" ><p>Connector</p></td>
+<td valign="top" ><p>AND</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_function</p></td>
+<td valign="top" ><p>Function</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_operand1</p></td>
+<td valign="top" ><p>Operand 1</p></td>
+<td valign="top" ><p>%statement_operand1</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_operator</p></td>
+<td valign="top" ><p>Operator</p></td>
+<td valign="top" ><p>Equal</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_operand2</p></td>
+<td valign="top" ><p>Operand 2</p></td>
+<td valign="top" ><p>%statement_operand2</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_failure</p></td>
+<td valign="top" ><p>Failure</p></td>
+<td valign="top" ><p>An error in case on non-performance. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_group</p></td>
+<td valign="top" ><p>Group</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>0</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>When exporting this statement, a value «% statement_operand1» is replaced for «&amp; arg field1», and the value «% statement_operand2» is replaced for «&amp; arg field2».</p>
+
+<p>Let us now consider how the <b>ConditionTester</b> component checks this statement:</p>
+
+<p>To obtain the values ​​of the operands 1 and 2, the “get” static method of the Evaluator component is used, to which both the estimated value and the “formValue" array are passed. The latter, as said before, is passed also to the <b>ConditionTester</b> component. The “Evaluator” component, when gets the value of «&amp; arg field1», returns the value of the “formValue” array with the index “field1”, otherwise, on getting the value of «&amp; arg field2», it returns the value of the “formValue” array with the index “field”:</p>
+
+<p>$ operand1 = $ formValue [field1];</p>
+
+<p>$ operand2 = $ formValue [field2];</p>
+
+<p>Further the <b>ConditionTester</b> component returns the test result of the Boolean expression:</p>
+
+<p>($ operand1 == $ operand2)</p>
+
+<p><b>Case 2</b> - the value of one “field1” field should be less than certain value of MaxValue </p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field </p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_field</p></td>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>field1</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_condition</p></td>
+<td valign="top" ><p>Condition</p></td>
+<td valign="top" ><p>Less</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_parameter</p></td>
+<td valign="top" ><p>Parameter</p></td>
+<td valign="top" ><p>MaxValue</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_parameter_type</p></td>
+<td valign="top" ><p>Parameter type</p></td>
+<td valign="top" ><p>A scalar value</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>“Less” condition consists of a single statement, which is configured as follows:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_connector</p></td>
+<td valign="top" ><p>Connector</p></td>
+<td valign="top" ><p>AND</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_function</p></td>
+<td valign="top" ><p>Function</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_operand1</p></td>
+<td valign="top" ><p>Operand 1</p></td>
+<td valign="top" ><p>%statement_operand1</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_operator</p></td>
+<td valign="top" ><p>Operator</p></td>
+<td valign="top" ><p>Меньше</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_operand2</p></td>
+<td valign="top" ><p>Operand 2</p></td>
+<td valign="top" ><p>%statement_operand2</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_failure</p></td>
+<td valign="top" ><p>Failure</p></td>
+<td valign="top" ><p>An error in case on non-performance. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_group</p></td>
+<td valign="top" ><p>Group</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>0</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>When exporting statement, the value «% statement_operand1» is replaced for «&amp; arg field1», and the value of «% statement_operand2» is replaced for the MaxValue</p>
+
+<p>The values ​​of the operands 1 and 2 are evaluated as follows with the help of the Evaluator component:</p>
+
+<p>$ operand1 = $ formValue [field1];</p>
+
+<p>$ operand2 = MaxValue</p>
+
+<p>Further the <b>ConditionTester</b>components returns the test result of the Boolean expression:</p>
+
+<p>($ operand1 &lt;$ operand2)</p>
+
+<p><b>Case 3</b> - the value of one “field1” field should be in a range from MinValue to MaxValue</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_field</p></td>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>field1</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_condition</p></td>
+<td valign="top" ><p>Condition</p></td>
+<td valign="top" ><p>Range</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_parameter</p></td>
+<td valign="top" ><p>Parameter</p></td>
+<td valign="top" ><p>‘min’=&gt;MinValue,’max’=&gt; MaxValue</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>validator_parameter_type</p></td>
+<td valign="top" ><p>Parameter type</p></td>
+<td valign="top" ><p>An array</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>“Range” condition consist of a single statement, which is configured as follows</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comment</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_connector</p></td>
+<td valign="top" ><p>Connector</p></td>
+<td valign="top" ><p>AND</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_function</p></td>
+<td valign="top" ><p>Function</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_operand1</p></td>
+<td valign="top" ><p>Operand 1</p></td>
+<td valign="top" ><p>%statement_operand1</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_operator</p></td>
+<td valign="top" ><p>Operator</p></td>
+<td valign="top" ><p>range</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_operand2</p></td>
+<td valign="top" ><p>Operand 2</p></td>
+<td valign="top" ><p>%statement_operand2</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_failure</p></td>
+<td valign="top" ><p>Failure</p></td>
+<td valign="top" ><p>An error in case on non-fulfillment </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_group</p></td>
+<td valign="top" ><p>Group</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>statement_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>0</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>When exporting the statement, the value of «% statement_operand1» is replaced for «&amp; arg field1», and the value of «% statement_operand2» is replaced for the “array('min' =&gt; MinValue, 'max' =&gt; MaxValue)”.</p>
+
+<p>The values ​​of the operands 1 and 2 with the help of the “Evaluator” component are evaluated as follows:</p>
+
+<p>$ operand1 = $ formValue ['field1'];</p>
+
+<p>$ operand2 = array ('min' =&gt; MinValue, 'max' =&gt; MaxValue);</p>
+
+<p>Further the <b>ConditionTester</b> component returns the test result of the Boolean expression:</p>
+
+<p>($ operand1&gt; = $ operand2 ['min'] &amp;&amp; $ operand1 &lt;= $ operand2 ['max'])</p>
+
+<p><b>Configuring filters of the Form component </b></p>
+
+<p>To configure an input form filters, it is necesary to select the action "filter" for the desired form.</p>
+
+<p>Filters can be both with and without a condition. Filters with no condition shall be applied at all times. Filters with a condition are applied if the condition is proved to be correct. In connection with this, filter configuring is divided into the configuring the filter itself and configuring the filter’s condition:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>filter_field</p></td>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>A form’s field to be filtered. If the field is different for different languages, then it is possible to replace with “xxx” the part of a field relared to the code of a language. When doing export, a configurator will replace the “xxx” with the code of an appropriate languge. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>filter_converter</p></td>
+<td valign="top" ><p>Converter</p></td>
+<td valign="top" ><p>A converter applied to the field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>filter_parameter</p></td>
+<td valign="top" ><p>Parameter</p></td>
+<td valign="top" ><p>A parameter of filtering</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>filter_parameter_type</p></td>
+<td valign="top" ><p>Parameter type</p></td>
+<td valign="top" ><p>A type of the filtering parameter</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>filter_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>A procedure for using a filter</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>filter_condition</p></td>
+<td valign="top" ><p>Condition</p></td>
+<td valign="top" ><p>A condition to be checked before doing filtering</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>filter_condition_field</p></td>
+<td valign="top" ><p>Condition field</p></td>
+<td valign="top" ><p>A field of the form to be checked</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>filter_condition_parameter</p></td>
+<td valign="top" ><p>Condition parameter</p></td>
+<td valign="top" ><p>A condition parameter</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>filter_condition_parameter_type</p></td>
+<td valign="top" ><p>Condition parameter type</p></td>
+<td valign="top" ><p>A type of a condition parameter</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>filter_condition_class</p></td>
+<td valign="top" ><p>Condition class</p></td>
+<td valign="top" ><p>A class of non-standard condition </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>filter_condition_class_static</p></td>
+<td valign="top" ><p>Static method?</p></td>
+<td valign="top" ><p>A type of method of non-standard condition </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Configuring a condition of filtering doesn’t differ in anything from configuring validators.</p>
+
+<p>Several filters may be set on one and the same field. Therefore, the value of index is meaningful when there are several filters for one and the same input field.</p>
+
+<p>The process of filtering the entered input data takes place after validation of the data:</p>
+
+<p>The “Form” component invokes the “filter” method of all its input elements with the “formValue” array as argument. An input element, in turn, organizes the filtration cycle for all of its filters by using the Converter component, to which the value of the filtered field is passed, the data of the current filter and the “formValue” array. </p>
+
+<h1>Configuring search forms (the Search component)</h1>
+
+<p>To configure search forms, it is necessary to select the menu item Specification-&gt;Search form.</p>
+
+<p>The specifications of search forms are stored in the same four tables, in which the input forms are stored: the «fgs_form» table, which is the master table to 3 tables, namely, «fgs_element», «fgs_validator» and «fgs_filter» tables. In the «fgs_element» table, there are stored the specifications of search predicates, in the «fgs_validator» table - validators and in the«fgs_filter» table - filters of the input data.</p>
+
+<p>Due to the fact that the general information about the input forms and the search forms are stored in one and the same table and the code of the ID forms must be unique, it is recommended to search forms to assign identifiers beginning with the «Search».</p>
+
+<p>Configuring the search forms in much is the same configuring input forms.</p>
+
+<p>Configuring the search form consists is in entering the following data:</p>
+
+<p>• General data of the search form itself</p>
+
+<p>• The data of the elements and buttons of the search form</p>
+
+<p>• The data of validators of the entered data</p>
+
+<p>• The data of filters of the entered data</p>
+
+<p><b>General data of the search form:</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_system</p></td>
+<td valign="top" ><p>System?</p></td>
+<td valign="top" ><p>An attribute of relationship of the search form to the Configurator. It should be set in “No”for the search formsof the developed application. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_type</p></td>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>A type of a form. It should be set in “search of the applied-oriented”.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>A table of a form</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>A code of a form</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_title</p></td>
+<td valign="top" ><p>Title</p></td>
+<td valign="top" ><p>A name of a form</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_action</p></td>
+<td valign="top" ><p>Action</p></td>
+<td valign="top" ><p>The ”action” attributeof a form.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_id</p></td>
+<td valign="top" ><p>Id</p></td>
+<td valign="top" ><p>The «id» attribute of a form</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_onreset</p></td>
+<td valign="top" ><p>Onreset</p></td>
+<td valign="top" ><p>A JavaScript function invoked when occurrence of the “onreset” event takes place. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_onsubmit</p></td>
+<td valign="top" ><p>Onsubmit</p></td>
+<td valign="top" ><p>A JavaScript function invoked when occurrence of the “onsubmit” event takes place. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_method</p></td>
+<td valign="top" ><p>Method</p></td>
+<td valign="top" ><p>the “method” attribute of a form </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>form_initial</p></td>
+<td valign="top" ><p>Initial values of properties</p></td>
+<td valign="top" ><p>This parameter is used to set initial values of properties or to add custom propetties of the Search component</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>To create a new search, you can copy the form with the system id SearchTemplate, which is an search form of the type "search pattern". This will allow getting a blank search form with a set of preconfigured standard buttons. To add the components to input predicates, you need to choose an action «Add». This displays a table with fields not yet added of the base table of the search form. Having marked the desired fields, you need to click on the button "Add Fields". It should be remembered that the fields are added together with the attributes set during configuring the fields.</p>
+
+<p>To configure the components to input predicates, it is necessary to select the action "element" for the required search form. After that, the input form and the table of predicates and buttons are displayed. In the mode of <b>inline editing</b>, it is possible to change the component of argument input, the condition comparison, label, index and fieldset.</p>
+
+<p>We shall remind that the predicate input component in the general case is a container that contains the three components of input:</p>
+
+<p>• Component (<b>SelectOneRadio</b>) to input a connector to connect a predicate to the previous predicate</p>
+
+<p>• Component (<b>SelectOneMenu</b>) to enter the comparison operator</p>
+
+<p>• The component to input value of an argument of the predicate</p>
+
+<p>To configure the search predicates, there are three forms. The first form is required for pre-configuration of the predicate:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>A table of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_table_alias</p></td>
+<td valign="top" ><p>Table alias</p></td>
+<td valign="top" ><p>Alias of a table of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_field</p></td>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>A field of input</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_alias</p></td>
+<td valign="top" ><p>Field alias</p></td>
+<td valign="top" ><p>Alias of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>A system id of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_type</p></td>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>A type of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_label</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>A label of the input</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_component</p></td>
+<td valign="top" ><p>Component</p></td>
+<td valign="top" ><p>A component of an argument input.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>An index of processing and displaying of a predicate</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_predicate</p></td>
+<td valign="top" ><p>Comparison conditions</p></td>
+<td valign="top" ><p>Comparison conditions</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_predicate_custom</p></td>
+<td valign="top" ><p>Custom predicate</p></td>
+<td valign="top" ><p>A class of non-standard predicate</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_hidden</p></td>
+<td valign="top" ><p>Hidden?</p></td>
+<td valign="top" ><p>the “hidden” attribute of a predicate</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_fieldset</p></td>
+<td valign="top" ><p>Fieldset</p></td>
+<td valign="top" ><p>“Fieldset” of a predicate </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>The final configuring of the argument of the predicate depends on the chosen input component and does not differ in anything from the final configuring of the elements of input forms. To do this, it is necessary to select the action «Attribute» for the desired predicate.</p>
+
+<p>The buttons of the search form should have one of the 3 values ​​of the "Action" attribute:</p>
+
+<p>• Clear filter</p>
+
+<p>• Set filter</p>
+
+<p>• Cancel</p>
+
+<p>The final configuring of a connector and an operator of the predicate depends on the conditions of comparison and to go to it, it is necessary to choose the action "predicate" for the desired predicate.</p>
+
+<p>If you select the comparison condition "Range check", then you need to fill out the form below:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field </p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>A table of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_field</p></td>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>A field of a predicte</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_type</p></td>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>A type of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_function</p></td>
+<td valign="top" ><p>SQL Function</p></td>
+<td valign="top" ><p>SQL function</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_layout</p></td>
+<td valign="top" ><p>layout</p></td>
+<td valign="top" ><p>Direction of output for the input elements of the argument’s maximum and minimum. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_min_label</p></td>
+<td valign="top" ><p>Label for min</p></td>
+<td valign="top" ><p>A label for the input element of the argument’s minimum.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_max_label</p></td>
+<td valign="top" ><p>Label for max</p></td>
+<td valign="top" ><p>A label for the input element of the argument’s maximum.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_operators</p></td>
+<td valign="top" ><p>Operators</p></td>
+<td valign="top" ><p>Possible operators</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_operator_default</p></td>
+<td valign="top" ><p>Operator Default</p></td>
+<td valign="top" ><p>A deafault operator</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_fix_operator</p></td>
+<td valign="top" ><p>Fix operator?</p></td>
+<td valign="top" ><p>An attribute of possibility of changing an opearor by a user</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_connector</p></td>
+<td valign="top" ><p>Connector Default</p></td>
+<td valign="top" ><p>A default connector.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_fix_connector</p></td>
+<td valign="top" ><p>Fix connector?</p></td>
+<td valign="top" ><p>An attribute of possibility of changing a connector by a user</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_fieldset</p></td>
+<td valign="top" ><p>Fieldset</p></td>
+<td valign="top" ><p>Feldset of a predicate</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>If you select the comparison condition, which is not equal to "Range check", then you need to fill out the form below:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>A table of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_field</p></td>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>A field of a predicte</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_type</p></td>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>A type of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_function</p></td>
+<td valign="top" ><p>SQL Function</p></td>
+<td valign="top" ><p>SQL function</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_operators</p></td>
+<td valign="top" ><p>Operators</p></td>
+<td valign="top" ><p>Possible operators</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_operator_default</p></td>
+<td valign="top" ><p>Default operator</p></td>
+<td valign="top" ><p>A default operator</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_fix_operator</p></td>
+<td valign="top" ><p>Fix operator? </p></td>
+<td valign="top" ><p>An attribute of possibility of changing an opearor by a user</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_connector</p></td>
+<td valign="top" ><p>connector</p></td>
+<td valign="top" ><p>A default connector</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_fix_connector</p></td>
+<td valign="top" ><p>Fix connector?</p></td>
+<td valign="top" ><p>An attribute of possibility of changing a conector by a user</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_fieldset</p></td>
+<td valign="top" ><p>Fix operator?</p></td>
+<td valign="top" ><p>“Fieldset” of a predicator </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>The attribute "Field" may include not only a name of one field, but the valid combination of fields. Thus, we can organize a search based on various combinations of fields and using the various SQL functions.</p>
+
+<p><b>Configuring the buttons of a search form</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_action</p></td>
+<td valign="top" ><p>Action</p></td>
+<td valign="top" ><p>An action initiated by a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_event</p></td>
+<td valign="top" ><p>Event</p></td>
+<td valign="top" ><p>An event generared on ending of an action</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_confirm</p></td>
+<td valign="top" ><p>Confirm?</p></td>
+<td valign="top" ><p>An attribute to confirm the action on pressing a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_file</p></td>
+<td valign="top" ><p>Image</p></td>
+<td valign="top" ><p>A caption of an image for a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_component</p></td>
+<td valign="top" ><p>Component</p></td>
+<td valign="top" ><p>A component of a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>An index of displaying of a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_name</p></td>
+<td valign="top" ><p>Attribute name</p></td>
+<td valign="top" ><p>The “name”attribute of a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_renderer</p></td>
+<td valign="top" ><p>Renderer</p></td>
+<td valign="top" ><p>A renderer of a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_id</p></td>
+<td valign="top" ><p>Id</p></td>
+<td valign="top" ><p>The “id” attribute of a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_value</p></td>
+<td valign="top" ><p>Value</p></td>
+<td valign="top" ><p>The “value” attribute of a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_tabindex</p></td>
+<td valign="top" ><p>Tabindex</p></td>
+<td valign="top" ><p>The “tabindex” attribute of a button</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>element_accesskey</p></td>
+<td valign="top" ><p>Accesskey</p></td>
+<td valign="top" ><p>The “accesskey’ attribute of a button</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Configuring validators and filters for search forms are exactly the same as the configuring validators and filters for input forms.</p>
+
+<h1>Configuring Grids (the <b>Grid</b> component)</h1>
+
+<p>To configure a <b>Grid</b>, it is necessaryto select the menu item Specification-&gt;Grid.</p>
+
+<p>The specifications of Grids are stored in two tables: «fgs_grid» table, which is the master table to «fgs_column» detail table. The table «fgs_column» stores specifications of columns and possible actions on rows.</p>
+
+<p>Configuring of a <b>Grid</b> consists in entering the following data:</p>
+
+<p>• General data of the <b>Grid</b> itself</p>
+
+<p>• The data on column components, actions on individual rows and actions on a set of rows</p>
+
+<p><b>General data of a <b>Grid</b>:</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_system</p></td>
+<td valign="top" ><p>System?</p></td>
+<td valign="top" ><p>An attribute of the <b>Grid</b>’s relationship to the Configurator. For Grids of developed application, it should be set to "No".</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_type</p></td>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>A type of a <b>Grid</b>. It should be set to “Application” for the Grids of developed application. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>The base table of a <b>Grid</b></p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>System id of a <b>Grid</b>. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_title</p></td>
+<td valign="top" ><p>Название</p></td>
+<td valign="top" ><p>A name of a <b>Grid</b></p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_pagesize</p></td>
+<td valign="top" ><p>Размер страницы</p></td>
+<td valign="top" ><p>A number of rows displayed on a page </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_order</p></td>
+<td valign="top" ><p>Сортировка</p></td>
+<td valign="top" ><p>Initial sorting of a <b>Grid</b></p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_direction</p></td>
+<td valign="top" ><p>Direction</p></td>
+<td valign="top" ><p>Initial direction of sorting</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_user_offset</p></td>
+<td valign="top" ><p>User's offset?</p></td>
+<td valign="top" ><p>An attribute of possible changing “Offset” by a user.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_user_order</p></td>
+<td valign="top" ><p>User's order?</p></td>
+<td valign="top" ><p>An attribute of possible changing sorting by a user.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_user_pagesize</p></td>
+<td valign="top" ><p>User's pagesize?</p></td>
+<td valign="top" ><p>An attribute of possible changing number of rows displayed on a page by a user.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_headerspan</p></td>
+<td valign="top" ><p>Headerspan</p></td>
+<td valign="top" ><p>A number of rows in a header of a <b>Grid</b>. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_id</p></td>
+<td valign="top" ><p>Id</p></td>
+<td valign="top" ><p>Attribute “id” of a <b>Grid</b>.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_modal</p></td>
+<td valign="top" ><p>Modal?</p></td>
+<td valign="top" ><p>An attribute of possible hiding a <b>Grid</b> by a user.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_inline_edit</p></td>
+<td valign="top" ><p>Inline edit?</p></td>
+<td valign="top" ><p>The “inline_editing” attribute. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>grid_initial</p></td>
+<td valign="top" ><p>Initial values of properties</p></td>
+<td valign="top" ><p>This parameter is used to set initial values of properties or to add custom propetties of the <b>Grid</b> component</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Remember that the <b>Grid</b> component allows editing in two modes:</p>
+
+<p>Mode 1 - all editable fields in the <b>Grid</b> are already in edit mode and to save the changed data you need to click on the save button. Mode 1 is to emulate spreadsheet-like editing. </p>
+
+<p>Mode 2 is the so-called <b>inline editing</b>, in which to enter the “edit” mode you need to double-click by mouse on the desired field of the desired row. Saving the changed data is done by pressing the Enter key for the input fields such as ColumnInputText or by selecting the desired option for fields with an input component ColumnSelectOneMenu.</p>
+
+<p>When you set the “Inline editing” mode in the "Yes", editing is carried out in Mode 2, i.e. by double-clicking the mouse on the desired field of the desired item.</p>
+
+<p>To create a new <b>Grid</b>, it is possible to copy the <b>Grid</b> of "template" type. When doing so, the <b>Grid</b> with the system id MasterGridTemplate is a template for the Grids of master tables, and the <b>Grid</b> with the code GridTemplate is a template for all others.Coping allows you to get an empty <b>Grid</b> with a set of preconfigured standard operations on rows. To add columns to a <b>Grid</b>, you need to select the action «Add». This displays a table with not yet added fields of the <b>Grid</b>’s base table. Checking the required fields, you need to click on the button "Add Field". It should be remembered that the fields are added with the attributes set during configuration of the fields.</p>
+
+<p>To configure the columns, the operations on individual rows and operations with a set of rows, it is necessary to select the action "column." After that, the input form and the table of columns are dispalyed with operations on individual rows and operations on a set of rows. In the “<b>inline editing</b>” mode, it is possible to change the Column component, a header and index.</p>
+
+<p>To configure the columns, there are two forms. The first form is for pre-configuring:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>A table of a column’s field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_table_alias</p></td>
+<td valign="top" ><p>Table alias</p></td>
+<td valign="top" ><p>Alias of a table of a column’s field </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_field</p></td>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>A field displayed in a column. Iif the field is different fordifferent languages, then it is possible a part of the field retating to a code of a language to change for “xxx”. When doing export, a configurator will replace “xxx” for the code of an appropriate language. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_alias</p></td>
+<td valign="top" ><p>Field alias</p></td>
+<td valign="top" ><p>Alias of a column’s field.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_type</p></td>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>A type of s field.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_component</p></td>
+<td valign="top" ><p>Component</p></td>
+<td valign="top" ><p>A Column component of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>Index of displaying of a column in a <b>Grid</b> </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_header</p></td>
+<td valign="top" ><p>Header</p></td>
+<td valign="top" ><p>A header of a column.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_save</p></td>
+<td valign="top" ><p>Save?</p></td>
+<td valign="top" ><p>An attribute for saving a value of a field in a session variable. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_hidden</p></td>
+<td valign="top" ><p>Hidden?</p></td>
+<td valign="top" ><p>An attribute for hiding a column. It should be set in “1” for the fields, which shouldno’t be displying in a <b>Grid</b> but which are required for supporting objectives. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_align</p></td>
+<td valign="top" ><p>Align</p></td>
+<td valign="top" ><p>The “align” attribute of a column </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_width</p></td>
+<td valign="top" ><p>Width</p></td>
+<td valign="top" ><p>The “width” attribute of a column</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_function</p></td>
+<td valign="top" ><p>SQL Function in select</p></td>
+<td valign="top" ><p>SQL function in the “select”clause</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>A system id of a column.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_register</p></td>
+<td valign="top" ><p>Global name</p></td>
+<td valign="top" ><p>an element’s key of the “globals” array of the “Registry” component, in which a field’s value is stored. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_sort</p></td>
+<td valign="top" ><p>Sort as</p></td>
+<td valign="top" ><p>If “0” is entered, it means not permitting column sorting; if “1” is entered, it means permitting field sorting. If a name of a field is entered, it means permitting column sorting , but sorting should be not based on a field of a column but sorting by the entered name</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_sort_prefix</p></td>
+<td valign="top" ><p>Sort prefix</p></td>
+<td valign="top" ><p>Constant value in the beginning of the “order by” clause</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_sort_suffix</p></td>
+<td valign="top" ><p>Sort suffix</p></td>
+<td valign="top" ><p>Constant value in the end of the “order by” clause</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>The attribute "Field" may include not only the name of the field, but a valid combination of fields. In this case, it is necessary to enter the attribute "Alias of a ​​field." Thus, it is possible to display the sum or product of two or more fields.</p>
+
+<p>The final configuring of columns depends on the selected Column component, and it is necessary to choose for it the action «Attribute» for the desired column. When doing so, there will be displayed a form with input fields, grouped into 5 groups:</p>
+
+<p>• System</p>
+
+<p>• Rendering</p>
+
+<p>• Sorting</p>
+
+<p>• Input Attributes</p>
+
+<p>• Events</p>
+
+<p>In this case, a set of groups of fields and input fields in these groups depends on the type of the selected component. For example, a group of "Input attributes" appears only for the components ColumnInputText and ColumnSelectOneMenu, a group of "Sorting" does not appear for the components GridButton, RowSelector, RowAction, and RowSetAction.</p>
+
+<p><b>Configuring the attributes of the “System” group</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>A table of a column’s field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_table_alias</p></td>
+<td valign="top" ><p>Table alias</p></td>
+<td valign="top" ><p>Alias of a column’s field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_field</p></td>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>A field of a column. If the field is different for different languages, then it is possible to change for “xxx” the part of a name of the field related to a code of a language. When doing export, the Configurator will replace the “xxx” for a code of an appropriate language. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_alias</p></td>
+<td valign="top" ><p>Alias</p></td>
+<td valign="top" ><p>Alias of a column’s field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_type</p></td>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>A type of a column’s field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>A system id of a colum</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_component</p></td>
+<td valign="top" ><p>component</p></td>
+<td valign="top" ><p>A Column component of a field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_save</p></td>
+<td valign="top" ><p>Save?</p></td>
+<td valign="top" ><p>An attribute for saving a value of a column’s field in the sesiona variable. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_register</p></td>
+<td valign="top" ><p>Global name</p></td>
+<td valign="top" ><p>A key of an element of the “globals” array of the “Registry”component in which the value of a column’s field is stored.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_hidden</p></td>
+<td valign="top" ><p>Hidden?</p></td>
+<td valign="top" ><p>An attribute of hiding a column. It should be set in “1” for the fields, which are not required to be displayed in a <b>Grid</b> but which are requird for supporting objectives. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_calculate</p></td>
+<td valign="top" ><p>Calculate?</p></td>
+<td valign="top" ><p>An attribute of summation values ​​of a column. If it is set to "Yes", then the column will display the sum of values of a field of all derived rows.</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p><b>Configuring the attributes of the “Rendering” group </b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_renderer</p></td>
+<td valign="top" ><p>Renderer</p></td>
+<td valign="top" ><p>A column’s renderer. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>Index of displaying of a column in a <b>Grid</b> </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_header</p></td>
+<td valign="top" ><p>Header</p></td>
+<td valign="top" ><p>A header of a column.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_span</p></td>
+<td valign="top" ><p>Span</p></td>
+<td valign="top" ><p>A formula for forming a column’s header</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_align</p></td>
+<td valign="top" ><p>Align</p></td>
+<td valign="top" ><p>The “align” attribute of a column</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_width</p></td>
+<td valign="top" ><p>Width</p></td>
+<td valign="top" ><p>The “width” attribute of a column</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_list</p></td>
+<td valign="top" ><p>List</p></td>
+<td valign="top" ><p>The list is used for display a value of a column’s field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_relation</p></td>
+<td valign="top" ><p>Relation</p></td>
+<td valign="top" ><p>A type of relationship of a list’s table and the base table of a <b>Grid</b>.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_join_lookup</p></td>
+<td valign="top" ><p>Join lookup table?</p></td>
+<td valign="top" ><p>The atribute to force making left join of the <b>Grid</b>’s base table with a list’s table</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_converter</p></td>
+<td valign="top" ><p>Converter</p></td>
+<td valign="top" ><p>A converter of a field’s value. Applicable for the ColumnText component only</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_format</p></td>
+<td valign="top" ><p>Format</p></td>
+<td valign="top" ><p>Ouput format- reserved for the future</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_function</p></td>
+<td valign="top" ><p>SQL Function in select</p></td>
+<td valign="top" ><p>SQL function in “select” clause</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Let’s consider configuring multy-line headers in the following example. Let’s suppose we need to create the table header of the three lines:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td colspan="3" valign="top" ><p>ColumnSet1</p></td>
+<td colspan="2" valign="top" ><p>ColumnSet2</p></td>
+<td rowspan="3" valign="top" ><p>Column6</p></td>
+</tr>
+
+<tr>
+<td colspan="2" valign="top" ><p>ColumnSet3</p></td>
+<td rowspan="2" valign="top" ><p>Column3</p></td>
+<td rowspan="2" valign="top" ><p>Column4</p></td>
+<td rowspan="2" valign="top" ><p>Column5</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Column1</p></td>
+<td valign="top" ><p>Column2</p></td>
+</tr>
+
+
+</tbody>
+</table>
+
+<p>To begin, we set the value of the attribute «Headerspan» for the <b>Grid</b> equal to 3.</p>
+
+<p>The required values of the “Span” and “Header” attributes are shown in the table below:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Column</p></td>
+<td valign="top" ><p>“Span” attribute</p></td>
+<td valign="top" ><p>“Header” attribute</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Column1</p></td>
+<td valign="top" ><p>1*3,1*2,1*1</p></td>
+<td valign="top" ><p>ColumnSet1, ColumnSet3, Column1</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Column2</p></td>
+<td valign="top" ><p>0,0,1*1</p></td>
+<td valign="top" ><p>Column2</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Column3</p></td>
+<td valign="top" ><p>0,2*1,0</p></td>
+<td valign="top" ><p>Column3</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Column4</p></td>
+<td valign="top" ><p>0,2*1,0</p></td>
+<td valign="top" ><p>ColumnSet2, Column4</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Column5</p></td>
+<td valign="top" ><p>0,2*1,0</p></td>
+<td valign="top" ><p>Column5</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Column6</p></td>
+<td valign="top" > </td>
+<td valign="top" ><p>Column6</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>“0” means that there is no output. </p>
+
+<p>“N*m” denotes the values of the attributes “rowspan” and “colspan”, namely rowspan=n and colspan=m.</p>
+
+<p>If the “Span”attribute is not set, this means that the column has a one-line header.</p>
+
+<p>“Span” and “Header” attributes should reflect the algorithm of formation a header in 3 passes: </p>
+
+<p>During the first pass, it is necessary to form ColumnSet1, ColumnSet2 and Column6.</p>
+
+<p>During the second pass, it is necessary to form ColumnSet3, Column3, Column4 and Column5</p>
+
+<p>During the third pass, it is necessary to form Column1 and Column2. </p>
+
+<p>For the column Column1, during the first pass, it is necessary to form a cell 1*3 and output ColumnSet1 as a header. During the second pass, it is necessary to form a cell 1*2 and output ColumnSet3 as a header. During the third pass, it is necessary to form a cell 1*1 and output Column1 as a header.</p>
+
+<p>For the column Column2, during the first and second passes, it is not necessary to output anything. </p>
+
+<p>During the third pass, it is necessary to form a cell 1*1 and output Column2 as a header.</p>
+
+<p>For the column Column3, during the first pass, it is not necessary to output anything. During the second pass, it is necessary to form a cell 2*1 and output Column3 as a header. During the first pass, it is not necessary to output anything.</p>
+
+<p>For the column Column4, during the first pass, it is necessary to form a cell 1*2 and ouput ColumnSet2 as a header. During the second pass, it is necessary to form a cell 2*1 and ouput Column4 as a header. During the first pass, it is not necessary to output anything.</p>
+
+<p>For the column Column5, on the first pass, it is not necessary to output anything. During the second run, it is necessary to form a cell 2*1 and ouput Column5 as a header. During the third pass, it is not necessary to output anything.</p>
+
+<p><b>Configure the fields of attributes of “Sorting” group</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_sort</p></td>
+<td valign="top" ><p>Sort as</p></td>
+<td valign="top" ><p>If “0” is entered, this means that sorting by a column is not permitted. If “1” is entered, this means that sorting a column as by the column’s field is permitted. If a name of a field is entered, this means that sorting a column is permited, however, sorting should be done not by the column’s field but according to entered name of a field.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_sort_prefix</p></td>
+<td valign="top" ><p>Sort prefix</p></td>
+<td valign="top" ><p>A constant value in the beginning of an “order by” clause</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_sort_suffix</p></td>
+<td valign="top" ><p>Sort suffix</p></td>
+<td valign="top" ><p>A constant value in the end of an “order by” clause</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Configuring the columns with the output component ColumnLookup</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_list</p></td>
+<td valign="top" ><p>List</p></td>
+<td valign="top" ><p>A list used for the output</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_relation</p></td>
+<td valign="top" ><p>Relation</p></td>
+<td valign="top" ><p>A type of relationship of a field and a list’s table.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_join_lookup</p></td>
+<td valign="top" ><p>Join lookup table?</p></td>
+<td valign="top" ><p>An attribute of conection a table of variable list and a base table of a <b>Grid</b>.</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Let’s consider in detaile the attribute "Do join with the table? ».</p>
+
+<p>This attribute is used only for variable lists and only for the case when a field can store value of only one list’s option: the field “column_relation” set to "one-to-one relationship ".</p>
+
+<p>The other type of relation is the “one-to-many” relationship. It means only that a field can store values of several list’s option. These types of relationship do not have any connection with the "one-to-one” and “one-to-many” types of relationship between two database tables. </p>
+
+<p>If you set the attribute in "Yes", then in the SQL query the <b>Grid</b> component will perform joining the table of the variable list and the base table of the <b>Grid</b> (left join) and it will include the field - description of the option list – in the number of selected fields.</p>
+
+<p>If you set the attribute in "No", then the <b>Grid</b> component will load a variable list only from the options requred to render a set of displaying rows.</p>
+
+<p>If the type of relationship of a field with a variable list is "One to many", then the <b>Grid</b> component will load the variable list from the options, which are necessary to render a set of displaying rows.</p>
+
+<p>Such handling of the ColumnLookup component’s list is implemented to optimize the output of rows.</p>
+
+<p><b>Configuring the ColumnTableJoiner pseudo-component</b></p>
+
+<p>This pseudo-component is designed to connect the tables to the base table.</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_table</p></td>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>A connected table</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_table_alias</p></td>
+<td valign="top" ><p>Table alias</p></td>
+<td valign="top" ><p>Alias a table of a column’s field</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_field</p></td>
+<td valign="top" ><p>Primary key</p></td>
+<td valign="top" ><p>A primary key of a connected table</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_alias</p></td>
+<td valign="top" ><p>Alias</p></td>
+<td valign="top" ><p>Alias of a primary key</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_left_table</p></td>
+<td valign="top" ><p>Left table</p></td>
+<td valign="top" ><p>A left table</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_left_alias</p></td>
+<td valign="top" ><p>Left table alias</p></td>
+<td valign="top" ><p>Alias of a left table</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_left_foreign_key</p></td>
+<td valign="top" ><p>Left table foreign key</p></td>
+<td valign="top" ><p>A foreign key to the left table</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_join</p></td>
+<td valign="top" ><p>Тип join</p></td>
+<td valign="top" ><p>A “join” type</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_where</p></td>
+<td valign="top" ><p>Where</p></td>
+<td valign="top" ><p>Reserved</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_required</p></td>
+<td valign="top" ><p>Required?</p></td>
+<td valign="top" ><p>Mandatory of connection of a table</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Let’s explain the use of the “Required” attribute.</p>
+
+<p>Component <b>Search</b> allows searching by fields of a table, which is not the base table of the Search and <b>Grid</b> component. Therefore, the connection of a not base table is necessary only on setting the search condition to be fulfilled through the fields of not base table. In this case, the attribute should be set to "No".</p>
+
+<p>If the connection of not base table is not associated with setting <b>search</b> conditions, then the attribute should be set to "Yes."</p>
+
+<p><b>Configuring the actions over individual rows (RowAction)</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>An index of output</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_action</p></td>
+<td valign="top" ><p>Action</p></td>
+<td valign="top" ><p>An executable action </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_immediate</p></td>
+<td valign="top" ><p>Immediate?</p></td>
+<td valign="top" ><p>An attribute of execution of an action by the <b>Grid</b> component itself </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_condition</p></td>
+<td valign="top" ><p>Condition</p></td>
+<td valign="top" ><p>A condition required for performing an action</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_condition_field</p></td>
+<td valign="top" ><p>Condition field</p></td>
+<td valign="top" ><p>A checkable field of condition </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_condition_class</p></td>
+<td valign="top" ><p>Condition class</p></td>
+<td valign="top" ><p>A class of non-standard condition. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_condition_class_static</p></td>
+<td valign="top" ><p>Static condition class</p></td>
+<td valign="top" ><p>A static class of condition</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_condition_parameter</p></td>
+<td valign="top" ><p>Condition parameter</p></td>
+<td valign="top" ><p>A parameter of codition</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_condition_parameter_type</p></td>
+<td valign="top" ><p>Condition parameter type</p></td>
+<td valign="top" ><p>A type of condition’s parameter</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_name</p></td>
+<td valign="top" ><p>name</p></td>
+<td valign="top" ><p>A name of a colmn</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_file</p></td>
+<td valign="top" ><p>Image</p></td>
+<td valign="top" ><p>A file of an icon</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_renderer</p></td>
+<td valign="top" ><p>Renderer</p></td>
+<td valign="top" ><p>A class of a non-standard renderer </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p><b>Configuring the action over a set of rows (RowSetAction)</b></p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_index</p></td>
+<td valign="top" ><p>Index</p></td>
+<td valign="top" ><p>An index of output</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_action</p></td>
+<td valign="top" ><p>Action</p></td>
+<td valign="top" ><p>An executable action </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_immediate</p></td>
+<td valign="top" ><p>Immediate?</p></td>
+<td valign="top" ><p>An attribute of execution of an action by the <b>Grid</b> component itself </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_condition</p></td>
+<td valign="top" ><p>Condition</p></td>
+<td valign="top" ><p>A condition required for performing an action</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_condition_field</p></td>
+<td valign="top" ><p>Condition field</p></td>
+<td valign="top" ><p>A checkable field of a condition </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_condition_class</p></td>
+<td valign="top" ><p>Condition class</p></td>
+<td valign="top" ><p>A class of non-standard condition. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_condition_class_static</p></td>
+<td valign="top" ><p>Static condition class</p></td>
+<td valign="top" ><p>A static class of a condition</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_condition_parameter</p></td>
+<td valign="top" ><p>Condition parameter</p></td>
+<td valign="top" ><p>A parameter of a codition</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_condition_parameter_type</p></td>
+<td valign="top" ><p>Condition parameter type</p></td>
+<td valign="top" ><p>A type of condition’s parameter</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_name</p></td>
+<td valign="top" ><p>Name </p></td>
+<td valign="top" ><p>A name of a column</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>column_file</p></td>
+<td valign="top" ><p>Image</p></td>
+<td valign="top" ><p>A file of an icon</p></td>
+</tr>
+
+</tbody>
+</table>
+<br>
+<h1>Configuring controllers</h1>
+
+<p>To configure the controllers it is necessary to select the menu item Specification-&gt;Controller.</p>
+
+<p>The specifications of controllers are stored in two tables "fgs_sontroller" and «fgs_unit» associated by a «master-detail» relationship.</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>controller_system</p></td>
+<td valign="top" ><p>System?</p></td>
+<td valign="top" ><p>An attribute of relation of a controller to the Configurator. The attribute should be set to “No” for the controllers of athe developed application.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>controller_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>A system id of a controller</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>controller_type</p></td>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>A type of a controller</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>controller_title</p></td>
+<td valign="top" ><p>Name </p></td>
+<td valign="top" ><p>A name of a controller</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>controller_class</p></td>
+<td valign="top" ><p>Class</p></td>
+<td valign="top" ><p>A class of a controller</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>controller_script</p></td>
+<td valign="top" ><p>Script</p></td>
+<td valign="top" ><p>A script of a controller</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>controller_template</p></td>
+<td valign="top" ><p>Template</p></td>
+<td valign="top" ><p>A template of a controller</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>controller_roles</p></td>
+<td valign="top" ><p>Roles</p></td>
+<td valign="top" ><p>A list of roles, which is accessable to a contrloller </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>controller_users</p></td>
+<td valign="top" ><p>Users </p></td>
+<td valign="top" ><p>A list of users to whom a controller is accessable</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>controller_initial</p></td>
+<td valign="top" ><p>Initial</p></td>
+<td valign="top" ><p>Initial values of a controller’s properties. An imput format should be as follows: ‘Name of property 1’=&gt;value of property 1’, ‘Name of property 2’=&gt;value of property 2’…</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>controller_session</p></td>
+<td valign="top" ><p>Session</p></td>
+<td valign="top" ><p>A list of properties of a controller, which should be saved in sessional variables. Name of properties should be enclosed in single quotes and separated one from another by commas. </p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>To configure the components of the <b>Unit Controllers</b> it is necessary to select the action «detail» for the required controller and to enter the <b>Unit</b> data.</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_sid</p></td>
+<td valign="top" ><p>Sid</p></td>
+<td valign="top" ><p>System id of a Unit </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_type</p></td>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>Type of a Unit </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_class</p></td>
+<td valign="top" ><p>Class</p></td>
+<td valign="top" ><p>Class of a Unit </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_form</p></td>
+<td valign="top" ><p>Form's class</p></td>
+<td valign="top" ><p>An input form of a Unit </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_form_class</p></td>
+<td valign="top" ><p>Form's class</p></td>
+<td valign="top" ><p>A class of input form of aUnit</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_form_renderer</p></td>
+<td valign="top" ><p>Form renderer</p></td>
+<td valign="top" ><p>A renderer of a Unit’s input form</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_form_display</p></td>
+<td valign="top" ><p>Display Form?</p></td>
+<td valign="top" ><p>An attribute of display of a input form in the beginning </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_form_hide</p></td>
+<td valign="top" ><p>Hide form?</p></td>
+<td valign="top" ><p>An attribute to hide an input form after completion of editing a row.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_grid</p></td>
+<td valign="top" ><p><b>Grid</b></p></td>
+<td valign="top" ><p>A <b>Grid</b> of a Unit</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_grid_class</p></td>
+<td valign="top" ><p><b>Grid</b>'s class</p></td>
+<td valign="top" ><p>A class of a <b>Grid</b> of Unit.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_grid_renderer</p></td>
+<td valign="top" ><p><b>Grid</b> renderer</p></td>
+<td valign="top" ><p>A rendere of a <b>Grid</b> of a Unit</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_grid_display</p></td>
+<td valign="top" ><p>Display <b>Grid</b>?</p></td>
+<td valign="top" ><p>An attribute of display of a <b>Grid</b> in the beginning</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_grid_hide</p></td>
+<td valign="top" ><p>Hide grid?</p></td>
+<td valign="top" ><p>An attribute to hide a <b>Grid</b> when editing a row in an input form of a Unit.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_grid_multimode_hide</p></td>
+<td valign="top" ><p>Hide in multimode?</p></td>
+<td valign="top" ><p>An attribute to hide of a <b>Grid</b> when operation over a number of rows selected </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_search</p></td>
+<td valign="top" ><p>Search</p></td>
+<td valign="top" ><p>A search formof a Unit</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_search_class</p></td>
+<td valign="top" ><p>Search form's class</p></td>
+<td valign="top" ><p>A class of a form search of a Unit</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_search_renderer</p></td>
+<td valign="top" ><p>Search renderer</p></td>
+<td valign="top" ><p>A renderer of a search form of a Unit </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_search_display</p></td>
+<td valign="top" ><p>Display Search?</p></td>
+<td valign="top" ><p>An attribute of displaying of a surch form in the beginning</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_search_hide</p></td>
+<td valign="top" ><p>Hide search form?</p></td>
+<td valign="top" ><p>An attribute to hide of a search form when clicking on a search button.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_dataset</p></td>
+<td valign="top" ><p>Dataset</p></td>
+<td valign="top" ><p>A dataset of a Unit</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_dataset_class</p></td>
+<td valign="top" ><p>Dataset class</p></td>
+<td valign="top" ><p>A class of a dataset</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_initial</p></td>
+<td valign="top" ><p>Initial</p></td>
+<td valign="top" ><p>An initial value of Unit’s properties</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>unit_session</p></td>
+<td valign="top" ><p>Session</p></td>
+<td valign="top" ><p>A list of properties of a Unit, which should be stored in session variables.</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p><b>Configuring CRUD controllers</b></p>
+
+<p>A type of a controller should be equal to «crud». There should be configured only one Unit and the type of this Unit should be equal to «crud».</p>
+
+<p><b>Configuring MasterDetail controllers</b></p>
+
+<p>The type of a MasterDetail controller should be equal to «MasterDetail». There should be configured only two Units and the types of this Unit should be equal to «master» and “detail”. </p>
+
+<p>The base table of the master Unit’scomponents and the base table of the detail Unit’scomponents have to to assosiated by “master-detail” relationship. Besides, the base table of the detail Unit’scomponents should have a field, which is a foreign key to the primary of the base table of the master Unit’scomponents. The required configuring of the tables цшер “master-detail” relationship and foreign keys of such tables is given in the relevant sections of this document.</p>
+
+<p><b>Configuring UnitSet controllers</b></p>
+
+<p>Type of controller should be equal to “UnitSet”. There should be configured at least two <b>Unit</b> and the type of one of Unit should be equal to “master” The base table of the master Unit’scomponents and the base tables of all the detail Unit’scomponents have to to assosiated by “master-detail” relationship. Besides, the base table of each detail Unit’scomponents should have a field, which is a foreign key to the primary of the base table of the master Unit’scomponents.</p>
+
+<h1>Export of Specifications</h1>
+
+<p>Export of components’ specifications is carried out only for the current interface language. To export specifications for a particular language, this language should be set as the current one.</p>
+
+<p>When selecting a menu item to export specifications of a component, the specifications of all components of the selected type are exported.</p>
+
+<p>Export specifications of a component should be performed every time you change the specifications of both the component and specifications of the related components.</p>
+
+<p>For example, in case of changing the specifications of messages, it is necessary first to carry out export of messages and then of all the other components.</p>
+
+<p>Grids, input forms and search forms can use lists. Therefore, when changing specification of a list, it is necessary to carry out first export of lists and then export of input forms, search forms and Grids.</p>
+
+<p>Controllers and lists can use data sets. Therefore, when changing specification of a dataset, it is necessary first to export datasets and then to export controllers, lists, input forms, search forms and Grids.</p>
+
+<p>When exporting specifications, configurator validates correctness of the entered specifications, and all the bugs are displayed in the window of the output of debugging information.</p>
+
+<h1>Testing controllers</h1>
+
+<p>After exporting controllers, it is possible to test created controllers. To do this, it is necessary to find the required controller and to click the mouse on the field of the system id of the controller (Sid). After that, the Configurator will open a new tab with the code window «application» with the controller being tested.</p>
+
+<p>We remind that when in development mode, it is possible to quickly switch over to configuring mode both input and search forms and Grids, as well as individual elements of these components.</p>
+
+<p>To go to editing specifications of input forms, it is necessary to double click on the name of the input form.</p>
+
+<p>To go to editing a specification of individual item of the input form, it is necessary to double click on the label of the desired item.</p>
+
+<p>To edit the specification of the search form, a double click on the name of the search form is required.</p>
+
+<p>To go to editing a specification of an individual predicate, a double click on the label of the desired predicate is requred.</p>
+
+<p>To go to the editing <b>Grid</b> specification, a double click on the name of the <b>Grid</b> is required.</p>
+
+<p>To go to the editing specification of a separate column, a double-click on the desired column header is required.</p>
+
+<p>Configuring the selected component is carried out on an individual browser tab with the code of the window «instant_edit».</p>
+
+<h1>Lessons of the Configurator</h1>
+
+<p>In this part of the document, examples of configuring of the Configurator’s components are provided. These examples can be used to implement the desired features of the applications under development. To get familiar with the defined attributes, you are sometimes invited to click on the icon for editing components. I emphasize - for reference only! It is strictly prohibited to change anything and to click on the button "Update"! The examples show how the framework uses the set attributes for the implementation of the desired features.</p>
+
+<p><b>Lesson 1 - Configuring messages</b></p>
+
+<p>Configuring messages is an example of a user interface to a single table (fgs_message). This type of user interface defines the requirements for configuring the controller only.</p>
+
+<p>Choose Specification-&gt;Controller item of the menu; find the controller with system id «message». This controller provides the described interface. Please note the following key attributes of the configuring:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Meaning</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>crud</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Class</p></td>
+<td valign="top" ><p>Crud</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Script</p></td>
+<td valign="top" ><p>configurator.php</p></td>
+<td valign="top" ><p>This is a file of controlling script for the Configurator. It is necessary to specify the value of “application.php” for the application under development</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Template</p></td>
+<td valign="top" ><p>crud.php</p></td>
+<td valign="top" ><p>This file serves as a template for the Crud interface for the Configurator. It is necessary to specify the value of “admin_crud.php” for the application under development</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Click on the icon “detail” for this controller. Note that there is only one Unit with the system id “crud<b>”</b> and the type<b> “</b>crud“</p>
+
+<p>When clicking on the system id of a component in the <b>Grid</b> of the <b>Unit</b>, Configurator proceeds to configuring the component selected in the tab with the window’s code “instant_edit”.</p>
+
+<p><b>Lesson 2 - Configuring database fields</b></p>
+
+<p>Configuring database fields is an example of a user interface to a single table (fgs_field). A feature of this interface is using a <b>Grid</b> to edit some fields in the mode of <b>inline editing</b>.</p>
+
+<p>Choose the menu item Specification-&gt;Field. Next, double click the mouse on the name of the <b>Grid</b>; this will open a new tab to configure the <b>Grid</b> with the system id “fields”. Come over to this tab. Click on the icon "Update". A form will appear with the general attributes of the <b>Grid</b>. A key attribute is the attribute with the label «Inline editing?" set to "Yes."</p>
+
+<p>Then click on the icon "column." A table of the <b>Grid</b> colimns will be displayed. To view the set attributes of the input columns, click by mouse on the icon «Attribute» for fields with components and ColumnSelectOneMenu and ColumnInputText.</p>
+
+<p><b>Lesson 3 - Configuring database tables</b></p>
+
+<p>Configurating database tables is an example of a user interface to the two tables related by master-detail (fgs_table and fgs_field) relationship. Let’s consider the key points of configuring of this interface.</p>
+
+<p>Choose the menu item Specification-&gt;Field, find the field “field_table” for the “fgs_field” table and go to editing this field, just to see the set attributes. You shouldn’t change anything when viewing! Note that for this field, the following attributes are defined:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Value </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Referencing table</p></td>
+<td valign="top" ><p>fgs_table</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Referencing table's primary key</p></td>
+<td valign="top" ><p>table_name</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Referencing table's type</p></td>
+<td valign="top" ><p>master table</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Choose the menu item Specification-&gt;Table, find the table fgs_field and note that the fgs_table table is specified as a "table master».</p>
+
+<p>Next, double click the mouse on the name of the <b>Grid</b>, this will open a new tab (code of the window is “instant_edit”) to configure the <b>Grid</b> with the system id “tables”. Then go over to the tab with the window’s code “instant_edit”. Click on the icon "column." A table of the <b>Grid</b>’s elements will be displayed. Click on the icon «Attribute» for RowAction component with the action “detail”. A form with the defined attributes will appear. Please note the following attributes:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Value</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Action</p></td>
+<td valign="top" ><p>Detail</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Immediate?</p></td>
+<td valign="top" ><p>No</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Choose Specification-&gt;Controller item of the menu; find a controller with system id “table”. This controller provides a described interface. Please note the following key attributes of the configuration:</p>
+
+<table border="1" cellpadding="2" cellspacing="0">
+<tbody>
+<tr>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Value</p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Type</p></td>
+<td valign="top" ><p>MasterDetail</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Class</p></td>
+<td valign="top" ><p>MasterDetail</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Script</p></td>
+<td valign="top" ><p>configurator.php</p></td>
+<td valign="top" ><p>This is a file of controlling script for the Configurator. It is necessary to specify the value of “application.php” for the application under development</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Template </p></td>
+<td valign="top" ><p>md.php</p></td>
+<td valign="top" ><p>This file serves as a template for the MasterDetail interface for the Configurator. It is necessary to specify the value of “admin_md.php” for the application under development</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Click on the icon “Detail” for this controller. Note that there are two Units: one with a system id “detail” and the type of “detail” and the other is with the system id “master” and the type of “master”.</p>
+
+<p><b>Lesson 4 - Configuring of lists</b></p>
+
+<p>Configuring of lists is an example of an interface to the two tables related by the “master-detail” relationship (fgs_list and fgs_option). This type of configuration is of interest owing to the configuration of chained selects and configuration of a component RowAction with a condition.</p>
+
+<p>Select the menu item Specification-&gt;List. If a list’s input form is not visible then make visible by clicking on the hyperlink «Form» located on an extra panel.</p>
+
+<p>The form of list input allows changing the dependent lists used for inputing fields labeled "Table" and "Dataset" in case of changing the attributes of he list “System?” Depending on setting this attribute in "Yes" or "No", there will be displayed a list of tables and datasets that belong, respectively, to the Configurator or the application under development.</p>
+
+<p>In this case, the chain of the dependents select is composed of the upper node «System?» with level 0 and two nodes of the lower level "Table" and "dataset". In addition, the nodes "Table" and "dataset" are on the same level, i.e. level 1.</p>
+
+<p>To view the configuration of the input form, double-click on the name of the form. Then go over to the tab with the window’s code «instant_edit». Then click on the icon "Element." A <b>Grid</b> with elements of the input form will be displayed. Get familiar with the attributes of fields list_system, list_table, and list_dataset by clicking in the <b>Grid</b> on the icon «Attribute» of the corresponding field. Pay particular attention to the attribute group "Attributes Ajax». Note that the field “list_system” has global scope under the name “system”.</p>
+
+<p>Next it is necessary to get familiar with the list with system id “ListTable”, which is a list of tables. To do this, simply click on the name of the list for the field “list_table” in the <b>Grid</b> of elements of the input form. Configurator will proceed over to configuring the list on the tab “instant_edit”. This list is a variable list and it is based on the dataset with systemid “ListTable”. To view the “ListTable” dataset’s attributes, click on the name of the dataset in the <b>Grid</b>. The Configurator will start configurating the datasets limited by only dataset “ListTable”. In the <b>Grid</b> of datasets, click on the icon ”Detail” and see how two predicates of this dataset are configurated.</p>
+
+<p>There should be an explanation of which lists are used to the Configurator and applications. All the variable lists based on tables with an attribute “System?” set to "Yes" and all costant lists, which are based on the table fgs_option are used for the Configurator. For applications, there are used all the variable lists based on the tables with the attribute “System?” set to "No" and all the constant lists, which are based on the table fgs_option.</p>
+
+<p>To include all the constant lists, the predicate is reqiured for the field table_name with the attributes:</p>
+
+<table border="1" cellpadding="2" cellspacing="0" >
+<tbody>
+<tr>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Value </p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>fgs_table</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>table_name</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Argument</p></td>
+<td valign="top" ><p>fgs_option</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Argument type</p></td>
+<td valign="top" > </td>
+<td valign="top" ><p>A type of the field “table_name” will be taken as a type of argument.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Operator</p></td>
+<td valign="top" ><p>equal</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Connector</p></td>
+<td valign="top" ><p>AND</p></td>
+<td valign="top" ><p>It is not used, because it’s the first predicate to process: index is equal to 10 </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Required?</p></td>
+<td valign="top" ><p>Yes</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Index </p></td>
+<td valign="top" ><p>10</p></td>
+<td valign="top" > </td>
+</tr>
+
+</tbody>
+</table>
+
+<p>To be included in a list of variable lists, a predicate is required for the field table_system with attributes:</p>
+
+<table border="1" cellpadding="2" cellspacing="0" >
+<tbody>
+<tr>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Value </p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>fgs_table</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>table_system</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Argument</p></td>
+<td valign="top" ><p>&amp;rgv system</p></td>
+<td valign="top" ><p>This means that the argument is the element with the key “system”of the “globals” array of the Registry component </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Argument type</p></td>
+<td valign="top" > </td>
+<td valign="top" ><p>A type of the field table_name will be taken as a type of argument.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Operator</p></td>
+<td valign="top" ><p>equal</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Connector</p></td>
+<td valign="top" ><p>OR</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Required?</p></td>
+<td valign="top" ><p>yes</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Index </p></td>
+<td valign="top" ><p>10</p></td>
+<td valign="top" > </td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Creating the list of tables with system id “ListTable” is done as follows.</p>
+
+<p>Component Form puts the value of the “list_system” field in the element with the key “system”of the “globals” array of the Registry component. When loading the list with the system id “ListTable”, the loader of lists ListLoader uses the PredicateBuilder component for obtaining the conditions imposed by the “ListTable” dataset. The component PredicateBuilder, in turn, uses the Evaluator component to get the value «&amp; rgv system» and returns the condition (table_name = 'fgs_option' or table_system = '0 ') or (table_name =' fgs_option 'or table_system = '1'), which ListLoader uses to load the list of tables with system id “ListTable”.</p>
+
+<p>Creating the list of datasets with system id “UnitDataset” to enter the field list_dataset is carried out similarly. The “UnitDataset” list is based on the “UnitDataset” dataset, which has only one predicate with attributes:</p>
+
+<table border="1" cellpadding="2" cellspacing="0" >
+<tbody>
+<tr>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Value </p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>fgs_dataset</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>dataset_system</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Argument</p></td>
+<td valign="top" ><p>&amp;rgv system</p></td>
+<td valign="top" ><p>This means that the argument is an element of the globals array of Registry component with a key “system”.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Argument type</p></td>
+<td valign="top" > </td>
+<td valign="top" ><p>A type of the field dataset_system will be taken as a type of an argument. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Operator</p></td>
+<td valign="top" ><p>equal</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Connector</p></td>
+<td valign="top" ><p>AND</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Required?</p></td>
+<td valign="top" ><p>yes</p></td>
+<td valign="top" > </td>
+</tr>
+
+</tbody>
+</table>
+
+<p>When loading the list with the system code “UnitDataset”, the ListLoader uses the PredicateBuilder component to obtain the conditions imposed by the “UnitDataset” dataset. The PredicateBuilder component, in turn, uses the Evaluator component to get the value «&amp; rgv system» and returns the condition (dataset_system = '0 ') or (dataset_system = '1'), which uses ListLoader to download the datasets with system id UnitDataset.</p>
+
+<p>Let’s consider how to configure a component RowAction with a condition. Chose again the menu item Specification-&gt;List. You can see that in the <b>Grid</b> of lists the lists based on the table have an icon fgs_option «Detail», and the lists, which are not based on the “fgs_option’ table, do not have this icon. To find out how it was configured, double-click on the name of the <b>Grid</b>. The controller will go over to the mode of configuring the <b>Grid</b> with the system id «lists» on the tab «instant_edit». Go over to this tab. Click on the icon "Column." There will be displayed a table of columns of this <b>Grid</b>. Click on the icon «Attribute» for the RowAction component of the action “detail”. There will be dispayed a form of input of attributes of the component. Please note the following attributes:</p>
+
+<table border="1" cellpadding="2" cellspacing="0" >
+<tbody>
+<tr>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Value </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Condition</p></td>
+<td valign="top" ><p>Equal</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Condition field</p></td>
+<td valign="top" ><p>list_table</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Condition class</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Condition parameter</p></td>
+<td valign="top" ><p>fgs_option</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Condition parameter type</p></td>
+<td valign="top" ><p>A scalar value</p></td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Class of a condition is not specified. This means that this is a standard condition.</p>
+
+<p>Let's see how the condition “<b>Equal”</b> is configured. Choose the menu item Specification-&gt;Condition and find the condition with the system id “<b>Equal”</b>. Please note that type of this condition is "common condition". This condition consists of only one statement with the attributes</p>
+
+<table border="1" cellpadding="2" cellspacing="0" >
+<tbody>
+<tr>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Value </p></td>
+<td valign="top" ><p>Commetaries</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Operand 1</p></td>
+<td valign="top" ><p>%statement_operand1</p></td>
+<td valign="top" ><p>This means that Operand 1 will be replaced during exporting</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Operator</p></td>
+<td valign="top" ><p>equal</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Operand 2</p></td>
+<td valign="top" ><p>%statement_operand2</p></td>
+<td valign="top" ><p>This means that Operand 2 will be replaced during exporting</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Failure</p></td>
+<td valign="top" ><p>An error in case of failure</p></td>
+<td valign="top" > </td>
+</tr>
+
+</tbody>
+</table>
+
+<p>During exporting of this condition</p>
+
+<p>Operand 1 will be equal to «&amp;arg list_table»</p>
+
+<p>Operand 2 will be equal to « fgs_option»</p>
+
+<p>The dispay of the icon “Detail” (component GridKit) and validation of appropriate action (a component of <b>Grid</b>) occurs as follows.</p>
+
+<p>To validate the condition, <b>ConditionTester</b> component is used, to which both testable statements and the current row are passed. To evaluate Operand 1, the component <b>ConditionTester</b> uses the Evaluator component, to which the expression «&amp; arg list_table» and the current row are passed. The Evaluator component returns the value of the field “list_table” to the component <b>ConditionTester</b>. Further the component <b>ConditionTester</b> compares to see if the resulting value equal to the value «fgs_option» (Operand 2) and returns the result of comparing. Depending on the result of validation, a decision is taken as to display or not to display the icon (GridKit) or to recognize the action as valid or not (<b>Grid</b>).</p>
+
+<p><b>Lesson 5 - Configuring of Controllers</b></p>
+
+<p>Configuring controllers is an example of an interface to the two tables related by master-detail (fgs_controller and fgs_unit) relationship. This example of configurating is interesting owing to the following. As you know, all controllers are divided on the basis of an attribute of their relationship to the Configurator or to the application under development. This division is determined on the base of the «System? » attribute of the controller. In accordance with this attribute, during configuration of a controller’s Units the appropriate lists of input forms, Grids, search forms and datasets are used. In such a way, the lists of applied input forms, Grids, search forms and datasets are used for applicable controllers; while the lists of system input forms, Grids, search forms and datasets are used for controllers of the Configurator. Configuring the controllers shows how to pass a field value from the master table to the input forms of the subordinated table (detail Form).</p>
+
+<p>To begin, let’s choose the menu item Specification-&gt;Controller. A table of controllers will be displayed. Double-click on the name of the <b>Grid</b> and the Configuratorwill proceed to configuring the <b>Grid</b> with the system id «controllers» in the window with the code «instant_edit». Go over to this tab. Click on the icon "Column" and a list of columns of the <b>Grid</b> will be displayed. Click on the icon «Attribute» for the field «controller_system». A form of input of the attributes of this field will be displayed. Pay attention to the attribute "Global name", which is equal to «system», and the attribute "Save" set to "Yes."</p>
+
+<p>Return the tab of configuring controllers and click on the icon «Detail» of any controller. An input form and the <b>Grid</b> of Units will be displayed. Click on the name of the input form, and the Configurator will proceed to configuring the input form with the system id “unit” in the window with code «instant_edit». Go over to this tab. Click on the icon "Element" for a single entry corresponding to this input form. A table of input elements, which relate to this input form, will be displayed. We shall be interested in configuring the input fields unit_form, unit_grid, unit_search and unit_dataset.</p>
+
+<p>Let’s consider configuring only the field unit_form because configuring other fields is similar to this. To enter this field, the list with the system id “UnitForm” is used, which is based on the dataset with the system id “UnitForm”. To view the “UnitForm” list’s attributes, click on the name of the “UnitForm” list. The Configurator will proceed to the configuring this list in the same window («instant_edit»). The “UnitForm” list excludes the types of search forms with assistance of the attribute 'where clause in the request" equal to “form_type not like' search% '”. Click on the name of the “UnitForm” dataset. In the same window (“instant_edit”) the Configurator will proceed to configuring this dataset. This dataset consists of five predicates.</p>
+
+<p>As for the 4 predicates related to the field «form_type» of the table «fgs_form», it is necessary to do the following explanation. All input forms with type equal to «template», «column», «element», «predicate» are service forms and they are not used for entering data. Therefore, these four predicates cut off service forms. More interesting is the fifth predicate belonging to the field «form_system» of the table «fgs_form» and having the attributes:</p>
+
+<table border="1" cellpadding="2" cellspacing="0" >
+<tbody>
+<tr>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Value </p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>fgs_form</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>form_system</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Argument</p></td>
+<td valign="top" ><p>&amp;rgv system</p></td>
+<td valign="top" ><p>This means that the argument is an element of the globals array of Registry component with a key “system”.</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Argument type</p></td>
+<td valign="top" > </td>
+<td valign="top" ><p>A type of the field form_system will be taken as a type of an argument. </p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Operator</p></td>
+<td valign="top" ><p>равно</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Connector</p></td>
+<td valign="top" ><p>AND</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Required?</p></td>
+<td valign="top" ><p>Yes</p></td>
+<td valign="top" > </td>
+</tr>
+
+</tbody>
+</table>
+
+<p>Creating the “UnitForm” list occurs as follows.</p>
+
+<p>To enter configurating Units, the developer should click on the icon «Detail» of a corresponding controller. At the same time, master <b>Grid</b> of the controller with the system id «controllers» should load only one row corresponding to the selected controller.</p>
+
+<p>When loading only one row, the component <b>Grid</b> stores columns’ values with set attribute "Global name" into the “globals” array of the Registry component. In our case, this column is for the field controller_system.</p>
+
+<p>When loading the list “ListTable”, the loader of lists ListLoader uses the PredicateBuilder component for getting the condition imposed by the “UnitForm” dataset. The PredicateBuilder component, in turn, uses the Evaluator component to get the value «&amp; rgv system» and returns the condition ((form_system = '1 'and form_type! = 'template 'and form_type! ='column ' and form_type! =' element 'and form_type! = 'predicate')) or ((form_system = '0 'and form_type! = 'template 'and form_type! = 'column 'and form_type! = 'element 'and form_type! =' predicate ')), which the ListLoader adds to condition (form_type not like 'search%') and uses it to load the list of input forms with system id “UnitForm”.</p>
+
+<p><b>Lesson 6 - Configuring input forms</b></p>
+
+<p>Configuring input form is an example of configuring a UnitSet interface.</p>
+
+<p>The particulariities of this configuring is using a dataset, a non-standard renderer of input forms and type of Units, differed from “master” and “detail”.</p>
+
+<p>To begin, let’s get familiar with the controller with the system id “forms”, organizing this interface. To do this, choose the menu item Specification-&gt;Controller. In the displayed table of controllers locate the controller with the system id “forms” and click on the icon “Detail” of this controller.</p>
+
+<p>Note that the “InputForm” dataset is included in the the master Unit. This is due to the fact that the specifications of input and search forms are stored in the same four tables. Therefore, the search forms should be exluded from the rows displayed in the master <b>Grid</b>. This is what for the “InputForm” dataset serves. To view the “InputForm” dataset, click on the name of the dataset InputForm in the row detail <b>Grid</b> of the corresponding Unit ID with the code master. The Configurator opens an additional tab with the code of a window «instant_edit» for configuring this particular data set. Click on this tab. This dataset has a simple predicate with attributes:</p>
+
+<table border="1" cellpadding="2" cellspacing="0" >
+<tbody>
+<tr>
+<td valign="top" ><p>Label</p></td>
+<td valign="top" ><p>Value </p></td>
+<td valign="top" ><p>Comments</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Table</p></td>
+<td valign="top" ><p>fgs_form</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Field</p></td>
+<td valign="top" ><p>form_type</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Argument</p></td>
+<td valign="top" ><p>search</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Argument type</p></td>
+<td valign="top" > </td>
+<td valign="top" ><p>The field type form_type will be used as the type of an argument</p></td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Operator</p></td>
+<td valign="top" ><p>Doesn’t contain (not like)</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Connector</p></td>
+<td valign="top" ><p>AND</p></td>
+<td valign="top" > </td>
+</tr>
+
+<tr>
+<td valign="top" ><p>Required?</p></td>
+<td valign="top" ><p>Yes</p></td>
+<td valign="top" > </td>
+</tr>
+
+</tbody>
+</table>
+
+<p>This predicate simply reflects the fact that all forms relating to the search forms contain in their type the substring «search».</p>
+
+<p>Return to the tab for configuring controllers and click on the icon "Update" for the row of the detail <b>Grid</b> corresponding to the Unit with the system id “attribute”. This Unit organizes an interface for editing the attributes of input elements depending on the component of the input element. Pay attention that in the displayed input form of this Unit the value “AttributeView” is set as a renderer for the input form, while the value “Attribute” is set as a class of the Unit.</p>
+
+<p>Pay attention also to the Unit with the code “add”, which has a type “auxiliary”. When configuring the input forms, this Unit organizes adding input fields. The <b>Grid</b> of this Unit has the system id “InitForm” and has a non-standard renderer FgsAddGridView. This <b>Grid</b> has the attribute «Modal? » set to "Yes." As you know, the usual components Form, <b>Grid</b>, and Search can be hidden and shown. However, when adding fields, this was deemed impractical. That's what for this attribute serves. The FgsAddGridView renderer does not include the possibility of setting by a user the outputting rows page-by-page, an arbitrary value of the attribute “offset”, pagesize.</p>
+
+<p><b>Lesson 7 - Configuring menus</b></p>
+
+<p>Configuring menus is an example of an interface to the two tables associated with master-detail (fgs_menu and fgs_item) relationship. In this example, what provokes interest is configuring “detail <b>Grid</b>” and one aspect of loading lists.</p>
+
+<p>Chose the menu item Specification-&gt;Menu item. In the <b>Grid</b> of menus that appears find the menu with the system id “configurator” and click on the icon «Detail» of this menu. An input form and a <b>Grid</b> of options of this menu will be displayed. Menu options are a hierarchical tree.To configure the “detail <b>Grid</b>” double click on the name of the <b>Grid</b> and go over to the configuring “detail <b>Grid</b>”. On this tab, click on the icon "Column". A table of columns of this <b>Grid</b> will be displayed. Pay attention to the field item_pid, which stores the code of a parent node of the menu items. To display this field, component ColumnLookup with a list of MenuItem is used. This list is made up of menu items that are of type "menu". Click on the name of the list MenuItem. Configurator will go to configuring this list. This list is based on the same table fgs_item and, therefore, an alias table and alias fields are set for it. This list uses the dataset MenuItem to set conditions on the selected data. You can independently familiarize yourselves with the attributes of the predicate of this dataset. The most important thing here is that to load the data of this table, a list based on the same table is used. When exporting a specification of the input form, the Configurator resognizes this fact and adds the attribute “listDrop” to the properties of these elements. When creating an instance of the Form component with input elements with the same attribute, an attribute of the same name of the component Form is created. Component Unit, which includes component Form with the same attribute, registers for the list loader ListLoader the event «done» initiated by the Form component. When entering a new row, editing, or deleting a row, the Form component triggers the event «done», which is also sent to the list loader for processing. As arguments of the event, component Form includes also the name of its base table. Processing this event by the list loader consists in reseting an attribute of loading the lists, which are based on the table passed in the arguments of events. Therefore, when trying to load such lists again, the list loader loads again the options of lists.</p>
+
+<p><b>Lesson 8 - Configuring conditions </b></p>
+
+<p>Configuring conditionsis an example of an interface to the two tables associated with master-detail (fgs_condition and fgs_statement) relationship. In this example, what provokes interest is switching to entering of statements just after of inserting of a new condition.</p>
+
+<p>An input form with id «condition» is used to input conditions. Usually the «Insert» button doesn’t have the «event» attribute and the Configurator exports default value «done» for this attribute But in our case the «event» attribute is set to «detail». So after inserting of a new condition the Form component fires the «detail» event, after which occurs switching to «detail» mode. In this mode you can enter statements of the new condition.</p>
+
+<p>This method is used for configuring controllers of input forms, grids and search forms. These controllers are of UnitSet type and the «event» attribute of «Insert» buttons of appropriate input forms is set to id of a necessary Unit. After inserting of a new input form, grid or search form the Form component fires the event of switching to necessary mode. For example after adding of a new input form occurs switching to «element» mode in which you can enter elements of the new form.</p>
+
+<p><b>Lesson 9 - Configuring of an input elemnt’s changing via an event</b></p>
+
+<p>Let’s suppose we have got an input form with an input element <b>SelectOneMenu</b> that uses a variable list from rows of a reference table. During editing or inserting rows may be happened that there is not an appropriate option in the list. So we need:</p>
+
+<ul>
+<li>Add the missing option, i.e. insert a row in the reference table </li>
+<li>Primary key of this row has to be assigned to the input element <b>SelectOneMenu</b> value</li>
+</ul>
+
+<p>Of course, entered data into the input form under consideration has to be preserved.</p>
+
+<p>To implement all of this it’s nessecary:</p>
+
+<p>The interface controller has to be of UnitSet type</p>
+
+<p>The input form under consideration must have an element InputButton with the attribute «action» equal to “Fire event” and with not empty value of the attribute «event». </p>
+
+<p>The interface controller has to include a Unit of type «auxiliary» with the only input form for the reference table. Id of this Unit has to be equal to the attribute «event» of the element InputButton</p>
+
+<p>The attribute “Event” of button «Insert» of the «auxiliary» Unit’s input form has to set </p>
+
+<p>The attribute “Set value by event” of the input element <b>SelectOneMenu</b> must be equal to the attribute “Event” of button «Insert» </p>
+

@@ -1,0 +1,2 @@
+<?php
+$list['TrimType']=array('options'=>array('trim'=>'strip whitespace from the beginning and end of a string','ltrim'=>'strip whitespace from the beginning of a string','rtrim'=>'strip whitespace from the end of a string','notrim'=>'no whitespace stripping of a string'));

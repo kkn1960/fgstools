@@ -1,0 +1,2 @@
+<?php
+$list['analytic_frequency']=array('options'=>array('day'=>'Daily','week'=>'Weekly','month'=>'Monthly','quarter'=>'Quarterly overwiew','halfyear'=>'6 months overwiew','month9'=>'9 months overwiew','year'=>'Yearly overwiew'));

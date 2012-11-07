@@ -1,0 +1,2 @@
+<?php
+$list['ConfigParameters']=array('sid'=>'ConfigParameters','table'=>'fgs_parameter','from'=>'fgs_parameter','primary_key'=>'parameter_id','select'=>'parameter_id id,parameter_id as name','display_field'=>'parameter_id');

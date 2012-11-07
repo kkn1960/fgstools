@@ -1,0 +1,129 @@
+<h1>FGS Tools guide</h1>
+<br>
+<b>Introduction</b>
+
+<p>FGS Tools is a web tool to create web-based applications to input, output and search data. FGS Tools drastically reduce time and manual coding of such applications and its changing become much easier. FGS Tools lets to implement very complex data search without any coding. Built-in internationalization lets creation of multi-language sites very easy.</p>
+
+<p>FGS Tools can be very useful for quick prototyping as it lets creation of web-based user interfaces to database tables almost without any PHP, SQL or JavaScript manual coding. Besides, low entry lets even an inexperienced developer to get immediate results.</p>
+
+<p>With FGS Tools you can create three types of user interfaces:</p>
+
+<ul>
+<li>Interface to a single table</li>
+<li>Interface to two tables associated by master-detail relationship</li>
+<li>Interface to several tables associated or not by master-detail relationship</li>
+</ul>
+
+<p>FGS Tools consists of FGS Factory framework and FGS Configurator and uses three concepts:</p>
+
+<ul>
+<li>Component architecture</li>
+<li>Specifications of components</li>
+<li>Configurator of specifications</li>
+</ul>
+
+<p>The framework has component architecture and creates instances of components (classes) from its specifications.</p>
+
+<p>Component’s specification is understood as a set of attributes, defining appearance and behavior.</p>
+
+<p>The Framework is based on three visual components Form, Grid, Search and one non-visual component Dataset.</p>
+
+<p>The Form component is an analogue of the HTML element «form» and enables the user to input data in database tables (input form).</p>
+
+<p>The <b>Grid</b> component has HTML element «table» as analog and is used mainly to display database table rows in HTML table</p>
+
+<p>The Search component is an analog of HTML element «form» and enables the user to input row filters for the Grid component.</p>
+
+<p>The Dataset is non-visual component and serves to set hidden row filters for Grid components or lists.</p>
+
+<p>Components <b>Form</b>, <b>Grid</b>, <b>Search</b> and <b>Dataset</b> which create user interface to one common database table are united in a component <b>Unit</b>. The <b>Unit</b> component serves to make interaction among its components and, therefore, serves as a controller. </p>
+
+<p>The Evaluator provides other components with access to data which will become known only at run time.</p>
+
+<p>Input and output elements can use dynamic lists having database table’s rows as options. Loading such lists is handled by the <b>ListLoader</b> component.</p>
+
+<p>Data exchange among components, saving and restoring of components state are handled by the <b>Registry</b> component.</p>
+
+<p>Accesses to data are handled by t<b>he</b> <b>AccessHandler</b> component.</p>
+
+<p><b>The Timer</b> component is used for profiling execution time of scripts.</p>
+
+<p>The <b>debug</b> component serves to collect and display debugging information.</p>
+
+<p>The <b>ddm</b> class can be used to a create drop-down menu.</p>
+
+<p>The <b>ddm</b> and <b>svm</b> class also use specifications which you can create with the Configurator. </p>
+
+<p>Using of components’ specifications changes development of web application. A developer creates components’ specifications and develops only extensions of standard components.</p>
+
+<p>The Configurator is a special web-based application for creating specifications of components. The Configurator is created on the base of the FGS Factory framework and provides web user interfaces to these database tables.</p>
+
+<p>Specifications of components are stored in special database tables. To speed up operation, the data from these tables is exported to specification's files. The Framework uses these files to create instances of components.</p>
+
+<p>To create components’ specifications the developer uses special HTML-forms in FGS Configurator.</p>
+
+<p>The Framework creates all necessary SQL queries from components’ specifications and the developer does not need to manually code SQL queries for standard operations such as inserting, updating, removing and searching rows. </p>
+
+<p>The Framework includes standard components performing input, output and search data, and validation and filtering of input data.</p>
+
+<p>The Framework integrated with jQuery framework. The Framework has built-in support of autocomplete input fields, chained select’s, inline editing of rows. Also the jQuery <em>Datepicker</em> can be use to input dates. You can use these features without any coding on JavaScript, SQL or PHP. </p>
+
+<h3>I18n</h3>
+
+<p>Language variants of messages are stored in the “fgs_message” database table which exported to different message files. At run time the file corresponding to selected interface language is loaded. To translate a message is used the function Msg which uses the loaded message file.</p>
+
+<p>For each language of interface (English, Russian etc), its own set of specifications is created, which is stored in an individual directory. The specifications for each type of components are stored in individual directories.</p>
+
+<p>At this time only English and Russian are supported.</p>
+
+<h3>How to get, install and configure FGS Tools </h3>
+
+<p>You can download FGS Tools at <a href="http://fgstools.net/download.php">http://fgstools.net/download.php</a></p>
+
+<p>To install FGS Tools:</p>
+
+<ul>
+<li>unpack the downloaded archive somewhere under your local web server's root directory</li>
+<li>Create database tables related to the Configurator by execution of the fgstools.sql SQL script from downloaded archive in phpMyAdmin</li>
+</ul>
+
+<p>List of database tables related to the Configurator:</p>
+
+<ol start="1" type="1"><li>fgs_column</li>
+<li>fgs_component</li>
+<li>fgs_condition</li>
+<li>fgs_controller</li>
+<li>fgs_converter</li>
+<li>fgs_dataset</li>
+<li>fgs_debug</li>
+<li>fgs_element</li>
+<li>fgs_export</li>
+<li>fgs_field</li>
+<li>fgs_filter</li>
+<li>fgs_form</li>
+<li>fgs_grid</li>
+<li>fgs_item</li>
+<li>fgs_list</li>
+<li>fgs_menu</li>
+<li>fgs_message</li>
+<li>fgs_option</li>
+<li>fgs_parameter</li>
+<li>fgs_predicate</li>
+<li>fgs_role</li>
+<li>fgs_statement</li>
+<li>fgs_table</li>
+<li>fgs_unit</li>
+<li>fgs_user</li>
+<li>fgs_validator</li>
+</ol><p>Before execution of the fgstools.sql SQL script check that database tables related to the Configurator do not have the same names as your database tables. Your tables with the same names will be dropped and its data lost!</p>
+
+<p>Configuration variables are stored in the file include/config.php.</p>
+
+<p>To set database connection you should find «Database name &amp;&amp; connection parameters» section in the file include/config.php:</p>
+
+<p>$dbname="your database name";</p>
+
+<p>$gaDbConnect["your database name "]=array("server"=&gt;" your database host", "dbname"=&gt;" your database name ", "dbms"=&gt;"Mysql", "codepage"=&gt;"utf8", "user"=&gt;"user name", "password"=&gt;"user password");</p>
+
+<p>The “dbms” parameter must be the name of the database driver. FGS Tools includes the Mysql driver for MySql DBMS. </p>
+

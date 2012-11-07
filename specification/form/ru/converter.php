@@ -1,0 +1,24 @@
+<?php
+$form['converter']=array();
+$form['converter']['initial']=array();
+$form['converter']['initial']=array('mode'=>'insert');
+$form['converter']['session']['insert']=array('mode','hide','display');
+$form['converter']['session']['copy']=array('mode','hide','display','apk','irow');
+$form['converter']['session']['read']=array('mode','hide','display','apk','irow');
+$form['converter']['session']['update']=array('mode','hide','display','apk','irow');
+$form['converter']['session']['remove']=array('mode','hide','display','apk','irow');
+$form['converter']['session']['multi_update']=array('mode','hide','display','apk','irow');
+$form['converter']['session']['multi_remove']=array('mode','hide','display','apk','irow');
+$form['converter']['session']['multi_read']=array('mode','hide','display','apk','irow');
+$button['converter']=array();
+$button['converter'][]=array('value'=>'Вставить','name'=>'insert','renderer'=>'button','type'=>'submit','action'=>'insert','modes'=>array('insert','copy'),'attributes'=>'tabindex=\'0\'');
+$button['converter'][]=array('value'=>'Обновить','name'=>'update','renderer'=>'button','type'=>'submit','action'=>'update','modes'=>array('update','multi_update'),'attributes'=>'tabindex=\'0\'');
+$button['converter'][]=array('value'=>'Удалить','name'=>'remove','renderer'=>'button','type'=>'submit','action'=>'remove','modes'=>array('remove','multi_remove'),'attributes'=>'tabindex=\'0\'');
+$button['converter'][]=array('value'=>'Read','name'=>'read','renderer'=>'button','type'=>'submit','action'=>'read','modes'=>array('multi_read'),'attributes'=>'tabindex=\'0\'');
+$button['converter'][]=array('value'=>'Отменить','name'=>'cancel','renderer'=>'button','type'=>'submit','action'=>'cancel','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'attributes'=>'tabindex=\'0\'');
+$button['converter'][]=array('value'=>'Отменить изменения','name'=>'reset','renderer'=>'button','type'=>'reset','action'=>'reset','modes'=>array('insert','update','copy','multi_update'),'attributes'=>'tabindex=\'0\'');
+$form['converter']['properties']=array('primary_key'=>array('converter_sid'),'table'=>'fgs_converter','method'=>'post','system'=>1,'redirect_after_insert'=>0,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'system'=>1,'dependent'=>array('fgs_filter_filter_converter'=>array('fk'=>'filter_converter','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_filter','pk'=>'converter_sid')),'reference'=>array('fgs_filter_filter_converter'=>array('fk'=>'filter_converter','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_filter','pk'=>'converter_sid')),'title'=>'converter','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'attributes'=>'','htmlevents'=>'','enctype'=>'application/x-www-form-urlencoded','events'=>array('insert'=>'done','update'=>'done','remove'=>'done'),'joins'=>array());
+$e['converter']=array();
+$e['converter'][0]=array('table'=>'fgs_converter','rowid'=>'11272','sid'=>'converter_sid','fieldset'=>'','name'=>'converter_sid','label'=>'Sid','trim'=>'trim','component'=>'InputText','type'=>'varchar','required'=>1,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'field'=>'converter_sid','renderer'=>'text','cai'=>'1','attributes'=>'maxlength=\'64\' size=\'60\'');
+$e['converter'][1]=array('table'=>'fgs_converter','rowid'=>'11273','sid'=>'converter_type','fieldset'=>'','name'=>'converter_type','label'=>'Тип','component'=>'SelectOneRadio','renderer'=>'radio','layout'=>'1','required'=>1,'default_value'=>'filter','list_sid'=>'ConverterType','list'=>array('options'=>array('filter'=>'фильтр','converter'=>'конвертор')),'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'type'=>'varchar','field'=>'converter_type','cai'=>1);
+$e['converter'][2]=array('table'=>'fgs_converter','rowid'=>'11305','sid'=>'converter_static','fieldset'=>'','name'=>'converter_static','label'=>'Статический метод ?','component'=>'SelectOneRadio','renderer'=>'radio','layout'=>'1','required'=>1,'default_value'=>'1','list_sid'=>'YesNo','list'=>array('options'=>array('0'=>'нет','1'=>'да')),'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'type'=>'tinyint','field'=>'converter_static','cai'=>1);

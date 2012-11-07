@@ -1,0 +1,91 @@
+Thank you for choosing FGS Tools 3.0- a power web tool to create web interfaces to database tables
+
+INSTALLATION
+------------
+
+Please make sure the release file is unpacked under a Web-accessible
+directory. You shall see the following files and directories:
+
+      application/
+      css/                 css files
+      docs/                doc files
+      image/               icon files
+      include/             demos
+      js/                  JavaScript files
+      specification/
+      system/              tool source files
+      template/            tool templates
+      
+      LICENSE.txt          FGS Tools
+      README               this file
+      application.inc
+      export.inc
+      system.inc
+      access_denied.php
+      application.php
+      autocomplete.php
+      cell_edit.php
+      configurator.php
+      dbload.php
+      editor.php
+      export.php
+      index.php
+      list.php
+      login.php
+      toggleDebug.php
+      toggleFGS.php
+      toggleMenu.php
+      fgstools.sql   SQL script to create of FGS Tools system tables
+
+      After that you have to create FGS Tools system tables by executing fgstools.sql in any SQL tool, for example in phpMyAdmin
+      
+Very important!
+
+Before execution of the fgstools.sql SQL script check that database tables related to the Configurator do not have the same names as your database tables. Your tables with the same names will be dropped and its data lost!
+
+
+Configuration variables are stored in the file include/config.php.
+
+To set database connection you should find "Database name && connection parameters" section in the file include/config.php:
+
+$dbname="your database name";
+$gaDbConnect["your database name "]=array("server"=>" your database host", "dbname"=>" your database name ", "dbms"=>"Mysql", "codepage"=>"utf8", "user"=>"user name", "password"=>"user password");
+
+The "dbms" parameter must be the name of the database driver. FGS Tools includes the Mysql driver for MySql DBMS.
+
+
+REQUIREMENTS
+------------
+
+FGS Tools requires:
+
+    PHP 5.2
+    MySql 5
+    jQuery 1.4.2
+    jQuery UI 1.8.2
+    
+FGS Tools  has been tested with Apache HTTP server
+on Windows and Linux operating systems.
+    
+
+QUICK START
+-----------
+
+FGS Tools is a web tool. You can access it with the following URL:
+
+        http://hostname/FGS Tools Path/index.php
+
+You will get almost full replica of the project website.
+
+Make login with:
+login: programmer
+password:programmer
+
+WHAT's NEXT
+-----------
+
+Please read doc files in docs/ and visit the project website for updates.
+
+
+Konstantin Kim, developer of FGS Tools 3.0
+http://www.fgstools.net

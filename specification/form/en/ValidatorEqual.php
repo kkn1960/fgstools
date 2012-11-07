@@ -1,0 +1,22 @@
+<?php
+$form['ValidatorEqual']=array();
+$form['ValidatorEqual']['initial']=array();
+$form['ValidatorEqual']['initial']=array('mode'=>'update');
+$form['ValidatorEqual']['session']['insert']=array('mode','hide','display','amf','foreign_key');
+$form['ValidatorEqual']['session']['copy']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['ValidatorEqual']['session']['read']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['ValidatorEqual']['session']['update']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['ValidatorEqual']['session']['remove']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['ValidatorEqual']['session']['multi_update']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['ValidatorEqual']['session']['multi_remove']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['ValidatorEqual']['session']['multi_read']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$button['ValidatorEqual']=array();
+$button['ValidatorEqual'][]=array('value'=>'Insert','name'=>'insert','renderer'=>'button','type'=>'submit','action'=>'insert','modes'=>array('copy','insert'),'attributes'=>"tabindex='0'");
+$button['ValidatorEqual'][]=array('value'=>'Update','name'=>'update','renderer'=>'button','type'=>'submit','action'=>'update','modes'=>array('update','multi_update'),'attributes'=>"tabindex='0'");
+$button['ValidatorEqual'][]=array('value'=>'Remove','name'=>'remove','renderer'=>'button','type'=>'submit','action'=>'remove','modes'=>array('remove','multi_remove'),'attributes'=>"tabindex='0'");
+$button['ValidatorEqual'][]=array('value'=>'Read','name'=>'read','renderer'=>'button','type'=>'submit','action'=>'read','modes'=>array('multi_read'),'attributes'=>"tabindex='0'");
+$button['ValidatorEqual'][]=array('value'=>'Cancel','name'=>'cancel','renderer'=>'button','type'=>'submit','action'=>'cancel','modes'=>array('copy','remove','update','multi_remove','multi_update','multi_read','insert','read'),'attributes'=>"tabindex='0'");
+$button['ValidatorEqual'][]=array('value'=>'Reset','name'=>'reset','renderer'=>'button','type'=>'reset','action'=>'reset','modes'=>array('copy','update','multi_update','insert'),'attributes'=>"tabindex='0'");
+$form['ValidatorEqual']['properties']=array('primary_key'=>array('validator_rowid'),'table'=>'fgs_validator','method'=>'post','system'=>1,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'system'=>1,'title'=>'validator_specification','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'attributes'=>"",'htmlevents'=>"",'enctype'=>'application/x-www-form-urlencoded','events'=>array('insert'=>'done','update'=>'done','remove'=>'done'),'joins'=>array());
+$e['ValidatorEqual']=array();
+$e['ValidatorEqual'][0]=array('table'=>'fgs_validator','rowid'=>'2097','sid'=>'validator_field','fieldset'=>'','name'=>'validator_field','label'=>'Field','component'=>'InputText','type'=>'varchar','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'field'=>'validator_field','renderer'=>'text','cai'=>'1','attributes'=>"maxlength='64' readonly='1' size='60'");

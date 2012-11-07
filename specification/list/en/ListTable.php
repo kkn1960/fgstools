@@ -1,0 +1,2 @@
+<?php
+$list['ListTable']=array('sid'=>'ListTable','table'=>'fgs_table','from'=>'fgs_table','primary_key'=>'table_name','select'=>'table_name id,table_name as name','order'=>'table_name ASC','display_field'=>'table_name','predicates'=>array(array('field'=>'table_name','type'=>'varchar','table'=>'fgs_table','fieldset'=>'t','required'=>'1','argument'=>"fgs_option",'operator'=>'equal','connector'=>'and'),array('field'=>'table_system','type'=>'tinyint','table'=>'fgs_table','fieldset'=>'t','required'=>'1','argument'=>"&rgv system",'operator'=>'equal','connector'=>'or')));

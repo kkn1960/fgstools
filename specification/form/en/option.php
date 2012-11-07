@@ -1,0 +1,27 @@
+<?php
+$form['option']=array();
+$form['option']['initial']=array();
+$form['option']['initial']=array('mode'=>'insert');
+$form['option']['session']['insert']=array('mode','hide','display','amf','foreign_key');
+$form['option']['session']['copy']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['option']['session']['read']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['option']['session']['update']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['option']['session']['remove']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['option']['session']['multi_update']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['option']['session']['multi_remove']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$form['option']['session']['multi_read']=array('mode','hide','display','apk','irow','amf','foreign_key');
+$button['option']=array();
+$button['option'][]=array('value'=>'Insert','name'=>'insert','renderer'=>'button','type'=>'submit','action'=>'insert','modes'=>array('insert','copy'),'attributes'=>'tabindex=\'0\'');
+$button['option'][]=array('value'=>'Update','name'=>'update','renderer'=>'button','type'=>'submit','action'=>'update','modes'=>array('update','multi_update'),'attributes'=>'tabindex=\'0\'');
+$button['option'][]=array('value'=>'Remove','name'=>'remove','renderer'=>'button','type'=>'submit','action'=>'remove','modes'=>array('remove','multi_remove'),'attributes'=>'tabindex=\'0\'');
+$button['option'][]=array('value'=>'Read','name'=>'read','renderer'=>'button','type'=>'submit','action'=>'read','modes'=>array('multi_read'),'attributes'=>'tabindex=\'0\'');
+$button['option'][]=array('value'=>'Cancel','name'=>'cancel','renderer'=>'button','type'=>'submit','action'=>'cancel','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'attributes'=>'tabindex=\'0\'');
+$button['option'][]=array('value'=>'Reset','name'=>'reset','renderer'=>'button','type'=>'reset','action'=>'reset','modes'=>array('insert','update','copy','multi_update'),'attributes'=>'tabindex=\'0\'');
+$form['option']['properties']=array('primary_key'=>array('option_list','option_sid'),'table'=>'fgs_option','method'=>'post','system'=>1,'redirect_after_insert'=>0,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'system'=>1,'title'=>'list_option','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'attributes'=>'','htmlevents'=>'','enctype'=>'application/x-www-form-urlencoded','events'=>array('insert'=>'done','update'=>'done','remove'=>'done'),'joins'=>array());
+$e['option']=array();
+$e['option'][0]=array('table'=>'fgs_option','rowid'=>'10835','sid'=>'option_list','fieldset'=>'','name'=>'option_list','label'=>'List','component'=>'InputText','type'=>'varchar','required'=>1,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'field'=>'option_list','renderer'=>'text','cai'=>'1','attributes'=>'maxlength=\'64\' size=\'60\'');
+$e['option'][1]=array('table'=>'fgs_option','rowid'=>'10834','sid'=>'option_sid','fieldset'=>'','name'=>'option_sid','label'=>'Sid','component'=>'InputText','type'=>'text','required'=>1,'modes'=>array('insert','update','copy','remove','multi_update','multi_remove'),'field'=>'option_sid','renderer'=>'text','cai'=>'1','attributes'=>'maxlength=\'64\' size=\'60\'');
+$e['option'][2]=array('table'=>'fgs_option','rowid'=>'10836','sid'=>'option_en','fieldset'=>'','name'=>'option_en','label'=>'Option in English','component'=>'InputText','type'=>'varchar','required'=>1,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'field'=>'option_en','renderer'=>'text','cai'=>'1','attributes'=>'maxlength=\'255\' size=\'60\'');
+$e['option'][3]=array('table'=>'fgs_option','rowid'=>'10838','sid'=>'option_ru','fieldset'=>'','name'=>'option_ru','label'=>'Option in russian','component'=>'InputText','type'=>'varchar','required'=>1,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'field'=>'option_ru','renderer'=>'text','cai'=>'1','attributes'=>'maxlength=\'255\' size=\'60\'');
+$e['option'][4]=array('table'=>'fgs_option','rowid'=>'10837','sid'=>'option_index','fieldset'=>'','name'=>'option_index','label'=>'Index','component'=>'InputText','type'=>'int','required'=>1,'default_value'=>'0','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'field'=>'option_index','renderer'=>'text','cai'=>'1','attributes'=>'maxlength=\'10\' size=\'10\'');
+$e['option'][5]=array('table'=>'fgs_option','rowid'=>'10839','sid'=>'option_system','fieldset'=>'','name'=>'option_system','label'=>'System ?','component'=>'SelectOneRadio','renderer'=>'radio','layout'=>'1','required'=>1,'default_value'=>'0','list_sid'=>'YesNo','listDrop'=>1,'list'=>array('options'=>array('0'=>'no','1'=>'yes')),'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'type'=>'tinyint','field'=>'option_system','cai'=>1);

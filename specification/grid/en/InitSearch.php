@@ -1,0 +1,20 @@
+<?php
+$grid['InitSearch']=array();
+$selector['InitSearch']=array('field'=>'select','renderer'=>'selector','view'=>"<input onclick=\"toggleRow(%1\$d)\" type=checkbox name=\"select[%1\$d]\" id=\"id_select_%1\$d\" value=\"%2\$s\">");
+$grid['InitSearch']['properties']=array('table'=>'fgs_field','system'=>1,'primary_key'=>array('field_table','field_name'),'modal'=>1,'user_order'=>1,'user_pagesize'=>1,'user_offset'=>1,'inline_edit'=>0,'fkr'=>array('field_table'=>'table_name'),'title'=>'SelectPredicates','joins'=>array(),'save'=>array('field_length','field_type','field_argument','field_predicate','field_list','field_label','field_maxlength','field_size'),'sort'=>array('field_name'=>'field_name','field_length'=>'field_length','field_type'=>'field_type','field_predicate'=>'field_predicate','field_maxlength'=>'field_maxlength','field_size'=>'field_size'),'sort_prefix'=>array(),'sort_suffix'=>array(),'register'=>array(),'select'=>'t.field_table,field_name,t.field_name,t.field_length,t.field_type,t.field_argument,t.field_predicate,t.field_list,t.field_label,t.field_maxlength,t.field_size','from'=>'fgs_field t ');
+$grid['InitSearch']['initial']=array('pagesize'=>100,'direction'=>'ASC','order'=>'field_name','offset'=>0);
+$grid['InitSearch']['session']=array('pagesize','direction','order','offset','total','multimode_hide','display','hide','apk','foreign_key','adk');
+$ra['InitSearch']=array();
+$rsa['InitSearch']=array();
+$rsa['InitSearch'][]=array('action'=>'init_detail','renderer'=>'RowSetAction','immediate'=>0,'view'=>'<button type="submit" name="init_detail"  title="Add fields" ><span style="margin:0 -5px -3px -0px;" class="icon_add"></span></button>');
+$column['InitSearch']=array();
+$column['InitSearch'][0]=array('rowid'=>200,'component'=>'ColumnLink','header'=>'Field name','sid'=>'field_name','hidden'=>'0','calculate'=>'0','renderer'=>'FieldLink','field'=>'field_name','type'=>'varchar');
+$column['InitSearch'][1]=array('rowid'=>202,'save'=>'1','component'=>'ColumnText','header'=>'Field length','sid'=>'field_length','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'field_length','hidden'=>'0','calculate'=>'0');
+$column['InitSearch'][2]=array('rowid'=>203,'save'=>'1','component'=>'ColumnText','header'=>'Field\'s  type','sid'=>'field_type','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'field_type','hidden'=>'0','calculate'=>'0');
+$column['InitSearch'][3]=array('rowid'=>201,'save'=>'1','component'=>'ColumnText','header'=>'Argument','sid'=>'field_argument','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'field_argument','hidden'=>'0','calculate'=>'0');
+$column['InitSearch'][4]=array('rowid'=>5635,'save'=>'1','component'=>'ColumnText','header'=>'Predicate','sid'=>'field_predicate','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'field_predicate','hidden'=>'0','calculate'=>'0');
+$column['InitSearch'][5]=array('rowid'=>204,'save'=>'1','component'=>'ColumnText','header'=>'List','sid'=>'field_list','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'field_list','hidden'=>'0','calculate'=>'0');
+$column['InitSearch'][6]=array('rowid'=>205,'save'=>'1','component'=>'ColumnText','header'=>'Label','sid'=>'field_label','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'field_label','hidden'=>'0','calculate'=>'0');
+$column['InitSearch'][7]=array('rowid'=>5634,'save'=>'1','component'=>'ColumnText','header'=>'Attribute maxlength','sid'=>'field_maxlength','hidden'=>'1','renderer'=>'text','type'=>'int','field'=>'field_maxlength','hidden'=>'1','calculate'=>'0');
+$column['InitSearch'][8]=array('rowid'=>5637,'save'=>'1','component'=>'ColumnText','header'=>'Attribute size','sid'=>'field_size','hidden'=>'1','renderer'=>'text','type'=>'int','field'=>'field_size','hidden'=>'1','calculate'=>'0');
+$button['InitSearch']=array();

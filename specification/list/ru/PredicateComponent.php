@@ -1,0 +1,2 @@
+<?php
+$list['PredicateComponent']=array('sid'=>'PredicateComponent','table'=>'fgs_component','from'=>'fgs_component','primary_key'=>'component_sid','select'=>'component_sid id,component_name as name','order'=>'component_name ASC','where'=>'component_type=\'element\' and component_predicate=\'1\'','display_field'=>'component_name');

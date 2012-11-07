@@ -1,0 +1,22 @@
+<?php
+$form['parameters']=array();
+$form['parameters']['initial']=array();
+$form['parameters']['initial']=array('mode'=>'insert');
+$form['parameters']['session']['insert']=array('mode','hide','display');
+$form['parameters']['session']['copy']=array('mode','hide','display','apk','irow');
+$form['parameters']['session']['read']=array('mode','hide','display','apk','irow');
+$form['parameters']['session']['update']=array('mode','hide','display','apk','irow');
+$form['parameters']['session']['remove']=array('mode','hide','display','apk','irow');
+$form['parameters']['session']['multi_update']=array('mode','hide','display','apk','irow');
+$form['parameters']['session']['multi_remove']=array('mode','hide','display','apk','irow');
+$form['parameters']['session']['multi_read']=array('mode','hide','display','apk','irow');
+$button['parameters']=array();
+$button['parameters'][]=array('value'=>'Insert','name'=>'insert','renderer'=>'button','type'=>'submit','action'=>'insert','modes'=>array('copy','insert'));
+$button['parameters'][]=array('value'=>'Update','name'=>'update','renderer'=>'button','type'=>'submit','action'=>'update','modes'=>array('update','multi_update'));
+$button['parameters'][]=array('value'=>'Remove','name'=>'remove','renderer'=>'button','type'=>'submit','action'=>'remove','modes'=>array('remove','multi_remove'));
+$button['parameters'][]=array('value'=>'Read','name'=>'read','renderer'=>'button','type'=>'submit','action'=>'read','modes'=>array('multi_read'));
+$button['parameters'][]=array('value'=>'Cancel','name'=>'cancel','renderer'=>'button','type'=>'submit','action'=>'cancel','modes'=>array('copy','remove','update','multi_remove','multi_update','multi_read','insert','read'));
+$button['parameters'][]=array('value'=>'Reset','name'=>'reset','renderer'=>'button','type'=>'reset','action'=>'reset','modes'=>array('copy','update','multi_update','insert'));
+$form['parameters']['properties']=array('primary_key'=>array('parameter_id'),'table'=>'fgs_parameter','method'=>'post','system'=>1,'redirect_after_insert'=>0,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'system'=>1,'dependent'=>array('fgs_export_export_parameter'=>array('fk'=>'export_parameter','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_export','pk'=>'parameter_id')),'reference'=>array('fgs_export_export_parameter'=>array('fk'=>'export_parameter','type'=>'varchar','dbcascade'=>0,'table'=>'fgs_export','pk'=>'parameter_id')),'title'=>'parameters','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'attributes'=>'','htmlevents'=>'','enctype'=>'application/x-www-form-urlencoded','events'=>array('insert'=>'done','update'=>'done','remove'=>'done'),'joins'=>array());
+$e['parameters']=array();
+$e['parameters'][0]=array('table'=>'fgs_parameter','rowid'=>'1384','sid'=>'parameter_id','fieldset'=>'','name'=>'parameter_id','label'=>'Id','component'=>'InputText','type'=>'varchar','required'=>1,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'field'=>'parameter_id','renderer'=>'text','cai'=>'1','attributes'=>'maxlength=\'64\' size=\'60\' tabindex=\'10\'');

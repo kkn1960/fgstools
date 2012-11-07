@@ -1,0 +1,22 @@
+<?php
+$grid['grids']=array();
+$selector['grids']=array('field'=>'select','renderer'=>'selector','view'=>"<input onclick=\"toggleRow(%1\$d)\" type=checkbox name=\"select[%1\$d]\" id=\"id_select_%1\$d\" value=\"%2\$s\">");
+$grid['grids']['properties']=array('table'=>'fgs_grid','system'=>1,'primary_key'=>array('grid_sid'),'modal'=>0,'user_order'=>1,'user_pagesize'=>1,'user_offset'=>1,'inline_edit'=>0,'title'=>'grids','joins'=>array(),'save'=>array('grid_table','grid_system'),'sort'=>array('grid_table'=>'grid_table','grid_sid'=>'grid_sid','grid_title'=>'grid_title','grid_type'=>'grid_type','grid_system'=>'grid_system'),'sort_prefix'=>array(),'sort_suffix'=>array(),'register'=>array('grid_system'=>'system'),'select'=>'t.grid_sid,t.grid_table,t.grid_title,t.grid_type,t.grid_system','from'=>'fgs_grid t ');
+$grid['grids']['initial']=array('pagesize'=>30,'direction'=>'ASC','order'=>'grid_sid','offset'=>0);
+$grid['grids']['session']=array('pagesize','direction','order','offset','total','multimode_hide','display','hide','apk','adk');
+$ra['grids']=array();
+$ra['grids'][]=array('load'=>false,'action'=>'update','renderer'=>'RowAction','immediate'=>0,'view'=>'<a href="%3$s&amp;update=%1$d&amp;key=%2$s" class="icon_edit" title="Edit" ></a>');
+$ra['grids'][]=array('load'=>false,'action'=>'remove','renderer'=>'RowAction','immediate'=>0,'view'=>'<a href="%3$s&amp;remove=%1$d&amp;key=%2$s" class="icon_delete" title="Remove" ></a>');
+$ra['grids'][]=array('load'=>false,'action'=>'copy','renderer'=>'RowAction','immediate'=>0,'view'=>'<a href="%3$s&amp;copy=%1$d&amp;key=%2$s" class="icon_copy" title="Copy" ></a>');
+$ra['grids'][]=array('load'=>false,'action'=>'add','renderer'=>'RowAction','immediate'=>0,'view'=>'<a href="%3$s&amp;add=%1$d&amp;key=%2$s" class="icon_add" title="Add" ></a>');
+$ra['grids'][]=array('load'=>false,'action'=>'column','renderer'=>'RowAction','immediate'=>0,'view'=>'<a href="%3$s&amp;column=%1$d&amp;key=%2$s" class="icon_details" title="Column" ></a>');
+$rsa['grids']=array();
+$rsa['grids'][]=array('action'=>'multi_update','renderer'=>'RowSetAction','immediate'=>0,'view'=>'<button type="submit" name="multi_update"  title="Multi_update" ><span style="margin:0 -5px -3px -0px;" class="icon_edit"></span></button>');
+$rsa['grids'][]=array('action'=>'multi_remove','renderer'=>'RowSetAction','immediate'=>0,'view'=>'<button type="submit" name="multi_remove"  title="Multi_remove" ><span style="margin:0 -5px -3px -0px;" class="icon_delete"></span></button>');
+$column['grids']=array();
+$column['grids'][0]=array('rowid'=>160,'save'=>'1','component'=>'ColumnText','header'=>'Table','sid'=>'grid_table','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'grid_table','hidden'=>'0','calculate'=>'0');
+$column['grids'][1]=array('rowid'=>159,'component'=>'ColumnText','header'=>'Sid','sid'=>'grid_sid','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'grid_sid','hidden'=>'0','calculate'=>'0');
+$column['grids'][2]=array('rowid'=>161,'component'=>'ColumnText','header'=>'Title','sid'=>'grid_title','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'grid_title','hidden'=>'0','calculate'=>'0');
+$column['grids'][3]=array('rowid'=>163,'component'=>'ColumnLookup','header'=>'Type','sid'=>'grid_type','hidden'=>'0','join_lookup'=>0,'relation'=>'0','list'=>array('options'=>array('application'=>'application','template'=>'template','system'=>'system')),'field'=>'grid_type','hidden'=>'0','type'=>'varchar','align'=>'left','list_sid'=>'GridType','renderer'=>'option');
+$column['grids'][4]=array('rowid'=>5700,'save'=>'1','register'=>'system','component'=>'ColumnLookup','header'=>'System ?','sid'=>'grid_system','hidden'=>'0','join_lookup'=>0,'relation'=>'0','list'=>array('options'=>array('0'=>'no','1'=>'yes')),'field'=>'grid_system','hidden'=>'0','type'=>'tinyint','list_sid'=>'YesNo','renderer'=>'option');
+$button['grids']=array();

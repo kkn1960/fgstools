@@ -1,0 +1,2 @@
+<?php
+$list['NotRangeTest']=array('options'=>array('equal'=>'equal','not_equal'=>'not equal','m'=>'greater','mq'=>'greater or equal','l'=>'less','lq'=>'less or equal','like'=>'like','leftlike'=>'start with','rightlike'=>'end with','not_like'=>'not like','not_leftlike'=>'does\'t start with','not_rightlike'=>'does\'t end with','regexp'=>'regexp','in'=>'member of set','not_in'=>'out of set','include_all'=>'include all','include_one'=>'include at least one','not_include_all'=>'include none','null'=>'null','not_null'=>'not null','empty'=>'empty','not_empty'=>'not empty'));

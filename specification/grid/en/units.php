@@ -1,0 +1,22 @@
+<?php
+$grid['units']=array();
+$selector['units']=array('field'=>'selectrow','renderer'=>'selector','view'=>"<input onclick=\"toggleRow(%1\$d)\" type=checkbox name=\"selectrow[%1\$d]\" id=\"id_selectrow_%1\$d\" value=\"%2\$s\">");
+$grid['units']['properties']=array('table'=>'fgs_unit','system'=>1,'primary_key'=>array('unit_controller','unit_sid'),'modal'=>0,'user_order'=>1,'user_pagesize'=>1,'user_offset'=>1,'inline_edit'=>0,'fkr'=>array('unit_controller'=>'controller_sid'),'title'=>'units','joins'=>array(),'save'=>array(),'sort'=>array('unit_sid'=>'unit_sid','unit_type'=>'unit_type','unit_class'=>'unit_class','unit_form'=>'unit_form','unit_grid'=>'unit_grid','unit_search'=>'unit_search','unit_dataset'=>'unit_dataset'),'sort_prefix'=>array(),'sort_suffix'=>array(),'register'=>array(),'select'=>'t.unit_controller,unit_sid,t.unit_sid,t.unit_type,t.unit_class,t.unit_form,t.unit_grid,t.unit_search,t.unit_dataset','from'=>'fgs_unit t ');
+$grid['units']['initial']=array('pagesize'=>30,'direction'=>'ASC','order'=>'unit_sid','offset'=>0);
+$grid['units']['session']=array('pagesize','direction','order','offset','total','multimode_hide','display','hide','apk','foreign_key');
+$ra['units']=array();
+$ra['units'][]=array('load'=>false,'action'=>'update','renderer'=>'RowAction','immediate'=>0,'view'=>'<a href="%3$s&amp;update=%1$d&amp;key=%2$s" class="icon_edit" title="Edit" ></a>');
+$ra['units'][]=array('load'=>false,'action'=>'remove','renderer'=>'RowAction','immediate'=>0,'view'=>'<a href="%3$s&amp;remove=%1$d&amp;key=%2$s" class="icon_delete" title="Remove" ></a>');
+$ra['units'][]=array('load'=>false,'action'=>'copy','renderer'=>'RowAction','immediate'=>0,'view'=>'<a href="%3$s&amp;copy=%1$d&amp;key=%2$s" class="icon_copy" title="Copy" ></a>');
+$rsa['units']=array();
+$rsa['units'][]=array('action'=>'multi_update','renderer'=>'RowSetAction','immediate'=>0,'view'=>'<button type="submit" name="multi_update"  title="Multi_update" ><span style="margin:0 -5px -3px -0px;" class="icon_edit"></span></button>');
+$rsa['units'][]=array('action'=>'multi_remove','renderer'=>'RowSetAction','immediate'=>0,'view'=>'<button type="submit" name="multi_remove"  title="Multi_remove" ><span style="margin:0 -5px -3px -0px;" class="icon_delete"></span></button>');
+$column['units']=array();
+$column['units'][0]=array('rowid'=>5545,'component'=>'ColumnText','header'=>'Sid','sid'=>'unit_sid','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'unit_sid','hidden'=>'0','calculate'=>'0');
+$column['units'][1]=array('rowid'=>5546,'component'=>'ColumnText','header'=>'Type','sid'=>'unit_type','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'unit_type','hidden'=>'0','calculate'=>'0');
+$column['units'][2]=array('rowid'=>5547,'component'=>'ColumnText','header'=>'Class','sid'=>'unit_class','hidden'=>'0','renderer'=>'text','type'=>'varchar','field'=>'unit_class','hidden'=>'0','calculate'=>'0');
+$column['units'][3]=array('rowid'=>5548,'component'=>'ColumnLink','header'=>'Form','sid'=>'unit_form','hidden'=>'0','calculate'=>'0','renderer'=>'FormLink','field'=>'unit_form','type'=>'varchar');
+$column['units'][4]=array('rowid'=>5549,'component'=>'ColumnLink','header'=>'Grid','sid'=>'unit_grid','hidden'=>'0','calculate'=>'0','renderer'=>'GridLink','field'=>'unit_grid','type'=>'varchar');
+$column['units'][5]=array('rowid'=>5550,'component'=>'ColumnLink','header'=>'Search','sid'=>'unit_search','hidden'=>'0','calculate'=>'0','renderer'=>'SearchLink','field'=>'unit_search','type'=>'varchar');
+$column['units'][6]=array('rowid'=>5551,'component'=>'ColumnLink','header'=>'Dataset','sid'=>'unit_dataset','hidden'=>'0','calculate'=>'0','renderer'=>'DatasetLink','field'=>'unit_dataset','type'=>'varchar');
+$button['units']=array();

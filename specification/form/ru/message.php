@@ -1,0 +1,25 @@
+<?php
+$form['message']=array();
+$form['message']['initial']=array();
+$form['message']['initial']=array('mode'=>'insert');
+$form['message']['session']['insert']=array('mode','hide','display');
+$form['message']['session']['copy']=array('mode','hide','display','apk','irow');
+$form['message']['session']['read']=array('mode','hide','display','apk','irow');
+$form['message']['session']['update']=array('mode','hide','display','apk','irow');
+$form['message']['session']['remove']=array('mode','hide','display','apk','irow');
+$form['message']['session']['multi_update']=array('mode','hide','display','apk','irow');
+$form['message']['session']['multi_remove']=array('mode','hide','display','apk','irow');
+$form['message']['session']['multi_read']=array('mode','hide','display','apk','irow');
+$button['message']=array();
+$button['message'][]=array('value'=>'Вставить','name'=>'insert','renderer'=>'button','type'=>'submit','action'=>'insert','modes'=>array('copy','insert'),'attributes'=>'tabindex=\'0\'');
+$button['message'][]=array('value'=>'Обновить','name'=>'update','renderer'=>'button','type'=>'submit','action'=>'update','modes'=>array('update','multi_update'),'attributes'=>'tabindex=\'0\'');
+$button['message'][]=array('value'=>'Удалить','name'=>'remove','renderer'=>'button','type'=>'submit','action'=>'remove','modes'=>array('remove','multi_remove'),'attributes'=>'tabindex=\'0\'');
+$button['message'][]=array('value'=>'Read','name'=>'read','renderer'=>'button','type'=>'submit','action'=>'read','modes'=>array('multi_read'),'attributes'=>'tabindex=\'0\'');
+$button['message'][]=array('value'=>'Отменить','name'=>'cancel','renderer'=>'button','type'=>'submit','action'=>'cancel','modes'=>array('copy','remove','update','multi_remove','multi_update','multi_read','insert','read'),'attributes'=>'tabindex=\'0\'');
+$button['message'][]=array('value'=>'Отменить изменения','name'=>'reset','renderer'=>'button','type'=>'reset','action'=>'reset','modes'=>array('copy','update','multi_update','insert'),'attributes'=>'tabindex=\'0\'');
+$form['message']['properties']=array('primary_key'=>array('msg_abbr'),'table'=>'fgs_message','method'=>'post','system'=>1,'redirect_after_insert'=>0,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'system'=>1,'title'=>'message','modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'attributes'=>'','htmlevents'=>'','enctype'=>'application/x-www-form-urlencoded','events'=>array('insert'=>'done','update'=>'done','remove'=>'done'),'joins'=>array());
+$e['message']=array();
+$e['message'][0]=array('table'=>'fgs_message','rowid'=>'471','sid'=>'msg_abbr','fieldset'=>'','name'=>'msg_abbr','label'=>'Аббревиатура','component'=>'InputText','type'=>'varchar','required'=>1,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'field'=>'msg_abbr','renderer'=>'text','cai'=>'1','attributes'=>'maxlength=\'64\' size=\'60\'');
+$e['message'][1]=array('table'=>'fgs_message','rowid'=>'10499','sid'=>'msg_en','fieldset'=>'','name'=>'msg_en','label'=>'Текст на английском','component'=>'InputText','type'=>'varchar','required'=>1,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'field'=>'msg_en','renderer'=>'text','cai'=>'1','attributes'=>'maxlength=\'255\' size=\'60\'');
+$e['message'][2]=array('table'=>'fgs_message','rowid'=>'10500','sid'=>'msg_ru','fieldset'=>'','name'=>'msg_ru','label'=>'Текст на русском','component'=>'InputText','type'=>'varchar','required'=>1,'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'field'=>'msg_ru','renderer'=>'text','cai'=>'1','attributes'=>'maxlength=\'255\' size=\'60\'');
+$e['message'][3]=array('table'=>'fgs_message','rowid'=>'475','sid'=>'msg_system','fieldset'=>'','name'=>'msg_system','label'=>'System ?','component'=>'SelectOneRadio','renderer'=>'radio','layout'=>'1','required'=>1,'default_value'=>'0','list_sid'=>'YesNo','list'=>array('options'=>array('0'=>'нет','1'=>'да')),'modes'=>array('insert','update','copy','remove','read','multi_update','multi_remove','multi_read'),'type'=>'tinyint','field'=>'msg_system','cai'=>1);

@@ -1,0 +1,2 @@
+<?php
+$list['table']=array('sid'=>'table','table'=>'fgs_table','from'=>'fgs_table','primary_key'=>'table_name','select'=>'table_name id,table_name as name','order'=>'table_name ASC','display_field'=>'table_name');

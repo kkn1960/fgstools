@@ -1,0 +1,2 @@
+<?php
+$ds['ApplicationGrid']=array('table'=>'fgs_grid','system'=>1,'predicates'=>array(array('field'=>'grid_system','type'=>'tinyint','table'=>'fgs_grid','fieldset'=>'t','sqlfunction'=>'','required'=>'1','argument'=>"&rgv system",'operator'=>'equal','connector'=>'and'),array('field'=>'grid_type','type'=>'varchar','table'=>'fgs_grid','fieldset'=>'t','sqlfunction'=>'','required'=>'1','argument'=>"template",'operator'=>'not_equal','connector'=>'and')));
