@@ -1,7 +1,7 @@
 <?php
 // Database name && connection parameters
 $dbname="database name";
-$gaDbConnect["database nam"]=array("server"=>"localhost","dbname"=>"database nam","dbms"=>"Mysql","codepage"=>"utf8","user"=>"user login","password"=>"user password");
+$gaDbConnect["database nam"]=array("server"=>"localhost","dbname"=>"database name","dbms"=>"Mysql","codepage"=>"utf8","user"=>"user login","password"=>"user password");
 
 define('DEFAULT_CHARSET', 'utf8');
 $dbLoader="MySqlLoader";
