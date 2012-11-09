@@ -1,2 +1,0 @@
-<?php
-$list['ArgumentComponent']=array('sid'=>'ArgumentComponent','table'=>'fgs_component','from'=>'fgs_component','primary_key'=>'component_sid','select'=>'component_sid id,component_name as name','order'=>'component_name ASC','where'=>'component_type=\'element\' and (component_sid!=\'InputButton\' and component_sid!=\'ElementTableJoiner\' and component_sid!=\'InputTextarea\' )','display_field'=>'component_name');

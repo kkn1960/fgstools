@@ -1,2 +1,0 @@
-<?php
-$list['InputMode']=array('options'=>array('insert'=>'Insert','update'=>'Update','update_partial'=>'Partial Update','copy'=>'Copy','remove'=>'Remove','read'=>'Read','seek'=>'Seek','action'=>'Action','multi_update'=>'MultiUpdate','multi_remove'=>'MultiRemove','multi_read'=>'MultiRead'));

@@ -1,2 +1,0 @@
-<?php
-$ds['ApplicationDataset']=array('table'=>'fgs_dataset','system'=>1,'predicates'=>array(array('field'=>'dataset_system','type'=>'tinyint','table'=>'fgs_dataset','fieldset'=>'t','sqlfunction'=>'','required'=>'1','argument'=>"&rgv system",'operator'=>'equal','connector'=>'and')));

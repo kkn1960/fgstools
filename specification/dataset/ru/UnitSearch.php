@@ -1,2 +1,0 @@
-<?php
-$ds['UnitSearch']=array('table'=>'fgs_form','system'=>1,'predicates'=>array(array('field'=>'form_system','type'=>'tinyint','table'=>'fgs_form','fieldset'=>'t','required'=>'1','argument'=>"&rgv system",'operator'=>'equal','connector'=>'and'),array('field'=>'form_type','type'=>'varchar','table'=>'fgs_form','fieldset'=>'t','required'=>'1','argument'=>"search",'operator'=>'leftlike','connector'=>'and'),array('field'=>'form_type','type'=>'varchar','table'=>'fgs_form','fieldset'=>'t','required'=>'1','argument'=>"search_template",'operator'=>'not_equal','connector'=>'and')));

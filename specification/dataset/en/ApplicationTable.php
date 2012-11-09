@@ -1,2 +1,0 @@
-<?php
-$ds['ApplicationTable']=array('table'=>'fgs_table','system'=>1,'predicates'=>array(array('field'=>'table_system','type'=>'tinyint','table'=>'fgs_table','fieldset'=>'t','required'=>'1','argument'=>"&rgv system",'operator'=>'equal','connector'=>'and')));

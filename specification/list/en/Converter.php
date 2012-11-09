@@ -1,2 +1,0 @@
-<?php
-$list['Converter']=array('sid'=>'Converter','table'=>'fgs_converter','from'=>'fgs_converter','primary_key'=>'converter_sid','select'=>'converter_sid id,converter_sid as name','order'=>'converter_sid ASC','display_field'=>'converter_sid');

@@ -1,2 +1,0 @@
-<?php
-$list['Filters']=array('options'=>array('FilterAlphabeticDigit'=>'Alphabetic and Digit','FilterAlphabetic'=>'Alphabetic','FilterBasename'=>'Basename','FilterDigits'=>'Digits','FilterDir'=>'Dir','FilterHtmlEntities'=>'HtmlEntities','FilterInteger'=>'Integer','FilterRealPath'=>'RealPath','FilterStringToLower'=>'StringToLower','FilterStringToUpper'=>'StringToUpper','FilterStringTrim'=>'StringTrim','FilterStripTags'=>'StripTags','FilterCustom'=>'Custom'));

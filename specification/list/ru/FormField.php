@@ -1,2 +1,0 @@
-<?php
-$list['FormField']=array('sid'=>'FormField','table'=>'fgs_element','from'=>'fgs_element','primary_key'=>'element_field','select'=>'element_field id,element_field as name','order'=>'element_field ASC','class'=>'FormFieldsList','display_field'=>'element_field');

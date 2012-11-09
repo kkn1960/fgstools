@@ -1,2 +1,0 @@
-<?php
-$ds['InputCondition']=array('table'=>'fgs_condition','system'=>1,'predicates'=>array(array('field'=>'condition_type','type'=>'varchar','table'=>'fgs_condition','fieldset'=>'0','required'=>'1','argument'=>"row",'operator'=>'not_equal','connector'=>'and')));

@@ -1,2 +1,0 @@
-<?php
-$ds['search']=array('table'=>'fgs_form','system'=>1,'predicates'=>array(array('field'=>'form_type','type'=>'varchar','table'=>'fgs_form','fieldset'=>'t','sqlfunction'=>'','required'=>'1','argument'=>"search",'operator'=>'leftlike','connector'=>'and')));

@@ -1,2 +1,0 @@
-<?php
-$list['AcceptChars']=array('options'=>array('cardinal'=>'cardinal','integer'=>'integer','float'=>'float','hexadecimal'=>'hexadecimal','octal'=>'octal','date'=>'date','datetime'=>'datetime','time'=>'time','timestamp'=>'timestamp','chars'=>'chars','charsdigits'=>'Chars and digits','email'=>'Email','binary'=>'binary'));

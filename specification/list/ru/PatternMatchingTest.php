@@ -1,2 +1,0 @@
-<?php
-$list['PatternMatchingTest']=array('options'=>array('like'=>'содержит(like)','leftlike'=>'начинается с','rightlike'=>'заканчивается на','not_like'=>'не содержит(not like)','not_leftlike'=>'не начинается с','not_rightlike'=>'не заканчивается на','equal'=>'равно','not_equal'=>'не равно','regexp'=>'regexp'));

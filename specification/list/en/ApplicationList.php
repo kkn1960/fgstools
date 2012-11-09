@@ -1,2 +1,0 @@
-<?php
-$list['ApplicationList']=array('sid'=>'ApplicationList','table'=>'fgs_list','from'=>'fgs_list','primary_key'=>'list_sid','select'=>'list_sid id,list_sid name','order'=>'list_sid ASC','display_field'=>'list_sid','predicates'=>array(array('field'=>'table_name','type'=>'varchar','table'=>'fgs_table','fieldset'=>'t','required'=>'1','argument'=>"fgs_option",'operator'=>'equal','connector'=>'and'),array('field'=>'table_system','type'=>'tinyint','table'=>'fgs_table','fieldset'=>'t','required'=>'1','argument'=>"&rgv system",'operator'=>'equal','connector'=>'or')));

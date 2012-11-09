@@ -1,2 +1,0 @@
-<?php
-$ds['MenuItem']=array('table'=>'fgs_item','system'=>1,'predicates'=>array(array('field'=>'item_type','type'=>'varchar','table'=>'fgs_item','fieldset'=>'0','required'=>'1','argument'=>"menu",'operator'=>'equal','connector'=>'and'),array('field'=>'item_menu','type'=>'varchar','table'=>'fgs_item','fieldset'=>'0','required'=>'1','argument'=>"&rgv root_menu",'operator'=>'equal','connector'=>'and')));

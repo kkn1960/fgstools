@@ -1,2 +1,0 @@
-<?php
-$list['analytic_frequency']=array('options'=>array('day'=>'≈жедневный','week'=>'≈женедельный','month'=>'≈жемес€чный','quarter'=>' вартальный обзор','halfyear'=>'ќбзор за 6 мес€цев','month9'=>'ќбзор за 9 мес€цев','year'=>'√одовой обзор'));

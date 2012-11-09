@@ -1,2 +1,0 @@
-<?php
-$list['dataset']=array('sid'=>'dataset','table'=>'fgs_dataset','from'=>'fgs_dataset','primary_key'=>'dataset_sid','select'=>'dataset_sid id,dataset_sid as name','order'=>'dataset_sid ASC','display_field'=>'dataset_sid');

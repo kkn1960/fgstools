@@ -1,2 +1,0 @@
-<?php
-$list['forms']=array('sid'=>'forms','table'=>'fgs_form','from'=>'fgs_form','primary_key'=>'form_sid','select'=>'form_sid id,form_sid as name','order'=>'form_sid ASC','where'=>'form_type not like \'search%\'','display_field'=>'form_sid');

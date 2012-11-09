@@ -1,2 +1,0 @@
-<?php
-$list['condition']=array('sid'=>'condition','table'=>'fgs_condition','from'=>'fgs_condition','primary_key'=>'condition_sid','select'=>'condition_sid id,condition_sid name','order'=>'condition_sid ASC','display_field'=>'condition_sid');

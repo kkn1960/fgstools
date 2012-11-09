@@ -1,2 +1,0 @@
-<?php
-$list['lists']=array('sid'=>'lists','table'=>'fgs_list','from'=>'fgs_list','primary_key'=>'list_sid','select'=>'list_sid id,list_sid as name','order'=>'list_sid ASC','display_field'=>'list_sid');

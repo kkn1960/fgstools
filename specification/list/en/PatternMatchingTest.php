@@ -1,2 +1,0 @@
-<?php
-$list['PatternMatchingTest']=array('options'=>array('like'=>'like','leftlike'=>'start with','rightlike'=>'end with','not_like'=>'not like','not_leftlike'=>'does\'t start with','not_rightlike'=>'does\'t end with','equal'=>'equal','not_equal'=>'not equal','regexp'=>'regexp'));

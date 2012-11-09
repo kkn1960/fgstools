@@ -1,2 +1,0 @@
-<?php
-$list['company_content']=array('options'=>array('deals'=>'Торги','financials'=>'Финансовые отчеты','shareholders'=>'Акционеры','management'=>'Менеджмент','dividends'=>'Дивиденды','investments'=>'Инвестиции'));

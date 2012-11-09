@@ -1,2 +1,0 @@
-<?php
-$list['grids']=array('sid'=>'grids','table'=>'fgs_grid','from'=>'fgs_grid','primary_key'=>'grid_sid','select'=>'grid_sid id,grid_sid as name','order'=>'grid_sid ASC','display_field'=>'grid_sid');

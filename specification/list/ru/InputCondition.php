@@ -1,2 +1,0 @@
-<?php
-$list['InputCondition']=array('sid'=>'InputCondition','table'=>'fgs_condition','from'=>'fgs_condition','primary_key'=>'condition_sid','select'=>'condition_sid id,condition_sid as name','order'=>'condition_sid ASC','display_field'=>'condition_sid','predicates'=>array(array('field'=>'condition_type','type'=>'varchar','table'=>'fgs_condition','fieldset'=>'0','required'=>'1','argument'=>"row",'operator'=>'not_equal','connector'=>'and')));
