@@ -15,7 +15,7 @@ directory. You shall see the following files and directories:
       specification/
       system/              tool source files
       template/            tool templates
-      
+
       LICENSE.txt          FGS Tools
       README               this file
       application.inc
@@ -38,7 +38,7 @@ directory. You shall see the following files and directories:
       fgstools.sql   SQL script to create of FGS Tools system tables
 
       After that you have to create FGS Tools system tables by executing fgstools.sql in any SQL tool, for example in phpMyAdmin
-      
+
 Very important!
 
 Before execution of the fgstools.sql SQL script check that database tables related to the Configurator do not have the same names as your database tables. Your tables with the same names will be dropped and its data lost!
@@ -63,10 +63,10 @@ FGS Tools requires:
     MySql 5
     jQuery 1.4.2
     jQuery UI 1.8.2
-    
+
 FGS Tools  has been tested with Apache HTTP server
 on Windows and Linux operating systems.
-    
+
 
 QUICK START
 -----------
@@ -80,6 +80,10 @@ You will get almost full replica of the project website.
 Make login with:
 login: programmer
 password:programmer
+
+Very important!
+
+The downloaded archive have got only few specifications. So after making login you have to select Configurator option of the menu and in the Configurator make export specifications of all component!
 
 WHAT's NEXT
 -----------
